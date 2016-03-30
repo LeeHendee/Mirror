@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorGray"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/lzp_fifteen"
+        android:layout_marginRight="@dimen/lzp_fifteen"
+        android:layout_marginTop="@dimen/lzp_fifteen"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="@dimen/lzp_zero"
+            android:layout_height="match_parent"
+            android:layout_weight="7">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/makecount"
+                android:textSize="@dimen/lzp_text_twenty"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="@dimen/lzp_zero"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <ImageView
+                android:id="@+id/register_close"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/close" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/lzp_ten"
+        android:src="@mipmap/makecount_line" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/lzp_fifteen"
+        android:layout_marginTop="@dimen/lzp_ten"
+        android:text="@string/phonenum"
+        android:textSize="@dimen/lzp_text_fifteen" />
+
+    <EditText
+        android:id="@+id/register_phoneNum_edit"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/lzp_fourty"
+        android:layout_marginLeft="@dimen/lzp_fifteen"
+        android:layout_marginRight="@dimen/lzp_fifteen"
+        android:layout_marginTop="@dimen/lzp_five"
+        android:inputType="number"
+        android:background="@mipmap/edit" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/lzp_fifteen"
+        android:layout_marginTop="@dimen/lzp_fifteen"
+        android:text="@string/number"
+        android:textSize="@dimen/lzp_text_fifteen" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/lzp_fourty"
+        android:layout_marginLeft="@dimen/lzp_fifteen"
+        android:layout_marginRight="@dimen/lzp_fifteen"
+        android:layout_marginTop="@dimen/lzp_five"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="@dimen/lzp_zero"
+            android:layout_height="wrap_content"
+            android:layout_weight="2">
+
+            <EditText
+                android:id="@+id/register_num_edit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@mipmap/edit" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="@dimen/lzp_zero"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+
+            <Button
+                android:id="@+id/register_send_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:background="@mipmap/makeacount"
+                android:textSize="@dimen/lzp_text_fifteen"
+                android:text="@string/sendnumber" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/lzp_fifteen"
+        android:layout_marginTop="@dimen/lzp_fifteen"
+        android:text="@string/setpassword"
+        android:textSize="@dimen/lzp_text_fifteen" />
+
+    <EditText
+        android:id="@+id/register_password_edit"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/lzp_fourty"
+        android:layout_marginLeft="@dimen/lzp_fifteen"
+        android:layout_marginRight="@dimen/lzp_fifteen"
+        android:layout_marginTop="@dimen/lzp_five"
+        android:background="@mipmap/edit" />
+
+    <Button
+        android:id="@+id/register_makeCount_btn"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/lzp_fourty"
+        android:layout_marginLeft="@dimen/lzp_fifteen"
+        android:layout_marginRight="@dimen/lzp_fifteen"
+        android:layout_marginTop="@dimen/lzp_twenty_five"
+        android:background="@mipmap/makeacount"
+        android:text="@string/makecount"
+        android:textColor="@color/colorWhite" />
+
+</LinearLayout>
+
