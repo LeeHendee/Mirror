@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.zhy.autolayout.AutoRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
     <FrameLayout
@@ -9,7 +9,7 @@
         android:layout_marginBottom="@dimen/ten"
         android:visibility="visible">
 
-        <LinearLayout
+        <com.zhy.autolayout.AutoLinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
@@ -30,7 +30,7 @@
                 android:text="@string/pictures_of_wearing"
                 android:textColor="@android:color/white"/>
 
-            <RelativeLayout
+            <com.zhy.autolayout.AutoRelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
                 <Button
@@ -42,8 +42,8 @@
                     android:layout_marginRight="@dimen/forty_lee"
                     android:text="@string/buy"
                     />
-            </RelativeLayout>
-        </LinearLayout>
+            </com.zhy.autolayout.AutoRelativeLayout>
+        </com.zhy.autolayout.AutoLinearLayout>
     </FrameLayout>
 
-</RelativeLayout>
+</com.zhy.autolayout.AutoRelativeLayout>

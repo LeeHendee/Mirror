@@ -1,4 +1,4 @@
-package com.my.mirror.lee;
+package com.my.mirror.details;
 
 
 
@@ -6,8 +6,22 @@ import android.content.Intent;
 import android.view.View;
 import android.widget.Button;
 
+import com.google.gson.Gson;
 import com.my.mirror.R;
 import com.my.mirror.base.BaseActivity;
+import com.squareup.okhttp.FormEncodingBuilder;
+import com.zhy.http.okhttp.OkHttpUtils;
+import com.zhy.http.okhttp.callback.StringCallback;
+
+import java.io.File;
+import java.io.IOException;
+
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
+
 
 /**
  * Created by dllo on 16/3/29.
@@ -21,6 +35,22 @@ public class DetailActivity extends BaseActivity implements View.OnClickListener
 
     @Override
     protected void initData() {
+        String url = "";
+        OkHttpUtils
+                .post()
+                .url(url)
+                .addParams("username", "hyman")
+                .addParams("password", "123")
+                .build()
+                .execute(new String Callback());
+
+
+        OkHttpUtils
+                .postString()
+                .url(url)
+                .content(new Gson().toJson(new User("zhy", "123")))
+                .build()
+                .execute(new StringCallback());
 
     }
 
