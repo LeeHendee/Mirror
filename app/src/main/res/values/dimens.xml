@@ -10,4 +10,13 @@
     <dimen name="zc_eighty_five">43dp</dimen>
     <dimen name="zc_fourty_four">22dp</dimen>
     <dimen name="zc_seventy_eight">39dp</dimen>
+    <dimen name="zc_title_size">15sp</dimen>
+    <dimen name="zc_title_under_marginleft">10dp</dimen>
+    <dimen name="zc_title_underline_margintop">7dp</dimen>
+    <dimen name="zc_untitle_margintop">9dp</dimen>
+    <dimen name="title_rv_margintop">30dp</dimen>
+    <dimen name="title_rv_marginbottom">85dp</dimen>
+    <dimen name="resure_title_line_marginleft">15dp</dimen>
+    <dimen name="resure_title_line_margintop">10dp</dimen>
+    <dimen name="resure_untitle_tv_size">12sp</dimen>
 </resources>
