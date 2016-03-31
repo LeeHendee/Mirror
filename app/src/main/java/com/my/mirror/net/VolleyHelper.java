@@ -89,4 +89,37 @@ public class VolleyHelper {
         queue.add(request);
     }
 
+    //POST请求方式,数据类型是String:
+    public void getStringDataByPost(String url, final Map head, final Map params, final IVolleyString iVolleyString) {
+        final StringRequest request = new StringRequest(Request.Method.POST,url, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                iVolleyString.succeedListener(response);
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                iVolleyString.failedListener(error.toString());
+            }
+        }) {
+
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                if (head != null) {
+                    return head;
+                }
+                return super.getHeaders();
+            }
+            //因为Post类型请求多一个参数拼接;
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                if (params != null) {
+                    return params;
+                }
+                return super.getParams();
+            }
+        };
+        queue.add(request);
+    }
+
 }
