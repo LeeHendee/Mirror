@@ -3,6 +3,7 @@ package com.my.mirror;
 
 import android.content.Intent;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -10,6 +11,7 @@ import android.widget.TextView;
 
 import com.my.mirror.base.BaseActivity;
 import com.my.mirror.zc.CarFragment;
+import com.my.mirror.zc.ClassifiedFragment;
 import com.my.mirror.zc.MainViewPager;
 import com.my.mirror.zc.MainViewPagerAdapter;
 import com.my.mirror.zc.ReuseFragment;
@@ -24,6 +26,8 @@ public class MainActivity extends BaseActivity {
     private List<Fragment> fragmentList;
     private MainViewPager viewPager;
     private MainViewPagerAdapter adapter;
+
+
 
     @Override
     protected int getLayout() {
@@ -48,6 +52,9 @@ public class MainActivity extends BaseActivity {
         fragmentList.add(new CarFragment());
         adapter = new MainViewPagerAdapter(getSupportFragmentManager(),fragmentList,this);
         viewPager.setAdapter(adapter);
+
+
+
     }
 
     @Override

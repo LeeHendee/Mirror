@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+
+    <!-- 菜单栏 -->
+    <LinearLayout
+        android:id="@+id/resure_classified_line"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="@mipmap/bg">
+
+        <LinearLayout
+            android:id="@+id/resure_all_line"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/zc_fourty_eight"
+            android:layout_marginTop="@dimen/zc_one_fourty_eight"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/resure_all_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/zc_all"
+                android:textColor="@color/white"
+                android:textSize="@dimen/zc_twenty_eight"
+                android:alpha="0.25"/>
+
+            <ImageView
+                android:id="@+id/resure_all_iv"
+                android:layout_width="@dimen/zc_eighty_five"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/zc_twenty_two"
+                android:src="@mipmap/title_underline"
+                android:visibility="invisible" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/resure_matt_line"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/zc_fourty_eight"
+            android:layout_marginTop="@dimen/zc_fourty_four"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/resure_matt_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/zc_matt"
+                android:textColor="@color/white"
+                android:textSize="@dimen/zc_twenty_eight"
+                android:alpha="0.25"/>
+
+            <ImageView
+                android:id="@+id/resure_matt_iv"
+                android:layout_width="@dimen/zc_eighty_five"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/zc_twenty_two"
+                android:src="@mipmap/title_underline"
+                android:visibility="invisible" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/resure_sun_line"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/zc_fourty_eight"
+            android:layout_marginTop="@dimen/zc_fourty_four"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/resure_sun_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/zc_sun"
+                android:textColor="@color/white"
+                android:textSize="@dimen/zc_twenty_eight"
+                android:alpha="0.25"/>
+
+            <ImageView
+                android:id="@+id/resure_sun_iv"
+                android:layout_width="@dimen/zc_eighty_five"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/zc_twenty_two"
+                android:src="@mipmap/title_underline"
+                android:visibility="invisible" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/resure_project_line"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/zc_fourty_eight"
+            android:layout_marginTop="@dimen/zc_fourty_four"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/resure_project_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/zc_project"
+                android:textColor="@color/white"
+                android:textSize="@dimen/zc_twenty_eight"
+                android:alpha="0.25"/>
+
+            <ImageView
+                android:id="@+id/resure_project_iv"
+                android:layout_width="@dimen/zc_eighty_five"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/zc_twenty_two"
+                android:src="@mipmap/title_underline"
+                android:visibility="invisible" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/resure_car_line"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/zc_fourty_eight"
+            android:layout_marginTop="@dimen/zc_fourty_four"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/resure_car_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/zc_car"
+                android:textColor="@color/white"
+                android:textSize="@dimen/zc_twenty_eight"
+                android:alpha="0.25"/>
+
+            <ImageView
+                android:id="@+id/resure_car_iv"
+                android:layout_width="@dimen/zc_eighty_five"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/zc_twenty_two"
+                android:src="@mipmap/title_underline"
+                android:visibility="invisible" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/resure_back_line"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/zc_fourty_eight"
+            android:layout_marginTop="@dimen/zc_fourty_four"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/resure_back_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/zc_back"
+                android:textColor="@color/white"
+                android:textSize="@dimen/zc_twenty_eight"
+                android:alpha="0.25"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/resure_exit_line"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/zc_fourty_eight"
+            android:layout_marginTop="@dimen/zc_seventy_eight"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/resure_exit_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/zc_exit"
+                android:textColor="@color/white"
+                android:textSize="@dimen/zc_twenty_eight"
+                android:alpha="0.25"/>
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

@@ -1,11 +1,11 @@
 package com.my.mirror.zc;
 
+import android.support.v4.app.FragmentManager;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.LinearLayout;
-
 import com.my.mirror.R;
 import com.my.mirror.base.BaseFragment;
 
@@ -14,22 +14,18 @@ import com.my.mirror.base.BaseFragment;
  */
 public class ReuseFragment extends BaseFragment {
     private LinearLayout line;
-    private LinearLayout mainLine;
     private RecyclerView recyclerView;
     private ReuseRecyclerAdapter adapter;
+    private ClassifiedFragment classifiedFragment;
     @Override
     protected void initData() {
 
         line.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mainLine.setVisibility(View.VISIBLE);
-            }
-        });
-        mainLine.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mainLine.setVisibility(View.GONE);
+                classifiedFragment = new ClassifiedFragment();
+                FragmentManager fm = getActivity().getSupportFragmentManager();
+                fm.beginTransaction().replace(R.id.main_frame,classifiedFragment).commit();
             }
         });
 
@@ -43,7 +39,6 @@ public class ReuseFragment extends BaseFragment {
     @Override
     protected void initView() {
         line = findId(R.id.resure_title_line);
-        mainLine = findId(R.id.resure_classified_line);
         recyclerView = findId(R.id.resure_recycler_view);
     }
 
