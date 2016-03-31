@@ -19,8 +19,7 @@
     <dimen name="thirty_six_lee">36dp</dimen>
     <dimen name="forty_eight">48px</dimen>
     <dimen name="fourteen_lee">14px</dimen>
-<<<<<<< HEAD
-=======
+
 
 
     <dimen name="lzp_fifteen">15dp</dimen>
@@ -37,5 +36,5 @@
     <dimen name="lzp_zero">0dp</dimen>
     <dimen name="lzp_twenty_five">25dp</dimen>
 
->>>>>>> 2d5b6fb4a137ffee954a414b756f34a91970dae1
+
 </resources>
