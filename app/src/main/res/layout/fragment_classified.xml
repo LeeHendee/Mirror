@@ -1,14 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent" android:layout_height="match_parent">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
     <!-- 菜单栏 -->
     <LinearLayout
-        android:id="@+id/resure_classified_line"
+        android:id="@+id/classified_linearlayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:background="@mipmap/bg">
+        android:background="@mipmap/bg"
+        android:orientation="vertical">
+
 
         <LinearLayout
             android:id="@+id/resure_all_line"
@@ -22,10 +24,10 @@
                 android:id="@+id/resure_all_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:alpha="0.25"
                 android:text="@string/zc_all"
                 android:textColor="@color/white"
-                android:textSize="@dimen/zc_twenty_eight"
-                android:alpha="0.25"/>
+                android:textSize="@dimen/zc_twenty_eight" />
 
             <ImageView
                 android:id="@+id/resure_all_iv"
@@ -48,10 +50,10 @@
                 android:id="@+id/resure_matt_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:alpha="0.25"
                 android:text="@string/zc_matt"
                 android:textColor="@color/white"
-                android:textSize="@dimen/zc_twenty_eight"
-                android:alpha="0.25"/>
+                android:textSize="@dimen/zc_twenty_eight" />
 
             <ImageView
                 android:id="@+id/resure_matt_iv"
@@ -74,10 +76,10 @@
                 android:id="@+id/resure_sun_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:alpha="0.25"
                 android:text="@string/zc_sun"
                 android:textColor="@color/white"
-                android:textSize="@dimen/zc_twenty_eight"
-                android:alpha="0.25"/>
+                android:textSize="@dimen/zc_twenty_eight" />
 
             <ImageView
                 android:id="@+id/resure_sun_iv"
@@ -100,10 +102,10 @@
                 android:id="@+id/resure_project_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:alpha="0.25"
                 android:text="@string/zc_project"
                 android:textColor="@color/white"
-                android:textSize="@dimen/zc_twenty_eight"
-                android:alpha="0.25"/>
+                android:textSize="@dimen/zc_twenty_eight" />
 
             <ImageView
                 android:id="@+id/resure_project_iv"
@@ -126,10 +128,10 @@
                 android:id="@+id/resure_car_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:alpha="0.25"
                 android:text="@string/zc_car"
                 android:textColor="@color/white"
-                android:textSize="@dimen/zc_twenty_eight"
-                android:alpha="0.25"/>
+                android:textSize="@dimen/zc_twenty_eight" />
 
             <ImageView
                 android:id="@+id/resure_car_iv"
@@ -152,10 +154,10 @@
                 android:id="@+id/resure_back_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:alpha="0.25"
                 android:text="@string/zc_back"
                 android:textColor="@color/white"
-                android:textSize="@dimen/zc_twenty_eight"
-                android:alpha="0.25"/>
+                android:textSize="@dimen/zc_twenty_eight" />
         </LinearLayout>
 
         <LinearLayout
@@ -170,10 +172,11 @@
                 android:id="@+id/resure_exit_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:alpha="0.25"
                 android:text="@string/zc_exit"
                 android:textColor="@color/white"
-                android:textSize="@dimen/zc_twenty_eight"
-                android:alpha="0.25"/>
+                android:textSize="@dimen/zc_twenty_eight" />
         </LinearLayout>
+
     </LinearLayout>
 </LinearLayout>

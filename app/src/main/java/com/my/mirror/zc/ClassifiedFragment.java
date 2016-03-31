@@ -1,5 +1,6 @@
 package com.my.mirror.zc;
 
+import android.animation.ObjectAnimator;
 import android.content.Intent;
 import android.view.View;
 import android.widget.ImageView;
@@ -15,7 +16,7 @@ import com.my.mirror.base.BaseFragment;
  */
 public class ClassifiedFragment extends BaseFragment implements View.OnClickListener {
     private int i;
-    private LinearLayout allLine,mattLine,sunLine,projectLine,carLine,backLine,exitLine;
+    private LinearLayout allLine,mattLine,sunLine,projectLine,carLine,backLine,exitLine,classifiedLine;
     private TextView allTv,mattTv,sunTv,projectTv,carTv;
     private ImageView allIv,mattIv,sunIv,projectIv,carIv;
 
@@ -80,6 +81,7 @@ public class ClassifiedFragment extends BaseFragment implements View.OnClickList
 
         backLine = findId(R.id.resure_back_line);
         exitLine = findId(R.id.resure_exit_line);
+        classifiedLine = findId(R.id.classified_linearlayout);
     }
 
     @Override
@@ -126,4 +128,16 @@ public class ClassifiedFragment extends BaseFragment implements View.OnClickList
 
         }
     }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        //setAnimation(classifiedLine);
+    }
+
+    //设置动画
+//    private void setAnimation(View tv) {
+//        ObjectAnimator.ofFloat(tv, "translationX", 0F, 60F).setDuration(300).start();
+//        ObjectAnimator.ofFloat(tv, "translationY", 0F, 40F).setDuration(300).start();
+//    }
 }
