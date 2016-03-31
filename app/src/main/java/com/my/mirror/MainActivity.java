@@ -21,8 +21,6 @@ import java.util.List;
 
 public class MainActivity extends BaseActivity {
     private ImageView mirrorIcon;//mirror图标
-
-    private LinearLayout line;//分类栏整体的布局，在这里用到是否显示的属性
     private List<Fragment> fragmentList;
     private MainViewPager viewPager;
     private MainViewPagerAdapter adapter;
@@ -45,15 +43,18 @@ public class MainActivity extends BaseActivity {
 
 
         fragmentList = new ArrayList<>();
-        for (int i = 0; i < 4; i++) {
-            fragmentList.add(new ReuseFragment());
-        }
-
+        
+        fragmentList.add(new ReuseFragment(getString(R.string.zc_all),0));
+        fragmentList.add(new ReuseFragment(getString(R.string.zc_matt),1));
+        fragmentList.add(new ReuseFragment(getString(R.string.zc_sun),2));
+        fragmentList.add(new ReuseFragment(getString(R.string.zc_project),3));
         fragmentList.add(new CarFragment());
         adapter = new MainViewPagerAdapter(getSupportFragmentManager(),fragmentList,this);
         viewPager.setAdapter(adapter);
 
-
+        Intent intent = getIntent();
+        int i = intent.getIntExtra("position",0);
+        viewPager.setCurrentItem(i);
 
     }
 
@@ -63,7 +64,6 @@ public class MainActivity extends BaseActivity {
 
 
         viewPager = findId(R.id.viewpager);
-
 
 
     }

@@ -9,4 +9,6 @@
     <string name="zc_back">返回首页</string>
     <string name="zc_exit">退出</string>
     <string name="zc_untitle">显示排序为 最新推荐</string>
+    <string name="bbb">111</string>
+    <string name="item_reuse_project_tv">mirror传达</string>
 </resources>

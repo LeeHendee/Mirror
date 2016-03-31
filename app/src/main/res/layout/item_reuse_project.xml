@@ -6,7 +6,7 @@
     <android.support.v7.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginLeft="11dp">
+        android:layout_marginLeft="@dimen/item_project_card_margin">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -14,32 +14,32 @@
             android:orientation="vertical">
 
             <ImageView
-                android:layout_width="270dp"
-                android:layout_height="320dp"
+                android:layout_width="@dimen/item_reuse_project_iv_width"
+                android:layout_height="@dimen/item_reuse_project_iv_height"
                 android:src="@mipmap/test" />
 
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="16dp"
-                android:layout_marginRight="16dp"
-                android:layout_marginTop="17dp"
+                android:layout_marginLeft="@dimen/item_reuse_project_line_left"
+                android:layout_marginRight="@dimen/item_reuse_project_line_right"
+                android:layout_marginTop="@dimen/item_reuse_project_line_top"
                 android:src="@mipmap/black_line" />
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="16dp"
-                android:layout_marginRight="16dp"
-                android:layout_marginTop="8dp"
+                android:layout_marginLeft="@dimen/item_reuse_project_line_left"
+                android:layout_marginRight="@dimen/item_reuse_project_line_right"
+                android:layout_marginTop="@dimen/item_reuse_project_linearlayout_top"
                 android:orientation="horizontal">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="mirror传达"
-                    android:textColor="#000000"
-                    android:textSize="15sp" />
+                    android:text="@string/item_reuse_project_tv"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/item_reuse_project_tv_size" />
 
             </LinearLayout>
         </LinearLayout>

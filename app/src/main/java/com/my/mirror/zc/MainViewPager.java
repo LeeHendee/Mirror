@@ -11,6 +11,8 @@ import android.view.View;
  */
 public class MainViewPager extends ViewPager{
     private float startX,startY;
+
+
     public MainViewPager(Context context) {
         super(context);
         init();
@@ -42,7 +44,7 @@ public class MainViewPager extends ViewPager{
 
         @Override
         /**
-         * 应用属性转换到指定页面
+         * 当前页面的显示透明度为1  看不到的为0
          */
         public void transformPage(View page, float position) {
             if (position < -1) {
@@ -81,7 +83,7 @@ public class MainViewPager extends ViewPager{
 
 
     /**
-     *此方法来拦截悬停事件，API里说的是交给子布局处理
+     *此方法来拦截悬停事件
      */
 
     @Override

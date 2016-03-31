@@ -28,9 +28,9 @@
                     android:orientation="horizontal">
 
                     <TextView
+                        android:id="@+id/reuse_title"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/zc_all"
                         android:textColor="@color/white"
                         android:textSize="@dimen/zc_title_size" />
 
