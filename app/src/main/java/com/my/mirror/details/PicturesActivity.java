@@ -10,6 +10,7 @@ import com.my.mirror.base.BaseActivity;
  */
 public class PicturesActivity extends BaseActivity {
     private ListView mListView;
+    private PicturesListViewAdapter mAdapter;
     @Override
     protected int getLayout() {
         return R.layout.activity_pictures;
