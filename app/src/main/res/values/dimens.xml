@@ -18,5 +18,5 @@
     <dimen name="thirty_six_lee">36dp</dimen>
     <dimen name="forty_eight">48px</dimen>
     <dimen name="fourteen_lee">14px</dimen>
-
+    <dimen name="lzp_fifteen">15px</dimen>
 </resources>
