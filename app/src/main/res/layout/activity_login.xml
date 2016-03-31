@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorGray"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/lzp_fifteen"
+        android:layout_marginRight="@dimen/lzp_fifteen"
+        android:layout_marginTop="@dimen/lzp_fifteen"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="7">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/lzp_countlogin"
+                android:textSize="@dimen/lzp_text_twenty"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <ImageView
+                android:id="@+id/login_close"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/close" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/lzp_ten"
+        android:src="@mipmap/makecount_line" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/lzp_fifteen"
+        android:layout_marginTop="@dimen/lzp_ten"
+        android:text="@string/phonenum"
+        android:textSize="@dimen/lzp_text_fifteen" />
+
+    <EditText
+        android:id="@+id/login_phoneNum_edit"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/lzp_fourty"
+        android:layout_marginLeft="@dimen/lzp_fifteen"
+        android:layout_marginRight="@dimen/lzp_fifteen"
+        android:layout_marginTop="@dimen/lzp_five"
+        android:background="@mipmap/edit"
+        android:inputType="number" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="10dp"
+        android:text="@string/lzp_password"
+        android:textSize="@dimen/lzp_text_fifteen" />
+
+    <EditText
+        android:id="@+id/login_password_edit"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/lzp_fourty"
+        android:layout_marginLeft="@dimen/lzp_fifteen"
+        android:layout_marginRight="@dimen/lzp_fifteen"
+        android:layout_marginTop="@dimen/lzp_fifteen"
+        android:background="@mipmap/edit" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/lzp_fifteen"
+        android:layout_marginRight="@dimen/lzp_fifteen">
+
+        <TextView
+            android:id="@+id/login_forget"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="@dimen/lzp_ten"
+            android:text="@string/forgetpassword"
+            android:textSize="@dimen/lzp_text_fifteen" />
+    </RelativeLayout>
+
+    <Button
+        android:id="@+id/login_btn"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/lzp_fourty"
+        android:layout_marginLeft="@dimen/lzp_fifteen"
+        android:layout_marginRight="@dimen/lzp_fifteen"
+        android:layout_marginTop="@dimen/lzp_fourty_five"
+        android:background="@mipmap/nouse_btn"
+        android:text="@string/login"
+        android:textColor="@color/colorWhite"
+        android:textSize="@dimen/lzp_text_fifteen" />
+
+    <Button
+        android:id="@+id/login_mackCount_btn"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/lzp_fourty"
+        android:layout_marginLeft="@dimen/lzp_fifteen"
+        android:layout_marginRight="@dimen/lzp_fifteen"
+        android:layout_marginTop="@dimen/lzp_fifteen"
+        android:background="@mipmap/makeacount"
+        android:text="@string/makecount"
+        android:textColor="@color/colorWhite"
+        android:textSize="@dimen/lzp_text_fifteen" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="50dp"
+        android:text="@string/useotherlogin"
+        android:textSize="@dimen/lzp_text_fifteen"
+        android:textStyle="bold" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="@dimen/lzp_one_zero_zero"
+        android:layout_marginRight="@dimen/lzp_one_zero_zero"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:id="@+id/xinlang_icon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:src="@mipmap/xinlang_icon" />
+            </RelativeLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:id="@+id/weixin_icon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:src="@mipmap/weixin_icon" />
+            </RelativeLayout>
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

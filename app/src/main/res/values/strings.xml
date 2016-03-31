@@ -1,6 +1,19 @@
 <resources>
     <string name="app_name">Mirror</string>
+
     <string name="pictures_of_wearing">佩戴图集</string>
     <string name="buy">购买</string>
     <string name="production_detail">商品细节展示</string>
+
+    <string name="lzp_countlogin">账号登录</string>
+    <string name="phonenum">手机号</string>
+    <string name="lzp_password">密码</string>
+    <string name="forgetpassword">忘记密码?</string>
+    <string name="login">登录</string>
+    <string name="makecount">创建账号</string>
+    <string name="useotherlogin">使用社交账号</string>
+    <string name="number">验证码</string>
+    <string name="sendnumber">发送验证码</string>
+    <string name="setpassword">设置密码</string>
+
 </resources>
