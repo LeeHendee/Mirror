@@ -1,14 +1,11 @@
 package com.my.mirror.net.okhttp;
 
-import com.squareup.okhttp.Call;
+
 import com.squareup.okhttp.Callback;
 import com.squareup.okhttp.FormEncodingBuilder;
 import com.squareup.okhttp.OkHttpClient;
 import com.squareup.okhttp.Request;
-
 import java.io.IOException;
-
-import okhttp3.Response;
 
 
 /**
@@ -23,17 +20,15 @@ public class OkHttpHelper {
         // 创建okHttpClient对象
         OkHttpClient mOkHttpClient = new OkHttpClient();
 
-        // post请求,参数是包含在请求体中的,所以我在这里通过FormEncodingBuilder,可以添加多个键值对，然后去构造RequestBody,最后完成Request的构造
+        // post请求通过FormEncodingBuilder,可以添加多个键值对，然后去构造RequestBody,最后完成Request的构造
 
         FormEncodingBuilder builder = new FormEncodingBuilder();
         builder.add(parms,value);
 
         // 创建一个Request
-        Request request =  new Request.Builder().
-                url("http://api101.test.mirroreye.cn/"+requestType).post(builder.build()).build();
+        Request request =  new Request.Builder().url("http://api101.test.mirroreye.cn/"+requestType).post(builder.build()).build();
 
         mOkHttpClient.newCall(request).enqueue(new Callback() {
-
 
             @Override
             public void onFailure(Request request, IOException e) {

@@ -9,6 +9,7 @@ import android.widget.Button;
 import com.google.gson.Gson;
 import com.my.mirror.R;
 import com.my.mirror.base.BaseActivity;
+import com.my.mirror.net.okhttp.OkHttpClientManager;
 import com.squareup.okhttp.FormEncodingBuilder;
 import com.zhy.http.okhttp.OkHttpUtils;
 import com.zhy.http.okhttp.callback.StringCallback;
@@ -35,22 +36,7 @@ public class DetailActivity extends BaseActivity implements View.OnClickListener
 
     @Override
     protected void initData() {
-        String url = "";
-        OkHttpUtils
-                .post()
-                .url(url)
-                .addParams("username", "hyman")
-                .addParams("password", "123")
-                .build()
-                .execute(new String Callback());
 
-
-        OkHttpUtils
-                .postString()
-                .url(url)
-                .content(new Gson().toJson(new User("zhy", "123")))
-                .build()
-                .execute(new StringCallback());
 
     }
 
@@ -78,7 +64,6 @@ public class DetailActivity extends BaseActivity implements View.OnClickListener
                 Intent buyActivity = new Intent();
                 startActivity(buyActivity);
                 break;
-
         }
     }
 }

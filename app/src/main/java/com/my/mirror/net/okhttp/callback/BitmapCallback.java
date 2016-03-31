@@ -1,10 +1,11 @@
-package com.my.mirror.net.okhttp;
+package com.my.mirror.net.okhttp.callback;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 
-import okhttp3.Response;
+import com.zhy.http.okhttp.callback.Callback;
 
+import okhttp3.Response;
 
 /**
  * Created by zhy on 15/12/14.
