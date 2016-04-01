@@ -1,26 +1,15 @@
 package com.my.mirror.activity;
 
 import android.os.CountDownTimer;
-import android.os.Handler;
-import android.os.Message;
-import android.text.TextUtils;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
-
 import com.my.mirror.R;
 import com.my.mirror.base.BaseActivity;
-import com.my.mirror.net.okhttp.OkHttpHelper;
 import com.my.mirror.net.okhttp.StringCallback;
 import com.zhy.http.okhttp.OkHttpUtils;
 import com.zhy.http.okhttp.callback.Callback;
-
-import java.util.HashMap;
-import java.util.Map;
-
 import okhttp3.Call;
 import okhttp3.Response;
 
