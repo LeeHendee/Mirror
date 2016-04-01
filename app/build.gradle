@@ -26,6 +26,7 @@ dependencies {
     compile 'eu.the4thfloor.volley:com.android.volley:2015.05.28'
     compile 'com.facebook.fresco:fresco:0.9.0'
 
+
     compile 'com.squareup.okhttp:okhttp:2.4.0'
     compile 'com.squareup.okio:okio:1.5.0'
     compile 'com.google.code.gson:gson:2.6.2'
@@ -43,5 +44,11 @@ dependencies {
     compile files('libs/ShareSDK-Wechat-Core-2.7.0.jar')
     compile files('libs/ShareSDK-Wechat-Favorite-2.7.0.jar')
     compile files('libs/ShareSDK-Wechat-Moments-2.7.0.jar')
+
+
+    compile 'com.android.support:design:23.0.1'
+    compile 'com.android.support:recyclerview-v7:23.0.1'
+    compile 'de.greenrobot:eventbus:2.4.0'
+    compile 'com.android.support:cardview-v7:23.0.1'
 
 }

@@ -3,6 +3,7 @@
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
 
+
     <dimen name="twenty_lee">20px</dimen>
     <dimen name="sixty_two_lee">62px</dimen>
     <dimen name="forty_lee">40px</dimen>
@@ -36,5 +37,34 @@
     <dimen name="lzp_zero">0dp</dimen>
     <dimen name="lzp_twenty_five">25dp</dimen>
 
+
+
+    <dimen name="zc_fourty_eight">24dp</dimen>
+    <dimen name="zc_fourty">20dp</dimen>
+    <dimen name="zc_twenty_eight">14dp</dimen>
+    <dimen name="zc_twenty_two">11dp</dimen>
+    <dimen name="zc_one_fourty_eight">74dp</dimen>
+    <dimen name="zc_fourty_four">22dp</dimen>
+    <dimen name="zc_seventy_eight">39dp</dimen>
+    <dimen name="zc_title_size">15sp</dimen>
+    <dimen name="zc_title_under_marginleft">10dp</dimen>
+    <dimen name="zc_title_underline_margintop">7dp</dimen>
+    <dimen name="zc_untitle_margintop">9dp</dimen>
+    <dimen name="title_rv_margintop">30dp</dimen>
+    <dimen name="title_rv_marginbottom">85dp</dimen>
+    <dimen name="resure_title_line_marginleft">15dp</dimen>
+    <dimen name="resure_title_line_margintop">10dp</dimen>
+    <dimen name="resure_untitle_tv_size">12sp</dimen>
+    <dimen name="item_reuse_project_iv_width">270dp</dimen>
+    <dimen name="item_reuse_project_iv_height">320dp</dimen>
+    <dimen name="item_reuse_project_line_left">16dp</dimen>
+    <dimen name="item_reuse_project_line_right">16dp</dimen>
+    <dimen name="item_reuse_project_line_top">17dp</dimen>
+    <dimen name="item_reuse_project_linearlayout_top">8dp</dimen>
+    <dimen name="item_reuse_project_tv_size">15sp</dimen>
+    <dimen name="classified_project_iv_width">60dp</dimen>
+    <dimen name="classified_car_iv_width">70dp</dimen>
+    <dimen name="classified_reuse_iv_width">85dp</dimen>
+    <dimen name="item_project_card_margin">11dp</dimen>
 
 </resources>

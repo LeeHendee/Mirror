@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">Mirror</string>
 
+
     <string name="pictures_of_wearing">佩戴图集</string>
     <string name="buy">购买</string>
     <string name="production_detail">商品细节展示</string>
@@ -15,5 +16,18 @@
     <string name="number">验证码</string>
     <string name="sendnumber">发送验证码</string>
     <string name="setpassword">设置密码</string>
+
+
+    <string name="main_login">登录</string>
+    <string name="zc_all">浏览所有分类</string>
+    <string name="zc_matt">浏览平光眼镜</string>
+    <string name="zc_sun">浏览太阳眼镜</string>
+    <string name="zc_project">专题分享</string>
+    <string name="zc_car">我的购物车</string>
+    <string name="zc_back">返回首页</string>
+    <string name="zc_exit">退出</string>
+    <string name="zc_untitle">显示排序为 最新推荐</string>
+
+    <string name="item_reuse_project_tv">mirror传达</string>
 
 </resources>
