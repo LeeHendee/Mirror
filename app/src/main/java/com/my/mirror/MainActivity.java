@@ -52,6 +52,7 @@ public class MainActivity extends BaseActivity {
         adapter = new MainViewPagerAdapter(getSupportFragmentManager(),fragmentList,this);
         viewPager.setAdapter(adapter);
 
+        
         Intent intent = getIntent();
         int i = intent.getIntExtra("position",0);
         viewPager.setCurrentItem(i);
