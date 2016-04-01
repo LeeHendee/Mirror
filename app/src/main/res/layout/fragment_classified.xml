@@ -1,120 +1,129 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@mipmap/bg"
+    android:orientation="vertical">
+
 
     <!-- 菜单栏 -->
     <LinearLayout
         android:id="@+id/classified_linearlayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@mipmap/bg"
         android:orientation="vertical">
 
-
-        <LinearLayout
-            android:id="@+id/resure_all_line"
+        <ListView
+            android:id="@+id/classified_lv"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/zc_fourty_eight"
-            android:layout_marginTop="@dimen/zc_one_fourty_eight"
-            android:orientation="vertical">
+            android:layout_marginTop="@dimen/zc_one_fourty_eight"/>
 
-            <TextView
-                android:id="@+id/resure_all_tv"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:alpha="0.25"
-                android:text="@string/zc_all"
-                android:textColor="@color/white"
-                android:textSize="@dimen/zc_twenty_eight" />
 
-            <ImageView
-                android:id="@+id/resure_all_iv"
-                android:layout_width="@dimen/classified_reuse_iv_width"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/zc_twenty_two"
-                android:src="@mipmap/title_underline"
-                android:visibility="invisible" />
-        </LinearLayout>
+        <!--<LinearLayout-->
+            <!--android:id="@+id/resure_all_line"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginLeft="@dimen/zc_fourty_eight"-->
+            <!--android:layout_marginTop="@dimen/zc_one_fourty_eight"-->
+            <!--android:orientation="vertical">-->
 
-        <LinearLayout
-            android:id="@+id/resure_matt_line"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/zc_fourty_eight"
-            android:layout_marginTop="@dimen/zc_fourty_four"
-            android:orientation="vertical">
+            <!--<TextView-->
+                <!--android:id="@+id/resure_all_tv"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:alpha="0.25"-->
+                <!--android:text="@string/zc_classified_all"-->
+                <!--android:textColor="@color/white"-->
+                <!--android:textSize="@dimen/zc_twenty_eight" />-->
 
-            <TextView
-                android:id="@+id/resure_matt_tv"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:alpha="0.25"
-                android:text="@string/zc_matt"
-                android:textColor="@color/white"
-                android:textSize="@dimen/zc_twenty_eight" />
+            <!--<ImageView-->
+                <!--android:id="@+id/resure_all_iv"-->
+                <!--android:layout_width="@dimen/classified_project_iv_width"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_marginTop="@dimen/zc_twenty_two"-->
+                <!--android:src="@mipmap/title_underline"-->
+                <!--android:visibility="invisible" />-->
+        <!--</LinearLayout>-->
 
-            <ImageView
-                android:id="@+id/resure_matt_iv"
-                android:layout_width="@dimen/classified_reuse_iv_width"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/zc_twenty_two"
-                android:src="@mipmap/title_underline"
-                android:visibility="invisible" />
-        </LinearLayout>
+        <!--<LinearLayout-->
+            <!--android:id="@+id/resure_matt_line"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginLeft="@dimen/zc_fourty_eight"-->
+            <!--android:layout_marginTop="@dimen/zc_fourty_four"-->
+            <!--android:orientation="vertical">-->
 
-        <LinearLayout
-            android:id="@+id/resure_sun_line"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/zc_fourty_eight"
-            android:layout_marginTop="@dimen/zc_fourty_four"
-            android:orientation="vertical">
+            <!--<TextView-->
+                <!--android:id="@+id/resure_matt_tv"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:alpha="0.25"-->
+                <!--android:text="@string/zc_matt"-->
+                <!--android:textColor="@color/white"-->
+                <!--android:textSize="@dimen/zc_twenty_eight" />-->
 
-            <TextView
-                android:id="@+id/resure_sun_tv"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:alpha="0.25"
-                android:text="@string/zc_sun"
-                android:textColor="@color/white"
-                android:textSize="@dimen/zc_twenty_eight" />
+            <!--<ImageView-->
+                <!--android:id="@+id/resure_matt_iv"-->
+                <!--android:layout_width="@dimen/classified_reuse_iv_width"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_marginTop="@dimen/zc_twenty_two"-->
+                <!--android:src="@mipmap/title_underline"-->
+                <!--android:visibility="invisible" />-->
+        <!--</LinearLayout>-->
 
-            <ImageView
-                android:id="@+id/resure_sun_iv"
-                android:layout_width="@dimen/classified_reuse_iv_width"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/zc_twenty_two"
-                android:src="@mipmap/title_underline"
-                android:visibility="invisible" />
-        </LinearLayout>
+        <!--<LinearLayout-->
+            <!--android:id="@+id/resure_sun_line"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginLeft="@dimen/zc_fourty_eight"-->
+            <!--android:layout_marginTop="@dimen/zc_fourty_four"-->
+            <!--android:orientation="vertical">-->
 
-        <LinearLayout
-            android:id="@+id/resure_project_line"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/zc_fourty_eight"
-            android:layout_marginTop="@dimen/zc_fourty_four"
-            android:orientation="vertical">
+            <!--<TextView-->
+                <!--android:id="@+id/resure_sun_tv"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:alpha="0.25"-->
+                <!--android:text="@string/zc_sun"-->
+                <!--android:textColor="@color/white"-->
+                <!--android:textSize="@dimen/zc_twenty_eight" />-->
 
-            <TextView
-                android:id="@+id/resure_project_tv"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:alpha="0.25"
-                android:text="@string/zc_project"
-                android:textColor="@color/white"
-                android:textSize="@dimen/zc_twenty_eight" />
+            <!--<ImageView-->
+                <!--android:id="@+id/resure_sun_iv"-->
+                <!--android:layout_width="@dimen/classified_reuse_iv_width"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_marginTop="@dimen/zc_twenty_two"-->
+                <!--android:src="@mipmap/title_underline"-->
+                <!--android:visibility="invisible" />-->
+        <!--</LinearLayout>-->
 
-            <ImageView
-                android:id="@+id/resure_project_iv"
-                android:layout_width="@dimen/classified_project_iv_width"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/zc_twenty_two"
-                android:src="@mipmap/title_underline"
-                android:visibility="invisible" />
-        </LinearLayout>
+        <!--<LinearLayout-->
+            <!--android:id="@+id/resure_project_line"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginLeft="@dimen/zc_fourty_eight"-->
+            <!--android:layout_marginTop="@dimen/zc_fourty_four"-->
+            <!--android:orientation="vertical">-->
+
+            <!--<TextView-->
+                <!--android:id="@+id/resure_project_tv"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:alpha="0.25"-->
+                <!--android:text="@string/zc_project"-->
+                <!--android:textColor="@color/white"-->
+                <!--android:textSize="@dimen/zc_twenty_eight" />-->
+
+            <!--<ImageView-->
+                <!--android:id="@+id/resure_project_iv"-->
+                <!--android:layout_width="@dimen/classified_project_iv_width"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_marginTop="@dimen/zc_twenty_two"-->
+                <!--android:src="@mipmap/title_underline"-->
+                <!--android:visibility="invisible" />-->
+        <!--</LinearLayout>-->
 
         <LinearLayout
             android:id="@+id/resure_car_line"

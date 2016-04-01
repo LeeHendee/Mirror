@@ -1,4 +1,4 @@
-package com.my.mirror.zc;
+package com.my.mirror.homepage;
 
 import android.support.v4.app.FragmentManager;
 import android.support.v7.widget.GridLayoutManager;
@@ -23,12 +23,12 @@ public class ReuseFragment extends BaseFragment {
     private ReuseRecyclerAdapter adapter;
     private ClassifiedFragment classifiedFragment;
     private TextView title;
-    private String stTitle;
+    private String  stTitle;
     private int i;
 
 
 
-    public ReuseFragment (String stTitle,int i){
+    public ReuseFragment (String  stTitle,int i){
         this.stTitle = stTitle;
         this.i = i;
     }
@@ -44,7 +44,8 @@ public class ReuseFragment extends BaseFragment {
 
             }
         });
-        title.setText(stTitle);
+
+        title.setText(getString(R.string.reuse_title_head)+stTitle);
 
         adapter = new ReuseRecyclerAdapter();
         recyclerView.setAdapter(adapter);
@@ -64,5 +65,12 @@ public class ReuseFragment extends BaseFragment {
     @Override
     protected int getLayout() {
         return R.layout.fragment_reuse;
+    }
+
+
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
     }
 }

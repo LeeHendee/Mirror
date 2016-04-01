@@ -1,4 +1,4 @@
-package com.my.mirror.zc;
+package com.my.mirror.homepage;
 
 import android.support.v4.app.FragmentManager;
 import android.view.View;

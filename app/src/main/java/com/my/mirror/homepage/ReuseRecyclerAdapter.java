@@ -1,4 +1,4 @@
-package com.my.mirror.zc;
+package com.my.mirror.homepage;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -14,9 +14,10 @@ public class ReuseRecyclerAdapter extends RecyclerView.Adapter<ReuseRecyclerAdap
 
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        //TODO  暂时只做了一个行布局
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_reuse_project,null);
-        return new MyViewHolder(view);
+        View allView = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_reuse_all,null);
+        View projectView = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_reuse_project,null);
+        // TODO 解析判断用哪个行布局
+        return new MyViewHolder(allView);
     }
 
     @Override
@@ -29,8 +30,9 @@ public class ReuseRecyclerAdapter extends RecyclerView.Adapter<ReuseRecyclerAdap
         return 15;
     }
 
-    class MyViewHolder extends RecyclerView.ViewHolder{
 
+
+    class MyViewHolder extends RecyclerView.ViewHolder{
         public MyViewHolder(View itemView) {
             super(itemView);
         }

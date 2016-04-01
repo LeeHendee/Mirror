@@ -12,5 +12,8 @@ public interface INetAddress {
     //商品详情
     String PRODUCT_LIST = "index.php/products/goods_list";
 
+    //菜单列表
+    String CATEGORY_LIST = "index.php/products/category_list";
+
 }
 

@@ -1,4 +1,4 @@
-package com.my.mirror.zc;
+package com.my.mirror.homepage;
 
 import android.content.Context;
 import android.support.v4.view.ViewPager;
