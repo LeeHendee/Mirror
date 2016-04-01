@@ -1,19 +1,16 @@
-package com.my.mirror.lzp;
+package com.my.mirror.activity;
 
 import android.content.Intent;
-import android.graphics.Color;
-import android.util.Log;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import com.my.mirror.R;
 import com.my.mirror.base.BaseActivity;
-
 import java.util.HashMap;
-
 import cn.sharesdk.framework.Platform;
 import cn.sharesdk.framework.PlatformActionListener;
 import cn.sharesdk.framework.ShareSDK;
@@ -42,23 +39,41 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
         xinlangIv.setOnClickListener(this);
         weixinIv.setOnClickListener(this);
 
-        if (phoneEt.getText()  != null && passwordEt.getText() != null){
-            // TODO 这里判断无效  需要更改
-            loginBtn.setBackgroundColor(Color.RED);
-        }
+        passwordEt.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+                if (passwordEt.length() != 0){
+                    loginBtn.setBackgroundResource(R.mipmap.makeacount);
+                }else{
+                    loginBtn.setBackgroundResource(R.mipmap.nouse_btn);
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+
+            }
+        });
     }
 
     @Override
     protected void initView() {
         ShareSDK.initSDK(this);
-        phoneEt = (EditText) findViewById(R.id.login_phoneNum_edit);
-        passwordEt = (EditText) findViewById(R.id.login_password_edit);
-        loginBtn = (Button) findViewById(R.id.login_btn);
-        createBtn = (Button) findViewById(R.id.login_mackCount_btn);
-        closeIv = (ImageView) findViewById(R.id.login_close);
-        xinlangIv = (ImageView) findViewById(R.id.xinlang_icon);
-        weixinIv = (ImageView) findViewById(R.id.weixin_icon);
-        forgetTv = (TextView) findViewById(R.id.login_forget);
+        phoneEt = findId(R.id.login_phoneNum_edit);
+        passwordEt = findId(R.id.login_password_edit);
+        loginBtn = findId(R.id.login_btn);
+        createBtn = findId(R.id.login_mackCount_btn);
+        closeIv = findId(R.id.login_close);
+        xinlangIv = findId(R.id.xinlang_icon);
+        weixinIv = findId(R.id.weixin_icon);
+        forgetTv = findId(R.id.login_forget);
     }
 
     @Override
