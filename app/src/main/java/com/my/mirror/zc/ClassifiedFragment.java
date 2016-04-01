@@ -125,7 +125,6 @@ public class ClassifiedFragment extends BaseFragment implements View.OnClickList
             case R.id.resure_exit_line:
                 getActivity().finish();
                 break;
-
         }
     }
 
