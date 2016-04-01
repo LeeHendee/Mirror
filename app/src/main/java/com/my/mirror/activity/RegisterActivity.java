@@ -1,4 +1,4 @@
-package com.my.mirror.lzp;
+package com.my.mirror.activity;
 
 import com.my.mirror.R;
 import com.my.mirror.base.BaseActivity;

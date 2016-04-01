@@ -37,8 +37,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".lzp.RegisterActivity" />
-        <activity android:name=".lzp.ForgetPasswordActivity" />
+        <activity android:name=".activity.RegisterActivity" />
+        <activity android:name=".activity.ForgetPasswordActivity" />
 
         <activity
             android:name="com.mob.tools.MobUIShell"
