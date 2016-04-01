@@ -38,6 +38,6 @@
     <dimen name="lzp_text_thirteen">13sp</dimen>
     <dimen name="lzp_sixty">60dp</dimen>
 
+    <dimen name="lzp_half">1dp</dimen>
 
-    <item name="lzp_half" type="dimen" format="float">0.5dp</item>
 </resources>
