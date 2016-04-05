@@ -10,12 +10,17 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import com.my.mirror.R;
 import com.my.mirror.base.BaseActivity;
+import com.my.mirror.net.okhttp.INetAddress;
+import com.my.mirror.net.okhttp.StringCallback;
+import com.zhy.http.okhttp.OkHttpUtils;
+
 import java.util.HashMap;
 import cn.sharesdk.framework.Platform;
 import cn.sharesdk.framework.PlatformActionListener;
 import cn.sharesdk.framework.ShareSDK;
 import cn.sharesdk.sina.weibo.SinaWeibo;
 import cn.sharesdk.wechat.friends.Wechat;
+import okhttp3.Call;
 
 /**
  * Created by liangzaipan on 16/3/29.
@@ -23,7 +28,7 @@ import cn.sharesdk.wechat.friends.Wechat;
 public class LoginActivity extends BaseActivity implements View.OnClickListener {
     private EditText phoneEt,passwordEt;
     private Button loginBtn,createBtn;
-    private ImageView closeIv,xinlangIv,weixinIv;
+    private ImageView closeIv,xinLangIv,weiXinIv;
     private TextView forgetTv;
     @Override
     protected int getLayout() {
@@ -36,8 +41,8 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
         createBtn.setOnClickListener(this);
         closeIv.setOnClickListener(this);
         forgetTv.setOnClickListener(this);
-        xinlangIv.setOnClickListener(this);
-        weixinIv.setOnClickListener(this);
+        xinLangIv.setOnClickListener(this);
+        weiXinIv.setOnClickListener(this);
 
         passwordEt.addTextChangedListener(new TextWatcher() {
             @Override
@@ -71,8 +76,8 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
         loginBtn = findId(R.id.login_btn);
         createBtn = findId(R.id.login_mackCount_btn);
         closeIv = findId(R.id.login_close);
-        xinlangIv = findId(R.id.xinlang_icon);
-        weixinIv = findId(R.id.weixin_icon);
+        xinLangIv = findId(R.id.xinlang_icon);
+        weiXinIv = findId(R.id.weixin_icon);
         forgetTv = findId(R.id.login_forget);
     }
 
@@ -80,6 +85,20 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.login_btn:
+                OkHttpUtils.post().url("http://api101.test.mirroreye.cn/index.php/user/login")
+                        .addParams("phone_number", phoneEt.getText().toString())
+                        .addParams("password",passwordEt.getText().toString()).build().execute(new StringCallback() {
+                    @Override
+                    public void onError(Call call, Exception e) {
+
+                    }
+
+                    @Override
+                    public void onResponse(String response) {
+                        Intent intent = new Intent(LoginActivity.this,RegisterActivity.class);
+                        startActivity(intent);
+                    }
+                });
                 break;
             case R.id.login_mackCount_btn:
                 Intent intent = new Intent(this,RegisterActivity.class);

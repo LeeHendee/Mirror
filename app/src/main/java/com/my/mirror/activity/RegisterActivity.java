@@ -5,9 +5,12 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import com.my.mirror.R;
 import com.my.mirror.base.BaseActivity;
 import com.my.mirror.net.okhttp.StringCallback;
+import com.my.mirror.utils.MyToast;
 import com.zhy.http.okhttp.OkHttpUtils;
 import com.zhy.http.okhttp.callback.Callback;
 import okhttp3.Call;
@@ -48,31 +51,35 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.register_send_tv:
-                OkHttpUtils.post().url("http://api101.test.mirroreye.cn/index.php/user/send_code")
-                        .addParams("phone number", "13934964737")
-                        .build().execute(new Callback() {
-                    @Override
-                    public Object parseNetworkResponse(Response response) throws Exception {
-                        timer.start();
-                        return null;
-                    }
+                if (phoneEt.length() != 0) {
+                    OkHttpUtils.post().url("http://api101.test.mirroreye.cn/index.php/user/send_code")
+                            .addParams("phone number", phoneEt.getText().toString())
+                            .build().execute(new Callback() {
+                        @Override
+                        public Object parseNetworkResponse(Response response) throws Exception {
+                            timer.start();
+                            return null;
+                        }
 
-                    @Override
-                    public void onError(Call call, Exception e) {
+                        @Override
+                        public void onError(Call call, Exception e) {
 
-                    }
+                        }
 
-                    @Override
-                    public void onResponse(Object response) {
+                        @Override
+                        public void onResponse(Object response) {
 
-                    }
+                        }
 
-                });
+                    });
+                }else {
+                    Toast.makeText(RegisterActivity.this, "请输入手机号", Toast.LENGTH_SHORT).show();
+                }
                 break;
             case R.id.register_makeCount_btn:
                 OkHttpUtils.post().url("http://api101.test.mirroreye.cn/index.php/user/reg")
-                        .addParams("phone_number", "13934964737").addParams("number",numEv.getText().toString())
-                        .addParams("password", "123456").build().execute(new StringCallback() {
+                        .addParams("phone_number", phoneEt.getText().toString()).addParams("number",numEv.getText().toString())
+                        .addParams("password", passwordEv.getText().toString()).build().execute(new StringCallback() {
 
                     @Override
                     public void onError(Call call, Exception e) {
