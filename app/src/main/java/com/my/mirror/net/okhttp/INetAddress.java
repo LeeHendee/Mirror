@@ -20,5 +20,8 @@ public interface INetAddress {
     //首页商品
     String GOODS_LIST = "index.php/products/goods_list";
 
+    //专题分享
+    String STORY_LIST = "index.php/story/story_list";
+
 }
 

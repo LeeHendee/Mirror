@@ -26,9 +26,9 @@ import okhttp3.Call;
  */
 public class ClassifiedFragment extends BaseFragment implements View.OnClickListener, INetAddress {
     private int i;
-    private LinearLayout carLine, backLine, exitLine;
-    private TextView  carTv;
-    private ImageView  carIv;
+    private LinearLayout specialLine,carLine, backLine, exitLine;
+    private TextView  specialTv,carTv;
+    private ImageView  specialIv,carIv;
     private ListView listView;//需要解析出来的数据
     private ClassifiedAdapter adapter;
 
@@ -58,13 +58,17 @@ public class ClassifiedFragment extends BaseFragment implements View.OnClickList
             }
         });
 
-        if (i == 4) {
+        if (i == 5) {
             //设置菜单栏里的透明图和下面的条条是否显示
             carTv.setAlpha(1);
             carIv.setVisibility(View.VISIBLE);
+        } else if (i == 4){
+            specialTv.setAlpha(1);
+            specialIv.setVisibility(View.VISIBLE);
         }
 
 
+        specialLine.setOnClickListener(this);
         carLine.setOnClickListener(this);
         backLine.setOnClickListener(this);
         exitLine.setOnClickListener(this);
@@ -84,6 +88,12 @@ public class ClassifiedFragment extends BaseFragment implements View.OnClickList
         carLine = findId(R.id.resure_car_line);
         carTv = findId(R.id.resure_car_tv);
         carIv = findId(R.id.resure_car_iv);
+
+       specialLine = findId(R.id.resure_special_line);
+        specialTv = findId(R.id.resure_special_tv);
+        specialIv = findId(R.id.resure_special_iv);
+
+
         backLine = findId(R.id.resure_back_line);
         exitLine = findId(R.id.resure_exit_line);
         listView = findId(R.id.classified_lv);
@@ -97,10 +107,15 @@ public class ClassifiedFragment extends BaseFragment implements View.OnClickList
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
+            case R.id.resure_special_line:
+                Intent intentSpecial = new Intent(getActivity(), MainActivity.class);
+                intentSpecial.putExtra("position", 3);
+                startActivity(intentSpecial);
+                break;
 
             case R.id.resure_car_line:
                 Intent intentCar = new Intent(getActivity(), MainActivity.class);
-                intentCar.putExtra("position", 3);
+                intentCar.putExtra("position", 4);
                 startActivity(intentCar);
                 break;
 

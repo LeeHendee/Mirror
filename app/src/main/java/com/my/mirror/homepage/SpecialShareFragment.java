@@ -8,36 +8,33 @@ import com.my.mirror.R;
 import com.my.mirror.base.BaseFragment;
 
 /**
- * Created by dllo on 16/3/30.
- * 购物车的fragment
+ * Created by dllo on 16/4/5.
  */
-public class CarFragment extends BaseFragment {
+public class SpecialShareFragment extends BaseFragment {
     private LinearLayout titleLine;
     private ClassifiedFragment classifiedFragment;
-
-
     @Override
     protected void initData() {
-
-        //给上面那个标题栏 设置监听  点击替换fragment
         titleLine.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                classifiedFragment = new ClassifiedFragment(5);
+                classifiedFragment = new ClassifiedFragment(4);
                 FragmentManager fm = getActivity().getSupportFragmentManager();
                 fm.beginTransaction().replace(R.id.main_frame, classifiedFragment).commit();
 
             }
         });
+
     }
 
     @Override
     protected void initView() {
-        titleLine = findId(R.id.fragment_car_title_line);
+        titleLine = findId(R.id.special_title_line);
+
     }
 
     @Override
     protected int getLayout() {
-        return R.layout.fragment_car;
+        return R.layout.fragment_special_share;
     }
 }
