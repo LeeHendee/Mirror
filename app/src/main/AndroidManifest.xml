@@ -21,8 +21,7 @@
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-
-
+        android:name=".base.BaseApplication"
         android:theme="@style/AppTheme">
 
 
@@ -39,7 +38,7 @@
         </activity>
         <activity android:name=".lzp.RegisterActivity" />
         <activity android:name=".lzp.ForgetPasswordActivity" />
-
+        <activity android:name=".lzp.LoginActivity"/>
         <activity
             android:name="com.mob.tools.MobUIShell"
             android:configChanges="keyboardHidden|orientation|screenSize"

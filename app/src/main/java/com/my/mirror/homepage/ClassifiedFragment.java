@@ -3,6 +3,7 @@ package com.my.mirror.homepage;
 import android.content.Intent;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
@@ -13,110 +14,78 @@ import com.my.mirror.MainActivity;
 import com.my.mirror.R;
 import com.my.mirror.base.BaseFragment;
 import com.my.mirror.gson.ClassifiedBean;
-import com.my.mirror.gson.ProductDetail;
 import com.my.mirror.net.okhttp.INetAddress;
-import com.my.mirror.net.okhttp.OkHttpClientManager;
 import com.my.mirror.net.okhttp.StringCallback;
-import com.squareup.okhttp.OkHttpClient;
 import com.zhy.http.okhttp.OkHttpUtils;
-import com.zhy.http.okhttp.callback.Callback;
-
-import java.util.List;
 
 import okhttp3.Call;
-import okhttp3.Response;
 
 /**
  * Created by dllo on 16/3/31.
+ *菜单栏的fragment
  */
-public class ClassifiedFragment extends BaseFragment implements View.OnClickListener,INetAddress {
+public class ClassifiedFragment extends BaseFragment implements View.OnClickListener, INetAddress {
     private int i;
-    private LinearLayout allLine,mattLine,sunLine,projectLine,carLine,backLine,exitLine,classifiedLine;
-    private TextView allTv,mattTv,sunTv,projectTv,carTv;
-    private ImageView allIv,mattIv,sunIv,projectIv,carIv;
-    private ListView listView;
+    private LinearLayout carLine, backLine, exitLine;
+    private TextView  carTv;
+    private ImageView  carIv;
+    private ListView listView;//需要解析出来的数据
     private ClassifiedAdapter adapter;
 
 
-
-    public ClassifiedFragment(int i){
+    public ClassifiedFragment(int i) {
         this.i = i;
     }
 
     @Override
     protected void initData() {
 
-        OkHttpUtils.post().url(BEGIN_URL+CATEGORY_LIST).addParams(DEVICE_TYPE, DEVICE)
+        OkHttpUtils.post().url(BEGIN_URL + CATEGORY_LIST).addParams(DEVICE_TYPE, DEVICE)
                 .build().execute(new StringCallback() {
             @Override
             public void onError(Call call, Exception e) {
-
+                //请求失败
             }
 
             @Override
             public void onResponse(String response) {
+                //请求成功 将请求的数据解析出来
                 Gson gson = new Gson();
-                ClassifiedBean bean = gson.fromJson(response,ClassifiedBean.class);
-                adapter = new ClassifiedAdapter(bean);
+                ClassifiedBean bean = gson.fromJson(response, ClassifiedBean.class);
+                adapter = new ClassifiedAdapter(i,bean);
                 listView.setAdapter(adapter);
+
             }
         });
 
-//        if(i == 0){
-//            allTv.setAlpha(1);
-//            allIv.setVisibility(View.VISIBLE);
-//        }else if (i == 1){
-//            mattTv.setAlpha(1);
-//            mattIv.setVisibility(View.VISIBLE);
-//        }else if (i == 2){
-//            sunTv.setAlpha(1);
-//            sunIv.setVisibility(View.VISIBLE);
-//        }else if (i == 3){
-//            projectTv.setAlpha(1);
-//            projectIv.setVisibility(View.VISIBLE);
-//        }else
-            if (i == 4){
+        if (i == 4) {
+            //设置菜单栏里的透明图和下面的条条是否显示
             carTv.setAlpha(1);
             carIv.setVisibility(View.VISIBLE);
         }
 
-//        allLine.setOnClickListener(this);
-//        mattLine.setOnClickListener(this);
-//        sunLine.setOnClickListener(this);
-//        projectLine.setOnClickListener(this);
+
         carLine.setOnClickListener(this);
         backLine.setOnClickListener(this);
         exitLine.setOnClickListener(this);
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intentAll = new Intent(getActivity(), MainActivity.class);
+                intentAll.putExtra("position", position);
+                startActivity(intentAll);
+            }
+        });
     }
 
     @Override
     protected void initView() {
 
-
-//        allLine = findId(R.id.resure_all_line);
-//        allTv = findId(R.id.resure_all_tv);
-//        allIv = findId(R.id.resure_all_iv);
-//
-//        mattLine = findId(R.id.resure_matt_line);
-//        mattTv = findId(R.id.resure_matt_tv);
-//        mattIv = findId(R.id.resure_matt_iv);
-//
-//        sunLine = findId(R.id.resure_sun_line);
-//        sunTv = findId(R.id.resure_sun_tv);
-//        sunIv = findId(R.id.resure_sun_iv);
-//
-//        projectLine = findId(R.id.resure_project_line);
-//        projectTv = findId(R.id.resure_project_tv);
-//        projectIv = findId(R.id.resure_project_iv);
-
         carLine = findId(R.id.resure_car_line);
         carTv = findId(R.id.resure_car_tv);
         carIv = findId(R.id.resure_car_iv);
-
         backLine = findId(R.id.resure_back_line);
         exitLine = findId(R.id.resure_exit_line);
-        classifiedLine = findId(R.id.classified_linearlayout);
-
         listView = findId(R.id.classified_lv);
     }
 
@@ -127,37 +96,20 @@ public class ClassifiedFragment extends BaseFragment implements View.OnClickList
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()){
-//            case R.id.resure_all_line:
-//                Intent intentAll = new Intent(getActivity(), MainActivity.class);
-//                intentAll.putExtra("position",0);
-//                startActivity(intentAll);
-//                break;
-//            case R.id.resure_matt_line:
-//                Intent intentMatt = new Intent(getActivity(), MainActivity.class);
-//                intentMatt.putExtra("position",1);
-//                startActivity(intentMatt);
-//                break;
-//            case R.id.resure_sun_line:
-//                Intent intentSun = new Intent(getActivity(), MainActivity.class);
-//                intentSun.putExtra("position",2);
-//                startActivity(intentSun);
-//                break;
-//            case R.id.resure_project_line:
-//                Intent intentProject = new Intent(getActivity(), MainActivity.class);
-//                intentProject.putExtra("position",3);
-//                startActivity(intentProject);
-//                break;
+        switch (v.getId()) {
+
             case R.id.resure_car_line:
                 Intent intentCar = new Intent(getActivity(), MainActivity.class);
-                intentCar.putExtra("position",4);
+                intentCar.putExtra("position", 3);
                 startActivity(intentCar);
                 break;
+
             case R.id.resure_back_line:
                 Intent intentBack = new Intent(getActivity(), MainActivity.class);
-                intentBack.putExtra("position",0);
+                intentBack.putExtra("position", 0);
                 startActivity(intentBack);
                 break;
+
             case R.id.resure_exit_line:
                 getActivity().finish();
                 break;
@@ -170,6 +122,7 @@ public class ClassifiedFragment extends BaseFragment implements View.OnClickList
         //setAnimation(classifiedLine);
     }
 
+    // TODO 未成功的动画设置，有瑕疵  需要修改
     //设置动画
 //    private void setAnimation(View tv) {
 //        ObjectAnimator.ofFloat(tv, "translationX", 0F, 60F).setDuration(300).start();

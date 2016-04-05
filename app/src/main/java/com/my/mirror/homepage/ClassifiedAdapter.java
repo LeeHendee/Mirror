@@ -4,6 +4,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.my.mirror.R;
@@ -13,13 +14,16 @@ import java.util.List;
 
 /**
  * Created by dllo on 16/4/1.
+ * 菜单栏的适配器
  */
 public class ClassifiedAdapter extends BaseAdapter {
     private List<ClassifiedBean.DataEntity >data;
     private ClassifiedBean bean;
+    private int i;
 
-    public ClassifiedAdapter(ClassifiedBean bean) {
+    public ClassifiedAdapter( int i,ClassifiedBean bean) {
         this.bean = bean;
+        this.i = i;
     }
 
     @Override
@@ -44,16 +48,28 @@ public class ClassifiedAdapter extends BaseAdapter {
             convertView = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_classified,null);
             holder = new MyViewHolder();
             holder.name = (TextView) convertView.findViewById(R.id.item_classified_tv);
+            holder.line = (ImageView) convertView.findViewById(R.id.item_classified_iv);
             convertView.setTag(holder);
         } else {
             holder = (MyViewHolder) convertView.getTag();
         }
         holder.name.setText(bean.getData().get(position).getCategory_name());
+        if (i == position){
+            holder.name.setAlpha(1);
+            holder.line.setVisibility(View.VISIBLE);
+        } else {
+            holder.name.setAlpha(0.25f);
+            holder.line.setVisibility(View.GONE);
+        }
+
+
+
         return convertView;
     }
 
     public class MyViewHolder{
         private TextView name;
+        private ImageView line;
     }
 
 }

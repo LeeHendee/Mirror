@@ -8,12 +8,17 @@ public interface INetAddress {
 
     String DEVICE = "iPhone6";
     String DEVICE_TYPE = "device_type";
+    String DEVICE_REUSE = "2";
+    String GOOD_TYPE = "good_type";
 
     //商品详情
     String PRODUCT_LIST = "index.php/products/goods_list";
 
     //菜单列表
     String CATEGORY_LIST = "index.php/products/category_list";
+
+    //首页商品
+    String GOODS_LIST = "index.php/products/goods_list";
 
 }
 
