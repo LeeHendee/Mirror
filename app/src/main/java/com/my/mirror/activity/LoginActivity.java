@@ -3,6 +3,7 @@ package com.my.mirror.activity;
 import android.content.Intent;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -53,9 +54,9 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
 
-                if (passwordEt.length() != 0){
+                if (passwordEt.length() != 0) {
                     loginBtn.setBackgroundResource(R.mipmap.makeacount);
-                }else{
+                } else {
                     loginBtn.setBackgroundResource(R.mipmap.nouse_btn);
                 }
             }
@@ -95,8 +96,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
 
                     @Override
                     public void onResponse(String response) {
-                        Intent intent = new Intent(LoginActivity.this,RegisterActivity.class);
-                        startActivity(intent);
+                        Log.i("fdfd",response);
                     }
                 });
                 break;
