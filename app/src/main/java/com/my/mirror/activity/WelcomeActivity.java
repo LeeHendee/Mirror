@@ -2,6 +2,7 @@ package com.my.mirror.activity;
 
 import android.widget.ImageView;
 
+import com.facebook.drawee.view.SimpleDraweeView;
 import com.my.mirror.R;
 import com.my.mirror.base.BaseActivity;
 import com.my.mirror.net.okhttp.StringCallback;
@@ -13,7 +14,7 @@ import okhttp3.Call;
  * Created by liangzaipan on 16/4/1.
  */
 public class WelcomeActivity extends BaseActivity {
-    private ImageView iv;
+    private SimpleDraweeView simpleDraweeView;
     @Override
     protected int getLayout() {
         return R.layout.activity_welcome;
@@ -30,15 +31,12 @@ public class WelcomeActivity extends BaseActivity {
             @Override
             public void onResponse(String response) {
                 //iv.setImageBitmap(response);
-
             }
         });
-
     }
 
     @Override
     protected void initView() {
-        iv = findId(R.id.welcome_iv);
-
+        simpleDraweeView = findId(R.id.welcome_iv);
     }
 }
