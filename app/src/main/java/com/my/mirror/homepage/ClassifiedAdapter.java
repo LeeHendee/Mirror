@@ -53,7 +53,7 @@ public class ClassifiedAdapter extends BaseAdapter {
         } else {
             holder = (MyViewHolder) convertView.getTag();
         }
-        holder.name.setText(bean.getData().get(position).getCategory_name());
+        holder.name.setText("浏览"+bean.getData().get(position).getCategory_name());
         if (i == position){
             holder.name.setAlpha(1);
             holder.line.setVisibility(View.VISIBLE);

@@ -34,12 +34,6 @@ public class ReuseFragment extends BaseFragment implements INetAddress {
     private HomePageBean bean;
 
 
-
-//    public ReuseFragment (int i){
-//        //this.stTitle = stTitle;
-//        this.i = i;
-//    }
-
     @Override
     protected void initData() {
 

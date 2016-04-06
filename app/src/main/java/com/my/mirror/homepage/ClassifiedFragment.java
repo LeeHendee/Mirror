@@ -1,8 +1,11 @@
 package com.my.mirror.homepage;
 
+import android.animation.ObjectAnimator;
 import android.content.Intent;
 import android.util.Log;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -12,6 +15,7 @@ import android.widget.TextView;
 import com.google.gson.Gson;
 import com.my.mirror.MainActivity;
 import com.my.mirror.R;
+import com.my.mirror.base.BaseApplication;
 import com.my.mirror.base.BaseFragment;
 import com.my.mirror.gson.ClassifiedBean;
 import com.my.mirror.net.okhttp.INetAddress;
@@ -26,7 +30,7 @@ import okhttp3.Call;
  */
 public class ClassifiedFragment extends BaseFragment implements View.OnClickListener, INetAddress {
     private int i;
-    private LinearLayout specialLine,carLine, backLine, exitLine;
+    private LinearLayout specialLine,carLine, backLine, exitLine,classified;
     private TextView  specialTv,carTv;
     private ImageView  specialIv,carIv;
     private ListView listView;//需要解析出来的数据
@@ -92,6 +96,7 @@ public class ClassifiedFragment extends BaseFragment implements View.OnClickList
        specialLine = findId(R.id.resure_special_line);
         specialTv = findId(R.id.resure_special_tv);
         specialIv = findId(R.id.resure_special_iv);
+        classified = findId(R.id.classified);
 
 
         backLine = findId(R.id.resure_back_line);
@@ -134,13 +139,10 @@ public class ClassifiedFragment extends BaseFragment implements View.OnClickList
     @Override
     public void onResume() {
         super.onResume();
-        //setAnimation(classifiedLine);
+
+        Animation animation = AnimationUtils.loadAnimation(BaseApplication.getContext(), R.anim.anim_classified);
+        classified.setAnimation(animation);
     }
 
-    // TODO 未成功的动画设置，有瑕疵  需要修改
-    //设置动画
-//    private void setAnimation(View tv) {
-//        ObjectAnimator.ofFloat(tv, "translationX", 0F, 60F).setDuration(300).start();
-//        ObjectAnimator.ofFloat(tv, "translationY", 0F, 40F).setDuration(300).start();
-//    }
+
 }

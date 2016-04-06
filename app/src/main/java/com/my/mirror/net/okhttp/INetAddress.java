@@ -16,6 +16,7 @@ public interface INetAddress {
 
     //菜单列表
     String CATEGORY_LIST = "index.php/products/category_list";
+    //String CATEGORY_LIST = "index.php/products/category_list";
 
     //首页商品
     String GOODS_LIST = "index.php/products/goods_list";
