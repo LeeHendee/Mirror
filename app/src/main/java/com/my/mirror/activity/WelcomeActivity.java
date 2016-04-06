@@ -1,5 +1,6 @@
 package com.my.mirror.activity;
 
+import android.net.Uri;
 import android.util.Log;
 import android.widget.ImageView;
 
@@ -38,12 +39,16 @@ public class WelcomeActivity extends BaseActivity {
             public void onResponse(String response) {
                 //iv.setImageBitmap(response);
                 Log.i("ggggg",response);
+                Gson gson = new Gson();
+                bean = gson.fromJson(response,WelcomeBean.class);
+
+                simpleDraweeView.setImageURI(Uri.parse(bean.getImg()));
             }
         });
     }
 
     @Override
     protected void initView() {
-        //simpleDraweeView = findId(R.id.welcome_iv);
+        simpleDraweeView = findId(R.id.welcome_iv);
     }
 }
