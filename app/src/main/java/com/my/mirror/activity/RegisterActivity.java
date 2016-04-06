@@ -6,15 +6,12 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
-
 import com.my.mirror.R;
 import com.my.mirror.base.BaseActivity;
 import com.my.mirror.net.okhttp.StringCallback;
 import com.my.mirror.utils.MyToast;
 import com.zhy.http.okhttp.OkHttpUtils;
 import com.zhy.http.okhttp.callback.Callback;
-
 import okhttp3.Call;
 import okhttp3.Response;
 
