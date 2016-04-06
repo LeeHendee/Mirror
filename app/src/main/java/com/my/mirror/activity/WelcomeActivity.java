@@ -1,6 +1,8 @@
 package com.my.mirror.activity;
 
+import android.content.Intent;
 import android.net.Uri;
+import android.os.CountDownTimer;
 import android.util.Log;
 import android.widget.ImageView;
 
@@ -51,4 +53,18 @@ public class WelcomeActivity extends BaseActivity {
     protected void initView() {
         simpleDraweeView = findId(R.id.welcome_iv);
     }
+
+    //倒计时
+    CountDownTimer timer = new CountDownTimer(5000, 1000) {
+        @Override
+        public void onTick(long millisUntilFinished) {
+
+        }
+
+        @Override
+        public void onFinish() {
+            Intent intent = new Intent(WelcomeActivity.this,LoginActivity.class);
+            startActivity(intent);
+        }
+    };
 }
