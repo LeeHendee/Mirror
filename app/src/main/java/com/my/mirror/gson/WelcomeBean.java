@@ -8,27 +8,26 @@ import com.facebook.drawee.view.SimpleDraweeView;
  * Created by liangzaipan on 16/4/5.
  */
 public class WelcomeBean {
-    private TextView tv;
-    private SimpleDraweeView simpleDraweeView;
+    private String text,img;
 
-    public WelcomeBean(TextView tv, SimpleDraweeView simpleDraweeView) {
-        this.tv = tv;
-        this.simpleDraweeView = simpleDraweeView;
+    public WelcomeBean(String text, String img) {
+        this.text = text;
+        this.img = img;
     }
 
-    public TextView getTv() {
-        return tv;
+    public String getText() {
+        return text;
     }
 
-    public void setTv(TextView tv) {
-        this.tv = tv;
+    public void setText(String text) {
+        this.text = text;
     }
 
-    public SimpleDraweeView getSimpleDraweeView() {
-        return simpleDraweeView;
+    public String getImg() {
+        return img;
     }
 
-    public void setSimpleDraweeView(SimpleDraweeView simpleDraweeView) {
-        this.simpleDraweeView = simpleDraweeView;
+    public void setImg(String img) {
+        this.img = img;
     }
 }
