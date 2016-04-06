@@ -29,8 +29,6 @@ public class WelcomeActivity extends BaseActivity {
 
     @Override
     protected void initData() {
-
-
         OkHttpUtils.post().url("http://api101.test.mirroreye.cn/index.php/index/started_img").build().execute(new StringCallback() {
             @Override
             public void onError(Call call, Exception e) {
@@ -45,6 +43,7 @@ public class WelcomeActivity extends BaseActivity {
                 bean = gson.fromJson(response,WelcomeBean.class);
 
                 simpleDraweeView.setImageURI(Uri.parse(bean.getImg()));
+                timer.start();
             }
         });
     }
