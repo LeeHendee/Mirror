@@ -1,5 +1,7 @@
 package com.my.mirror.homepage;
 
+import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -20,9 +22,11 @@ import com.my.mirror.base.BaseApplication;
  */
 public class SpecialShareAdapter extends RecyclerView.Adapter<SpecialShareAdapter.SpecialViewHolder> {
     private SpecialShareBean bean;
+    private Context context;
 
-    public SpecialShareAdapter(SpecialShareBean bean) {
+    public SpecialShareAdapter(SpecialShareBean bean,Context context) {
         this.bean = bean;
+        this.context = context;
     }
 
     @Override
@@ -57,6 +61,13 @@ public class SpecialShareAdapter extends RecyclerView.Adapter<SpecialShareAdapte
             simpleDraweeView = (SimpleDraweeView) itemView.findViewById(R.id.item_project_pic);
             type = (TextView) itemView.findViewById(R.id.item_project_type);
             loading = (ImageView) itemView.findViewById(R.id.item_project_loading);
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(context,SpecialShareContentActivity.class);
+                    context.startActivity(intent);
+                }
+            });
         }
     }
 }

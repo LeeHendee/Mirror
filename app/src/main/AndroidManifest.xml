@@ -39,6 +39,8 @@
         <activity android:name=".lzp.RegisterActivity" />
         <activity android:name=".lzp.ForgetPasswordActivity" />
         <activity android:name=".lzp.LoginActivity"/>
+        <activity android:name=".homepage.SpecialShareContentActivity"/>
+
         <activity
             android:name="com.mob.tools.MobUIShell"
             android:configChanges="keyboardHidden|orientation|screenSize"

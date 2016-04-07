@@ -48,7 +48,7 @@ public class SpecialShareFragment extends BaseFragment implements INetAddress{
                 Gson gson = new Gson();
                 bean = gson.fromJson(response,SpecialShareBean.class);
 
-                adapter = new SpecialShareAdapter(bean);
+                adapter = new SpecialShareAdapter(bean,getActivity());
                 recyclerView.setAdapter(adapter);
                 GridLayoutManager gm = new GridLayoutManager(getActivity(), 1);
                 gm.setOrientation(LinearLayoutManager.HORIZONTAL);

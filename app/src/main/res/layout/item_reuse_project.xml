@@ -26,8 +26,7 @@
                 <com.facebook.drawee.view.SimpleDraweeView
                     android:id="@+id/item_project_pic"
                     android:layout_width="@dimen/item_reuse_project_iv_width"
-                    android:layout_height="@dimen/item_reuse_project_iv_height"
-                    android:src="@mipmap/test" />
+                    android:layout_height="@dimen/item_reuse_project_iv_height" />
             </FrameLayout>
 
             <ImageView
