@@ -35,6 +35,7 @@ public class ClassifiedFragment extends BaseFragment implements View.OnClickList
     private ImageView  specialIv,carIv;
     private ListView listView;//需要解析出来的数据
     private ClassifiedAdapter adapter;
+    //gaiyixia 
 
 
     public ClassifiedFragment(int i) {
