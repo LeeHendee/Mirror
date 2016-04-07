@@ -36,24 +36,24 @@
                     android:id="@+id/small_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textColor="#ffffff"
-                    android:textSize="22px" />
+                    android:textColor="@color/white"
+                    android:textSize="11sp" />
 
                 <TextView
                     android:id="@+id/big_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="22px"
-                    android:textColor="#ffffff"
-                    android:textSize="34px" />
+                    android:textColor="@color/white"
+                    android:textSize="17sp" />
 
                 <TextView
                     android:id="@+id/sub_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="22px"
-                    android:textColor="#ffffff"
-                    android:textSize="20px" />
+                    android:textColor="@color/white"
+                    android:textSize="10sp" />
 
             </LinearLayout>
 

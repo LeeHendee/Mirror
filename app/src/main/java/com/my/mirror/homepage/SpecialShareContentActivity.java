@@ -7,6 +7,8 @@ import android.support.v4.view.ViewPager;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -33,7 +35,7 @@ public class SpecialShareContentActivity extends BaseActivity implements INetAdd
     private MainViewPager viewPager;
     private MainViewPagerAdapter adapter;
     private List<Fragment> fragmentList;
-    private ImageView backgroundIv;
+    private ImageView backgroundIv,back,loading;
     private LinearLayout linearLayout;
     private SpecialShareContentBean bean;
     private Context context;
@@ -87,7 +89,6 @@ public class SpecialShareContentActivity extends BaseActivity implements INetAdd
                         if (url != null) {
                             Picasso.with(BaseApplication.getContext()).load(url).into(backgroundIv);
                         }
-
                     }
 
                     @Override
@@ -97,14 +98,8 @@ public class SpecialShareContentActivity extends BaseActivity implements INetAdd
                 });
                 adapter = new MainViewPagerAdapter(getSupportFragmentManager(), fragmentList, context);
                 viewPager.setAdapter(adapter);
-
             }
         });
-
-
-
-
-
 
         for (int i = 0; i < fragmentList.size(); i++) {
             linearLayout.setTag(fragmentList.get(i));
@@ -115,13 +110,23 @@ public class SpecialShareContentActivity extends BaseActivity implements INetAdd
                 }
             });
         }
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
 
+        Animation animation = AnimationUtils.loadAnimation(this, R.anim.loading);
+        loading.startAnimation(animation);
 
     }
 
     @Override
     protected void initView() {
-        backgroundIv = (ImageView) findViewById(R.id.background_iv);
+        backgroundIv = findId(R.id.background_iv);
+        back = findId(R.id.share_content_back);
+        loading = findId(R.id.share_content_loading);
         View view = LayoutInflater.from(this).inflate(R.layout.fragment_special_share_content,null);
         linearLayout = (LinearLayout) view.findViewById(R.id.viewpager_linear_layout);
 

@@ -1,8 +1,12 @@
 package com.my.mirror.homepage;
 
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.my.mirror.R;
+import com.my.mirror.base.BaseApplication;
 import com.my.mirror.base.BaseFragment;
 
 /**
@@ -21,6 +25,8 @@ public class SpecialShareContentFragment extends BaseFragment {
         title.setText(getTitle);
         smallTitle.setText(getSmallTitle);
         subTitle.setText(getSubtitle);
+
+
     }
 
     @Override
@@ -28,6 +34,7 @@ public class SpecialShareContentFragment extends BaseFragment {
         title = findId(R.id.big_title);
         smallTitle = findId(R.id.small_title);
         subTitle = findId(R.id.sub_title);
+
 
 
     }
