@@ -1,6 +1,7 @@
 package com.my.mirror.homepage;
 
 import android.content.Context;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
@@ -13,6 +14,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.facebook.drawee.view.SimpleDraweeView;
 import com.google.gson.Gson;
 import com.my.mirror.R;
 import com.my.mirror.base.BaseActivity;
@@ -35,7 +37,8 @@ public class SpecialShareContentActivity extends BaseActivity implements INetAdd
     private MainViewPager viewPager;
     private MainViewPagerAdapter adapter;
     private List<Fragment> fragmentList;
-    private ImageView backgroundIv,back,loading;
+    private ImageView back,loading;
+    private SimpleDraweeView backgroundIv;
     private LinearLayout linearLayout;
     private SpecialShareContentBean bean;
     private Context context;
@@ -71,10 +74,13 @@ public class SpecialShareContentActivity extends BaseActivity implements INetAdd
                     args.putString("subTitle",bean.getData().getStory_data().getText_array().get(i).getSubTitle());
                     fragment.setArguments(args);
                     fragmentList.add(fragment);
-                    String url = bean.getData().getStory_data().getImg_array().get(0);
-                    if (url != null) {
-                        Picasso.with(BaseApplication.getContext()).load(url).into(backgroundIv);
-                    }
+
+//                    String url = bean.getData().getStory_data().getImg_array().get(0);
+//                    if (url != null) {
+//                        Picasso.with(BaseApplication.getContext()).load(url).into(backgroundIv);
+//                    }
+                    backgroundIv.setImageURI(Uri.parse(bean.getData().getStory_data().getImg_array().get(0)));
+
 
                 }
                 viewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
@@ -85,10 +91,12 @@ public class SpecialShareContentActivity extends BaseActivity implements INetAdd
 
                     @Override
                     public void onPageSelected(int position) {
-                        String url = bean.getData().getStory_data().getImg_array().get(position);
-                        if (url != null) {
-                            Picasso.with(BaseApplication.getContext()).load(url).into(backgroundIv);
-                        }
+//                        String url = bean.getData().getStory_data().getImg_array().get(position);
+//                        if (url != null) {
+//                            Picasso.with(BaseApplication.getContext()).load(url).into(backgroundIv);
+//                        }
+                        backgroundIv.setImageURI(Uri.parse(bean.getData().getStory_data().getImg_array().get(position)));
+
                     }
 
                     @Override

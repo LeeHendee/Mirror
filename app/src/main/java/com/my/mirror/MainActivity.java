@@ -46,7 +46,12 @@ public class MainActivity extends BaseActivity implements INetAddress{
 
     @Override
     protected int getLayout() {
-        return R.layout.activity_main;
+        try {
+            return R.layout.activity_main;
+        }catch (RuntimeException e){
+            e.printStackTrace();
+        }
+        return 0;
     }
 
     @Override

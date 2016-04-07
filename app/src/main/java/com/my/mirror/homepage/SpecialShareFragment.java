@@ -65,7 +65,6 @@ public class SpecialShareFragment extends BaseFragment implements INetAddress{
         titleLine = findId(R.id.special_title_line);
         recyclerView = findId(R.id.special_recycler_view);
     }
-
     @Override
     protected int getLayout() {
         return R.layout.fragment_special_share;

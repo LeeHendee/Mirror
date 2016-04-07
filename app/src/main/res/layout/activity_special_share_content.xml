@@ -14,7 +14,7 @@
                 android:layout_height="wrap_content"
                 android:src="@mipmap/loading"
                 android:layout_gravity="center"/>
-            <ImageView
+            <com.facebook.drawee.view.SimpleDraweeView
                 android:id="@+id/background_iv"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" />
