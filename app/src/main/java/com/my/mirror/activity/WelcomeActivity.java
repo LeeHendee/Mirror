@@ -8,6 +8,7 @@ import android.widget.ImageView;
 
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.google.gson.Gson;
+import com.my.mirror.MainActivity;
 import com.my.mirror.R;
 import com.my.mirror.base.BaseActivity;
 import com.my.mirror.gson.WelcomeBean;
@@ -55,7 +56,7 @@ public class WelcomeActivity extends BaseActivity {
     }
 
     //倒计时
-    CountDownTimer timer = new CountDownTimer(5000, 1000) {
+    CountDownTimer timer = new CountDownTimer(3000, 1000) {
         @Override
         public void onTick(long millisUntilFinished) {
 
@@ -63,7 +64,7 @@ public class WelcomeActivity extends BaseActivity {
 
         @Override
         public void onFinish() {
-            Intent intent = new Intent(WelcomeActivity.this,LoginActivity.class);
+            Intent intent = new Intent(WelcomeActivity.this,MainActivity.class);
             startActivity(intent);
         }
     };
