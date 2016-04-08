@@ -31,5 +31,14 @@ public interface INetAddress {
     //专题分享 二级页面
     String  INFO = "index.php/story/info";
 
+    //注册
+    String REG = "index.php/user/reg";
+
+    //发送验证码
+    String SEND_CODE= "index.php/user/send_code";
+
+    //登录
+    String LOGIN = "index.php/user/login";
+
 }
 

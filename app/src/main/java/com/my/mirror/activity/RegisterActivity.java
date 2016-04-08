@@ -15,6 +15,7 @@ import com.my.mirror.R;
 import com.my.mirror.base.BaseActivity;
 import com.my.mirror.bean.LoginFailBean;
 import com.my.mirror.bean.RegisterFailBean;
+import com.my.mirror.net.okhttp.INetAddress;
 import com.my.mirror.net.okhttp.StringCallback;
 import com.my.mirror.utils.MyToast;
 import com.zhy.http.okhttp.OkHttpUtils;
@@ -30,7 +31,7 @@ import okhttp3.Response;
 /**
  * Created by liangzaipan on 16/3/29.
  */
-public class RegisterActivity extends BaseActivity implements View.OnClickListener {
+public class RegisterActivity extends BaseActivity implements View.OnClickListener, INetAddress {
     private TextView sendTv;
     private EditText phoneEt, numEv, passwordEv;
     private Button btn;
@@ -64,7 +65,7 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
         switch (v.getId()) {
             case R.id.register_send_tv:
                 if (phoneEt.getText() != null) {
-                    OkHttpUtils.post().url("http://api101.test.mirroreye.cn/index.php/user/send_code")
+                    OkHttpUtils.post().url(BEGIN_URL + SEND_CODE)
                             .addParams("phone number", phoneEt.getText().toString())
                             .build().execute(new Callback() {
                         @Override
@@ -96,7 +97,7 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
                 } else if (passwordEv.length() == 0) {
                     MyToast.mToast("请输入密码");
                 } else {
-                    OkHttpUtils.post().url("http://api101.test.mirroreye.cn/index.php/user/reg")
+                    OkHttpUtils.post().url(BEGIN_URL + REG)
                             .addParams("phone_number", phoneEt.getText().toString()).addParams("number", numEv.getText().toString())
                             .addParams("password", passwordEv.getText().toString()).build().execute(new StringCallback() {
                         @Override
@@ -125,7 +126,7 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
                                             runOnUiThread(new Runnable() {
                                                 @Override
                                                 public void run() {
-                                                    Toast.makeText(RegisterActivity.this, "登陆成功", Toast.LENGTH_SHORT).show();
+                                                    MyToast.mToast("登陆成功");
                                                     Intent intent = new Intent(RegisterActivity.this, MainActivity.class);
                                                     intent.putExtra("result", 1);
                                                     startActivity(intent);
