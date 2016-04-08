@@ -17,9 +17,9 @@ import com.my.mirror.base.BaseFragment;
 public class ClassifiedFragment extends BaseFragment implements View.OnClickListener {
     private int i;
 
-    private LinearLayout allLine,mattLine,sunLine,projectLine,carLine,backLine,exitLine,classifiedLine;
-    private TextView allTv,mattTv,sunTv,projectTv,carTv;
-    private ImageView allIv,mattIv,sunIv,projectIv,carIv;
+    private LinearLayout allLine,mattLine,sunLine,projectLine,classifiedLine;
+    private TextView allTv,mattTv,sunTv,projectTv;
+    private ImageView allIv,mattIv,sunIv,projectIv;
 
     private LinearLayout specialLine,carLine, backLine, exitLine,classified;
     private TextView  specialTv,carTv;
@@ -30,6 +30,9 @@ public class ClassifiedFragment extends BaseFragment implements View.OnClickList
 
     public ClassifiedFragment(int i){
         this.i = i;
+    }
+
+    public ClassifiedFragment() {
     }
 
     @Override
@@ -65,21 +68,6 @@ public class ClassifiedFragment extends BaseFragment implements View.OnClickList
     protected void initView() {
 
 
-        allLine = findId(R.id.resure_all_line);
-        allTv = findId(R.id.resure_all_tv);
-        allIv = findId(R.id.resure_all_iv);
-
-        mattLine = findId(R.id.resure_matt_line);
-        mattTv = findId(R.id.resure_matt_tv);
-        mattIv = findId(R.id.resure_matt_iv);
-
-        sunLine = findId(R.id.resure_sun_line);
-        sunTv = findId(R.id.resure_sun_tv);
-        sunIv = findId(R.id.resure_sun_iv);
-
-        projectLine = findId(R.id.resure_project_line);
-        projectTv = findId(R.id.resure_project_tv);
-        projectIv = findId(R.id.resure_project_iv);
 
         carLine = findId(R.id.resure_car_line);
         carTv = findId(R.id.resure_car_tv);
@@ -98,26 +86,7 @@ public class ClassifiedFragment extends BaseFragment implements View.OnClickList
     @Override
     public void onClick(View v) {
         switch (v.getId()){
-            case R.id.resure_all_line:
-                Intent intentAll = new Intent(getActivity(), MainActivity.class);
-                intentAll.putExtra("position",0);
-                startActivity(intentAll);
-                break;
-            case R.id.resure_matt_line:
-                Intent intentMatt = new Intent(getActivity(), MainActivity.class);
-                intentMatt.putExtra("position",1);
-                startActivity(intentMatt);
-                break;
-            case R.id.resure_sun_line:
-                Intent intentSun = new Intent(getActivity(), MainActivity.class);
-                intentSun.putExtra("position",2);
-                startActivity(intentSun);
-                break;
-            case R.id.resure_project_line:
-                Intent intentProject = new Intent(getActivity(), MainActivity.class);
-                intentProject.putExtra("position",3);
-                startActivity(intentProject);
-                break;
+
             case R.id.resure_car_line:
                 Intent intentCar = new Intent(getActivity(), MainActivity.class);
                 intentCar.putExtra("position",4);
