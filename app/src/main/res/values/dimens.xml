@@ -106,5 +106,14 @@
     <dimen name="item_reuse_all_type_top">8dp</dimen>
     <dimen name="item_reuse_all_type_size">15sp</dimen>
     <dimen name="item_reuse_all_black_line_height">8dp</dimen>
+    <dimen name="special_share_content_iv_marbotton">40dp</dimen>
+    <dimen name="special_share_content_iv_marright">20dp</dimen>
+    <dimen name="special_share_content_linear_margin">25dp</dimen>
+    <dimen name="special_share_content_line_margin">30dp</dimen>
+    <dimen name="special_share_content_big_title_margintop">11dp</dimen>
+    <dimen name="special_share_content_small_title_size">11sp</dimen>
+    <dimen name="special_share_content_big_title_size">17sp</dimen>
+    <dimen name="special_share_content_sub_title_margintop">11dp</dimen>
+    <dimen name="special_share_content_sub_title_size">10sp</dimen>
 
 </resources>
