@@ -4,25 +4,16 @@ package com.my.mirror;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-
-
-
+import android.util.Log;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
-
 import android.widget.TextView;
-
+import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.my.mirror.base.BaseActivity;
-
-import com.my.mirror.homepage.CarFragment;
-import com.my.mirror.homepage.MainViewPager;
-import com.my.mirror.homepage.MainViewPagerAdapter;
-import com.my.mirror.homepage.ReuseFragment;
-
 import com.my.mirror.base.BaseApplication;
 import com.my.mirror.gson.ClassifiedBean;
 import com.my.mirror.homepage.CarFragment;
@@ -31,13 +22,11 @@ import com.my.mirror.homepage.MainViewPager;
 import com.my.mirror.homepage.MainViewPagerAdapter;
 import com.my.mirror.homepage.ReuseFragment;
 import com.my.mirror.homepage.SpecialShareFragment;
-
-import com.my.mirror.login.LoginActivity;
+import com.my.mirror.lzp.LoginActivity;
 import com.my.mirror.net.okhttp.INetAddress;
 import com.my.mirror.net.okhttp.StringCallback;
 import com.my.mirror.utils.MyToast;
 import com.zhy.http.okhttp.OkHttpUtils;
-
 
 import java.util.ArrayList;
 import java.util.List;
@@ -103,6 +92,11 @@ public class MainActivity extends BaseActivity implements INetAddress{
         });
 
 
+
+
+
+
+
         mirrorIcon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -118,6 +112,8 @@ public class MainActivity extends BaseActivity implements INetAddress{
                 startActivity(loginIntent);
             }
         });
+
+        
 
 
     }
