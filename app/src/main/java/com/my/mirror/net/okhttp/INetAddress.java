@@ -6,8 +6,10 @@ package com.my.mirror.net.okhttp;
 public interface INetAddress {
     String BEGIN_URL = "http://api101.test.mirroreye.cn/";
 
-    String DEVICE = "iPhone6";
+    String DEVICE = "1";
     String DEVICE_TYPE = "device_type";
+    String VERSION = "version";
+    String VERSION_VALUE = "1.0.1";
 
     //商品详情
     String PRODUCT_LIST = "index.php/products/goods_list";

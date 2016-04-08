@@ -29,5 +29,10 @@
     <string name="zc_untitle">显示排序为 最新推荐</string>
 
     <string name="item_reuse_project_tv">mirror传达</string>
+    <string name="name_detail">FINLAYCO</string>
+    <string name="brand_detail">水蓝色晶透板材太阳镜</string>
+    <string name="smooth_browse_details">滑动浏览详情</string>
+    <string name="loading_default">加载失败</string>
+    <string name="detail_brand">飞行员太阳镜</string>
 
 </resources>

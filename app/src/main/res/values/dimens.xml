@@ -16,8 +16,8 @@
     <dimen name="ninety_lee">90px</dimen>
     <dimen name="forty_two">42px</dimen>
     <dimen name="twenty_four_lee">24px</dimen>
-    <dimen name="fourty_eight_lee">48px</dimen>
-    <dimen name="thirty_six_lee">36dp</dimen>
+    <dimen name="forty_eight_lee">48px</dimen>
+
     <dimen name="forty_eight">48px</dimen>
     <dimen name="fourteen_lee">14px</dimen>
 
@@ -66,5 +66,25 @@
     <dimen name="classified_car_iv_width">70dp</dimen>
     <dimen name="classified_reuse_iv_width">85dp</dimen>
     <dimen name="item_project_card_margin">11dp</dimen>
+    <dimen name="six_hundred_thirty">630px</dimen>
+    <dimen name="one_hundred_two_lee">102px</dimen>
+    <dimen name="thirty_two_lee">32px</dimen>
+    <dimen name="thirty_eight">38px</dimen>
+    <dimen name="forty_five">45px</dimen>
+    <dimen name="thirty_six">36px</dimen>
+    <dimen name="forty_five_lee">45px</dimen>
+    <dimen name="twenty_six_lee">26px</dimen>
+    <dimen name="ten_lee">10px</dimen>
+    <dimen name="sixty_four_lee">64px</dimen>
+    <dimen name="sixty_five_lee">65px</dimen>
+    <dimen name="thirty_lee">30px</dimen>
+    <dimen name="six_lee">6px</dimen>
+    <dimen name="twenty_eight_lee">28px</dimen>
+    <dimen name="thirt_four_lee">34px</dimen>
+    <dimen name="three_lee">3px</dimen>
+    <dimen name="six_hundred_sixty_lee">660px</dimen>
+    <dimen name="three_hundred_thirty_eight_lee">338px</dimen>
+    <dimen name="zero_lee">0px</dimen>
+    <dimen name="six_hundred_eighty_lee">680px</dimen>
 
 </resources>

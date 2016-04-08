@@ -3,18 +3,14 @@ package com.my.mirror;
 
 import android.content.Intent;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
 
 import com.my.mirror.base.BaseActivity;
-import com.my.mirror.zc.CarFragment;
-import com.my.mirror.zc.ClassifiedFragment;
-import com.my.mirror.zc.MainViewPager;
-import com.my.mirror.zc.MainViewPagerAdapter;
-import com.my.mirror.zc.ReuseFragment;
+import com.my.mirror.homepage.CarFragment;
+import com.my.mirror.homepage.MainViewPager;
+import com.my.mirror.homepage.MainViewPagerAdapter;
+import com.my.mirror.homepage.ReuseFragment;
 
 import java.util.ArrayList;
 import java.util.List;
