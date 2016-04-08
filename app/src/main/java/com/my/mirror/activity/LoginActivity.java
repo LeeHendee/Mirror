@@ -9,11 +9,17 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.my.mirror.MainActivity;
 import com.my.mirror.R;
 import com.my.mirror.base.BaseActivity;
-import com.my.mirror.net.okhttp.INetAddress;
+import com.my.mirror.bean.LoginFailBean;
 import com.my.mirror.net.okhttp.StringCallback;
 import com.zhy.http.okhttp.OkHttpUtils;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.HashMap;
 import cn.sharesdk.framework.Platform;
@@ -95,8 +101,38 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
                     }
 
                     @Override
-                    public void onResponse(String response) {
+                    public void onResponse(final String response) {
                         Log.i("fdfd",response);
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                try {
+                                    JSONObject jsonObject = new JSONObject(response);
+                                    if (jsonObject.get("data").equals("")&&!jsonObject.get("msg").equals("")){
+                                        final LoginFailBean loginFailBean = new LoginFailBean(response);
+                                        loginFailBean.setMsg(jsonObject.getString("msg"));
+                                        runOnUiThread(new Runnable() {
+                                            @Override
+                                            public void run() {
+                                                Toast.makeText(LoginActivity.this, loginFailBean.getMsg(), Toast.LENGTH_SHORT).show();
+                                            }
+                                        });
+                                    } else if (!jsonObject.get("data").equals("")) {
+                                        runOnUiThread(new Runnable() {
+                                            @Override
+                                            public void run() {
+                                                Toast.makeText(LoginActivity.this, "登陆成功", Toast.LENGTH_SHORT).show();
+                                                Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                                                intent.putExtra("result", 1);
+                                                startActivity(intent);
+                                            }
+                                        });
+                                    }
+                                } catch (JSONException e) {
+                                    e.printStackTrace();
+                                }
+                            }
+                        });
                     }
                 });
                 break;
