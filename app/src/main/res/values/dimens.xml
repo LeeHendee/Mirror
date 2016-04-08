@@ -36,7 +36,10 @@
     <dimen name="lzp_one_zero_zero">100dp</dimen>
     <dimen name="lzp_zero">0dp</dimen>
     <dimen name="lzp_twenty_five">25dp</dimen>
+    <dimen name="lzp_text_thirteen">13sp</dimen>
+    <dimen name="lzp_sixty">60dp</dimen>
 
+    <dimen name="lzp_half">1dp</dimen>
 
 
     <dimen name="zc_fourty_eight">24dp</dimen>

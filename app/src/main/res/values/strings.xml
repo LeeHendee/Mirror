@@ -16,6 +16,22 @@
     <string name="number">验证码</string>
     <string name="sendnumber">发送验证码</string>
     <string name="setpassword">设置密码</string>
+    <string name="addadress">添加地址</string>
+    <string name="addname">添加收件人姓名</string>
+    <string name="addnumber">添加联络电话号码</string>
+    <string name="addgetadress">添加收货地址</string>
+    <string name="pushadress">提交地址</string>
+    <string name="forgrtpassword">忘记密码</string>
+    <string name="checknum">验证码</string>
+    <string name="sendchecknum">发送验证码</string>
+    <string name="changepassword">修改密码</string>
+    <string name="orderdetail">订单详情</string>
+    <string name="addpersoninfo">请填写收件人信息</string>
+    <string name="writeadress">填写地址</string>
+    <string name="checkorder">确认下单</string>
+    <string name="paymoney">运费:</string>
+    <string name="lzp_free">免运费</string>
+    <string name="total">小计:</string>
 
 
     <string name="main_login">登录</string>

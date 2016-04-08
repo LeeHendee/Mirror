@@ -2,32 +2,32 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#f1f1f1"
+    android:background="@color/colorGray"
     android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="15dp"
-        android:layout_marginRight="15dp"
-        android:layout_marginTop="15dp"
+        android:layout_marginLeft="@dimen/lzp_fifteen"
+        android:layout_marginRight="@dimen/lzp_fifteen"
+        android:layout_marginTop="@dimen/lzp_fifteen"
         android:orientation="horizontal">
 
         <LinearLayout
-            android:layout_width="0dp"
+            android:layout_width="@dimen/lzp_zero"
             android:layout_height="match_parent"
             android:layout_weight="7">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="添加地址"
-                android:textSize="20sp"
+                android:text="@string/addadress"
+                android:textSize="@dimen/lzp_text_twenty"
                 android:textStyle="bold" />
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="0dp"
+            android:layout_width="@dimen/lzp_zero"
             android:layout_height="match_parent"
             android:layout_weight="1">
 
@@ -42,70 +42,70 @@
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="@dimen/ten"
         android:src="@mipmap/makecount_line" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="15dp"
-        android:layout_marginTop="10dp"
-        android:text="添加收件人姓名"
-        android:textSize="15sp" />
+        android:layout_marginLeft="@dimen/lzp_fifteen"
+        android:layout_marginTop="@dimen/lzp_ten"
+        android:text="@string/addname"
+        android:textSize="@dimen/lzp_text_fifteen" />
 
     <EditText
         android:id="@+id/register_phoneNum_edit"
         android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:layout_marginLeft="15dp"
-        android:layout_marginRight="15dp"
-        android:layout_marginTop="5dp"
+        android:layout_height="@dimen/lzp_fourty"
+        android:layout_marginLeft="@dimen/lzp_fifteen"
+        android:layout_marginRight="@dimen/lzp_fifteen"
+        android:layout_marginTop="@dimen/lzp_five"
         android:inputType="number"
         android:background="@mipmap/edit" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="15dp"
-        android:layout_marginTop="10dp"
-        android:text="添加联络电话号码"
-        android:textSize="15sp" />
+        android:layout_marginLeft="@dimen/lzp_fifteen"
+        android:layout_marginTop="@dimen/lzp_ten"
+        android:text="@string/addnumber"
+        android:textSize="@dimen/lzp_text_fifteen" />
 
     <EditText
         android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:layout_marginLeft="15dp"
-        android:layout_marginRight="15dp"
-        android:layout_marginTop="5dp"
+        android:layout_height="@dimen/lzp_fourty"
+        android:layout_marginLeft="@dimen/lzp_fifteen"
+        android:layout_marginRight="@dimen/lzp_fifteen"
+        android:layout_marginTop="@dimen/lzp_five"
         android:inputType="number"
         android:background="@mipmap/edit" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="15dp"
-        android:layout_marginTop="15dp"
-        android:text="添加收货地址"
-        android:textSize="15sp" />
+        android:layout_marginLeft="@dimen/lzp_fifteen"
+        android:layout_marginTop="@dimen/lzp_fifteen"
+        android:text="@string/addgetadress"
+        android:textSize="@dimen/lzp_text_fifteen" />
 
     <EditText
         android:id="@+id/register_password_edit"
         android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:layout_marginLeft="15dp"
-        android:layout_marginRight="15dp"
-        android:layout_marginTop="5dp"
+        android:layout_height="@dimen/lzp_one_zero_zero"
+        android:layout_marginLeft="@dimen/lzp_fifteen"
+        android:layout_marginRight="@dimen/lzp_fifteen"
+        android:layout_marginTop="@dimen/lzp_five"
         android:background="@mipmap/edit" />
 
     <Button
         android:id="@+id/register_makeCount_btn"
         android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:layout_marginLeft="15dp"
-        android:layout_marginRight="15dp"
-        android:layout_marginTop="25dp"
+        android:layout_height="@dimen/lzp_fourty"
+        android:layout_marginLeft="@dimen/lzp_fifteen"
+        android:layout_marginRight="@dimen/lzp_fifteen"
+        android:layout_marginTop="@dimen/lzp_twenty_five"
         android:background="@mipmap/makeacount"
-        android:text="修改密码"
-        android:textColor="#ffffff" />
+        android:text="@string/pushadress"
+        android:textColor="@color/colorWhite" />
 
 </LinearLayout>

@@ -96,10 +96,11 @@
             android:layout_height="wrap_content"
             android:layout_weight="1">
 
-            <Button
-                android:id="@+id/register_send_btn"
+            <TextView
+                android:id="@+id/register_send_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
+                android:gravity="center"
                 android:background="@mipmap/makeacount"
                 android:textSize="@dimen/lzp_text_fifteen"
                 android:text="@string/sendnumber" />
