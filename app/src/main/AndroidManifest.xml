@@ -30,10 +30,13 @@
             </intent-filter>
         </activity>
 
+
         <activity android:name=".login.RegisterActivity" />
         <activity android:name=".login.ForgetPasswordActivity" />
         <activity android:name=".details.PicturesActivity" />
         <activity android:name=".details.SinglePictureActivity" />
+        <activity android:name=".login.LoginActivity"/>
+        <activity android:name=".homepage.SpecialShareContentActivity"/>
 
 
         <activity

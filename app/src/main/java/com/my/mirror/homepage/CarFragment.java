@@ -9,6 +9,7 @@ import com.my.mirror.base.BaseFragment;
 
 /**
  * Created by dllo on 16/3/30.
+ * 购物车的fragment
  */
 public class CarFragment extends BaseFragment {
     private LinearLayout titleLine;
@@ -17,10 +18,12 @@ public class CarFragment extends BaseFragment {
 
     @Override
     protected void initData() {
+
+        //给上面那个标题栏 设置监听  点击替换fragment
         titleLine.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                classifiedFragment = new ClassifiedFragment(4);
+                classifiedFragment = new ClassifiedFragment(5);
                 FragmentManager fm = getActivity().getSupportFragmentManager();
                 fm.beginTransaction().replace(R.id.main_frame, classifiedFragment).commit();
 

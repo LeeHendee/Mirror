@@ -87,4 +87,21 @@
     <dimen name="zero_lee">0px</dimen>
     <dimen name="six_hundred_eighty_lee">680px</dimen>
 
+
+    <dimen name="item_reuse_all_out_height">270dp</dimen>
+    <dimen name="item_reuse_all_out_left">11dp</dimen>
+    <dimen name="item_reuse_all_background_image">270dp</dimen>
+    <dimen name="item_bottom_out_height">115dp</dimen>
+    <dimen name="item_bottom_out_left">12dp</dimen>
+    <dimen name="item_bottom_out_right">12dp</dimen>
+    <dimen name="item_reuse_all_brand_top">10dp</dimen>
+    <dimen name="item_reuse_all_brand_size">15sp</dimen>
+    <dimen name="item_reuse_all_money_size">15sp</dimen>
+    <dimen name="item_reuse_all_country_top">8dp</dimen>
+    <dimen name="item_reuse_all_country_size">12sp</dimen>
+    <dimen name="item_reuse_all_black_line_top">8dp</dimen>
+    <dimen name="item_reuse_all_type_top">8dp</dimen>
+    <dimen name="item_reuse_all_type_size">15sp</dimen>
+    <dimen name="item_reuse_all_black_line_height">8dp</dimen>
+
 </resources>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<set xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- 旋转时间为1秒，次数-1  相当于无线循环  -->
+    <rotate
+        android:duration="1000"
+        android:fromDegrees="0"
+        android:toDegrees="350"
+        android:repeatCount="-1"
+        android:pivotX="50%"
+        android:pivotY="50%" />
+
+</set>

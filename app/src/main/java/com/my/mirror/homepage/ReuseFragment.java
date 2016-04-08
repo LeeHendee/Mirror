@@ -30,6 +30,9 @@ public class ReuseFragment extends BaseFragment {
         this.i = i;
     }
 
+    public ReuseFragment() {
+    }
+
     @Override
     protected void initData() {
         line.setOnClickListener(new View.OnClickListener() {
