@@ -15,9 +15,17 @@ import com.my.mirror.base.BaseFragment;
  */
 public class ClassifiedFragment extends BaseFragment implements View.OnClickListener {
     private int i;
+<<<<<<< HEAD
     private LinearLayout allLine,mattLine,sunLine,projectLine,carLine,backLine,exitLine,classifiedLine;
     private TextView allTv,mattTv,sunTv,projectTv,carTv;
     private ImageView allIv,mattIv,sunIv,projectIv,carIv;
+
+
+    private LinearLayout specialLine,carLine, backLine, exitLine,classified;
+    private TextView  specialTv,carTv;
+    private ImageView  specialIv,carIv;
+    private ListView listView;//需要解析出来的数据
+    private ClassifiedAdapter adapter;
 
 
 
