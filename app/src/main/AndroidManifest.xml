@@ -23,7 +23,7 @@
         android:label="@string/app_name"
 
         android:theme="@style/AppTheme">
-        <activity android:name=".activity.WelcomeActivity">
+        <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>
@@ -36,7 +36,6 @@
         <activity android:name=".details.SinglePictureActivity" />
         <activity android:name=".login.LoginActivity"/>
         <activity android:name=".homepage.SpecialShareContentActivity"/>
-        <activity android:name=".MainActivity"/>
         <activity android:name=".activity.ForgetPasswordActivity" />
 
 

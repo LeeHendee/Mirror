@@ -8,6 +8,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.my.mirror.R;
+import com.my.mirror.greendao.ClassiFied;
+import com.my.mirror.greendao.ClassiFiedDao;
+import com.my.mirror.greendao.DaoSingleton;
 import com.my.mirror.gson.ClassifiedBean;
 
 import java.util.List;
@@ -17,23 +20,24 @@ import java.util.List;
  * 菜单栏的适配器
  */
 public class ClassifiedAdapter extends BaseAdapter {
-    private List<ClassifiedBean.DataEntity >data;
-    private ClassifiedBean bean;
     private int i;
+    private ClassiFiedDao classiFiedDao;
+    private ClassiFied classiFied;
 
-    public ClassifiedAdapter( int i,ClassifiedBean bean) {
-        this.bean = bean;
+    public ClassifiedAdapter( int i) {
         this.i = i;
     }
 
     @Override
     public int getCount() {
-        return bean.getData().size();
+        net();
+        return classiFiedDao.queryBuilder().list().size();
     }
 
     @Override
     public Object getItem(int position) {
-        return bean.getData().get(position);
+        net();
+        return classiFiedDao.queryBuilder().list().get(position);
     }
 
     @Override
@@ -53,18 +57,26 @@ public class ClassifiedAdapter extends BaseAdapter {
         } else {
             holder = (MyViewHolder) convertView.getTag();
         }
-        holder.name.setText("浏览"+bean.getData().get(position).getCategory_name());
+        net();
+
+            holder.name.setText("浏览"+classiFiedDao.queryBuilder().list().get(position).getTitle());
         if (i == position){
             holder.name.setAlpha(1);
             holder.line.setVisibility(View.VISIBLE);
-        } else {
+        }  else {
             holder.name.setAlpha(0.25f);
             holder.line.setVisibility(View.GONE);
         }
 
 
 
-        return convertView;
+            return convertView;
+    }
+
+    private void net(){
+        classiFiedDao = DaoSingleton.getInstance().getClassiFiedDao();
+        classiFied = classiFiedDao.queryBuilder().list().get(0);
+
     }
 
     public class MyViewHolder{

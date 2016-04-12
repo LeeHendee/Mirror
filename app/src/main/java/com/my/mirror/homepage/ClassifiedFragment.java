@@ -2,6 +2,8 @@ package com.my.mirror.homepage;
 
 import android.animation.ObjectAnimator;
 import android.content.Intent;
+import android.os.Bundle;
+import android.support.v4.app.FragmentManager;
 import android.util.Log;
 import android.view.View;
 import android.view.animation.Animation;
@@ -17,6 +19,9 @@ import com.my.mirror.MainActivity;
 import com.my.mirror.R;
 import com.my.mirror.base.BaseApplication;
 import com.my.mirror.base.BaseFragment;
+import com.my.mirror.greendao.ClassiFied;
+import com.my.mirror.greendao.ClassiFiedDao;
+import com.my.mirror.greendao.DaoSingleton;
 import com.my.mirror.gson.ClassifiedBean;
 import com.my.mirror.net.okhttp.INetAddress;
 import com.my.mirror.net.okhttp.StringCallback;
@@ -29,60 +34,57 @@ import okhttp3.Call;
  *菜单栏的fragment
  */
 public class ClassifiedFragment extends BaseFragment implements View.OnClickListener, INetAddress {
-    private int i;
+    private int i,five,four;
     private LinearLayout specialLine,carLine, backLine, exitLine,classified;
     private TextView  specialTv,carTv;
     private ImageView  specialIv,carIv;
-    private ListView listView;//需要解析出来的数据
+    private ListView listView;
     private ClassifiedAdapter adapter;
-    //gaiyixia 
+    private ReuseFragment reuseFragment;
 
 
-    public ClassifiedFragment(int i) {
-        this.i = i;
-    }
+
+
 
     @Override
     protected void initData() {
 
-        OkHttpUtils.post().url(BEGIN_URL + CATEGORY_LIST).addParams(DEVICE_TYPE, DEVICE)
-                .build().execute(new StringCallback() {
-            @Override
-            public void onError(Call call, Exception e) {
-                //请求失败
-            }
+        i = getArguments().getInt("titleInt");
+        five = getArguments().getInt("five");
+        four = getArguments().getInt("four");
 
-            @Override
-            public void onResponse(String response) {
-                //请求成功 将请求的数据解析出来
-                Gson gson = new Gson();
-                ClassifiedBean bean = gson.fromJson(response, ClassifiedBean.class);
-                adapter = new ClassifiedAdapter(i,bean);
-                listView.setAdapter(adapter);
 
-            }
-        });
-
-        if (i == 5) {
+        if (five == 5) {
             //设置菜单栏里的透明图和下面的条条是否显示
             carTv.setAlpha(1);
             carIv.setVisibility(View.VISIBLE);
-        } else if (i == 4){
+        } else if (four == 4){
             specialTv.setAlpha(1);
             specialIv.setVisibility(View.VISIBLE);
         }
 
+        if (five == 5) {
+            i = five;
+        } else if (four == 4) {
+            i = four;
+        }
+
+        adapter = new ClassifiedAdapter(i);
+        listView.setAdapter(adapter);
 
         specialLine.setOnClickListener(this);
         carLine.setOnClickListener(this);
         backLine.setOnClickListener(this);
         exitLine.setOnClickListener(this);
+        reuseFragment = new ReuseFragment();
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent intentAll = new Intent(getActivity(), MainActivity.class);
-                intentAll.putExtra("position", position);
-                startActivity(intentAll);
+                Bundle args = new Bundle();
+                args.putInt("i",position);
+                reuseFragment.setArguments(args);
+                FragmentManager fm = getActivity().getSupportFragmentManager();
+                fm.beginTransaction().replace(R.id.main_frame, reuseFragment).commit();
             }
         });
     }

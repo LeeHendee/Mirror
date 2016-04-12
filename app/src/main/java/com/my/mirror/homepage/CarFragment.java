@@ -1,5 +1,6 @@
 package com.my.mirror.homepage;
 
+import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.view.View;
 import android.widget.LinearLayout;
@@ -23,7 +24,10 @@ public class CarFragment extends BaseFragment {
         titleLine.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                classifiedFragment = new ClassifiedFragment(5);
+                classifiedFragment = new ClassifiedFragment();
+                Bundle args = new Bundle();
+                args.putInt("five",5);
+                classifiedFragment.setArguments(args);
                 FragmentManager fm = getActivity().getSupportFragmentManager();
                 fm.beginTransaction().replace(R.id.main_frame, classifiedFragment).commit();
 

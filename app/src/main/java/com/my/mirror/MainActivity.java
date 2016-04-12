@@ -10,14 +10,15 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.my.mirror.base.BaseActivity;
 import com.my.mirror.base.BaseApplication;
+import com.my.mirror.greendao.ClassiFied;
+import com.my.mirror.greendao.ClassiFiedDao;
+import com.my.mirror.greendao.DaoSingleton;
 import com.my.mirror.gson.ClassifiedBean;
 import com.my.mirror.homepage.CarFragment;
-import com.my.mirror.homepage.ClassifiedAdapter;
 import com.my.mirror.homepage.MainViewPager;
 import com.my.mirror.homepage.MainViewPagerAdapter;
 import com.my.mirror.homepage.ReuseFragment;
@@ -31,10 +32,9 @@ import com.zhy.http.okhttp.OkHttpUtils;
 import java.util.ArrayList;
 import java.util.List;
 
-import de.greenrobot.event.EventBus;
 import okhttp3.Call;
 
-public class MainActivity extends BaseActivity implements INetAddress{
+public class MainActivity extends BaseActivity implements INetAddress {
     private ImageView mirrorIcon;//mirror图标
     private List<Fragment> fragmentList;
     private MainViewPager viewPager;
@@ -42,13 +42,16 @@ public class MainActivity extends BaseActivity implements INetAddress{
     private ClassifiedBean bean;
     private int position;
     private TextView login;
+    private ClassiFiedDao classiFiedDao;
+//    private ClassiFied classiFied;
+    private List<ClassiFied> beans;
 
 
     @Override
     protected int getLayout() {
         try {
             return R.layout.activity_main;
-        }catch (RuntimeException e){
+        } catch (RuntimeException e) {
             e.printStackTrace();
         }
         return 0;
@@ -58,16 +61,21 @@ public class MainActivity extends BaseActivity implements INetAddress{
     protected void initData() {
 
         fragmentList = new ArrayList<>();
+        beans = new ArrayList<>();
+//        classiFiedDao = DaoSingleton.getInstance().getClassiFiedDao();
+//        classiFied = new ClassiFied();
 
         Intent intent = getIntent();
-        position = intent.getIntExtra("position",0);
+        position = intent.getIntExtra("position", 0);
 
 
-        OkHttpUtils.post().url(BEGIN_URL+CATEGORY_LIST).addParams(DEVICE_TYPE, DEVICE)
+
+        OkHttpUtils.post().url(BEGIN_URL + CATEGORY_LIST).addParams(DEVICE_TYPE, DEVICE)
                 .build().execute(new StringCallback() {
             @Override
             public void onError(Call call, Exception e) {
-                MyToast.mToast("没出来啊……你还是检测网络连接吧");
+                // MyToast.mToast("没出来啊……你还是检测网络连接吧");
+                initAdapter();
             }
 
             @Override
@@ -76,25 +84,19 @@ public class MainActivity extends BaseActivity implements INetAddress{
                 bean = gson.fromJson(response, ClassifiedBean.class);
 
                 for (int i = 0; i < bean.getData().size(); i++) {
-                    ReuseFragment fragment = new ReuseFragment();
-                    Bundle args = new Bundle();
-                    args.putString("stTitle",bean.getData().get(i).getCategory_name());
-                    args.putInt("i",i);
-                    fragment.setArguments(args);
-                    fragmentList.add(fragment);
+                    ClassiFiedDao fiedDao = DaoSingleton.getInstance().getClassiFiedDao();
+                    ClassiFied fied = new ClassiFied();
+                    fied.setTitle(bean.getData().get(i).getCategory_name());
+                    beans = fiedDao.queryBuilder().where(ClassiFiedDao.Properties.Title.eq(fied.getTitle())).list();
+                    if (beans.size() == 0) {
+                        fiedDao.insert(fied);
+                    }
                 }
-                fragmentList.add(new SpecialShareFragment());
-                fragmentList.add(new CarFragment());
-                adapter = new MainViewPagerAdapter(getSupportFragmentManager(), fragmentList, BaseApplication.getContext());
-                viewPager.setAdapter(adapter);
-                viewPager.setCurrentItem(position);
+                initAdapter();
+
+
             }
         });
-
-
-
-
-
 
 
         mirrorIcon.setOnClickListener(new View.OnClickListener() {
@@ -110,13 +112,31 @@ public class MainActivity extends BaseActivity implements INetAddress{
             public void onClick(View v) {
                 Intent loginIntent = new Intent(MainActivity.this, LoginActivity.class);
                 startActivity(loginIntent);
+                finish();
             }
         });
 
-        
-
 
     }
+
+    private void initAdapter() {
+
+        classiFiedDao = DaoSingleton.getInstance().getClassiFiedDao();
+        for (int i = 0; i < classiFiedDao.queryBuilder().list().size(); i++) {
+            ReuseFragment fragment = new ReuseFragment();
+            Bundle args = new Bundle();
+            args.putInt("i", i);
+            fragment.setArguments(args);
+            fragmentList.add(fragment);
+        }
+        fragmentList.add(new SpecialShareFragment());
+        fragmentList.add(new CarFragment());
+        adapter = new MainViewPagerAdapter(getSupportFragmentManager(), fragmentList, BaseApplication.getContext());
+        viewPager.setAdapter(adapter);
+        viewPager.setCurrentItem(position);
+
+    }
+
 
     @Override
     protected void initView() {
@@ -124,6 +144,7 @@ public class MainActivity extends BaseActivity implements INetAddress{
 
         viewPager = findId(R.id.viewpager);
         login = findId(R.id.main_login);
+
 
     }
 }

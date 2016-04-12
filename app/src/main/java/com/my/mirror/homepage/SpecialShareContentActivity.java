@@ -74,12 +74,7 @@ public class SpecialShareContentActivity extends BaseActivity implements INetAdd
                     fragment.setArguments(args);
                     fragmentList.add(fragment);
 
-//                    String url = bean.getData().getStory_data().getImg_array().get(0);
-//                    if (url != null) {
-//                        Picasso.with(BaseApplication.getContext()).load(url).into(backgroundIv);
-//                    }
                     backgroundIv.setImageURI(Uri.parse(bean.getData().getStory_data().getImg_array().get(0)));
-
 
                 }
                 viewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
@@ -90,12 +85,8 @@ public class SpecialShareContentActivity extends BaseActivity implements INetAdd
 
                     @Override
                     public void onPageSelected(int position) {
-//                        String url = bean.getData().getStory_data().getImg_array().get(position);
-//                        if (url != null) {
-//                            Picasso.with(BaseApplication.getContext()).load(url).into(backgroundIv);
-//                        }
-                        backgroundIv.setImageURI(Uri.parse(bean.getData().getStory_data().getImg_array().get(position)));
 
+                        backgroundIv.setImageURI(Uri.parse(bean.getData().getStory_data().getImg_array().get(position)));
                     }
 
                     @Override

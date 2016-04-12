@@ -1,5 +1,6 @@
 package com.my.mirror.homepage;
 
+import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
@@ -30,7 +31,10 @@ public class SpecialShareFragment extends BaseFragment implements INetAddress{
         titleLine.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                classifiedFragment = new ClassifiedFragment(4);
+                classifiedFragment = new ClassifiedFragment();
+                Bundle args = new Bundle();
+                args.putInt("four",4);
+                classifiedFragment.setArguments(args);
                 FragmentManager fm = getActivity().getSupportFragmentManager();
                 fm.beginTransaction().replace(R.id.main_frame, classifiedFragment).commit();
             }
