@@ -5,35 +5,27 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.TextView;
-
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.google.gson.Gson;
 import com.my.mirror.R;
 import com.my.mirror.base.BaseActivity;
-import com.my.mirror.base.BaseApplication;
 import com.my.mirror.net.okhttp.INetAddress;
 import com.my.mirror.net.okhttp.StringCallback;
-import com.squareup.picasso.Picasso;
 import com.zhy.http.okhttp.OkHttpUtils;
-
 import java.util.ArrayList;
 import java.util.List;
-
 import okhttp3.Call;
 
 /**
  * Created by dllo on 16/4/7.
  */
 public class SpecialShareContentActivity extends BaseActivity implements INetAddress{
-
     private MainViewPager viewPager;
     private MainViewPagerAdapter adapter;
     private List<Fragment> fragmentList;
@@ -42,7 +34,6 @@ public class SpecialShareContentActivity extends BaseActivity implements INetAdd
     private LinearLayout linearLayout;
     private SpecialShareContentBean bean;
     private Context context;
-
 
     @Override
     protected int getLayout() {
@@ -74,14 +65,7 @@ public class SpecialShareContentActivity extends BaseActivity implements INetAdd
                     args.putString("subTitle",bean.getData().getStory_data().getText_array().get(i).getSubTitle());
                     fragment.setArguments(args);
                     fragmentList.add(fragment);
-
-//                    String url = bean.getData().getStory_data().getImg_array().get(0);
-//                    if (url != null) {
-//                        Picasso.with(BaseApplication.getContext()).load(url).into(backgroundIv);
-//                    }
                     backgroundIv.setImageURI(Uri.parse(bean.getData().getStory_data().getImg_array().get(0)));
-
-
                 }
                 viewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
                     @Override
@@ -91,10 +75,6 @@ public class SpecialShareContentActivity extends BaseActivity implements INetAdd
 
                     @Override
                     public void onPageSelected(int position) {
-//                        String url = bean.getData().getStory_data().getImg_array().get(position);
-//                        if (url != null) {
-//                            Picasso.with(BaseApplication.getContext()).load(url).into(backgroundIv);
-//                        }
                         backgroundIv.setImageURI(Uri.parse(bean.getData().getStory_data().getImg_array().get(position)));
 
                     }
@@ -127,7 +107,6 @@ public class SpecialShareContentActivity extends BaseActivity implements INetAdd
 
         Animation animation = AnimationUtils.loadAnimation(this, R.anim.loading);
         loading.startAnimation(animation);
-
     }
 
     @Override

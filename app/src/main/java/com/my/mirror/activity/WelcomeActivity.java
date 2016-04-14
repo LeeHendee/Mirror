@@ -4,14 +4,12 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.CountDownTimer;
 import android.util.Log;
-import android.widget.ImageView;
-
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.google.gson.Gson;
+import com.my.mirror.MainActivity;
 import com.my.mirror.R;
 import com.my.mirror.base.BaseActivity;
 import com.my.mirror.gson.WelcomeBean;
-import com.my.mirror.login.LoginActivity;
 import com.my.mirror.net.okhttp.StringCallback;
 import com.zhy.http.okhttp.OkHttpUtils;
 
@@ -63,7 +61,7 @@ public class WelcomeActivity extends BaseActivity {
 
         @Override
         public void onFinish() {
-            Intent intent = new Intent(WelcomeActivity.this,LoginActivity.class);
+            Intent intent = new Intent(WelcomeActivity.this,MainActivity.class);
             startActivity(intent);
         }
     };
