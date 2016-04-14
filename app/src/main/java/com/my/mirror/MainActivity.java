@@ -13,6 +13,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
+import com.my.mirror.activity.LoginActivity;
 import com.my.mirror.base.BaseActivity;
 import com.my.mirror.base.BaseApplication;
 import com.my.mirror.gson.ClassifiedBean;
@@ -22,7 +23,6 @@ import com.my.mirror.homepage.MainViewPager;
 import com.my.mirror.homepage.MainViewPagerAdapter;
 import com.my.mirror.homepage.ReuseFragment;
 import com.my.mirror.homepage.SpecialShareFragment;
-import com.my.mirror.lzp.LoginActivity;
 import com.my.mirror.net.okhttp.INetAddress;
 import com.my.mirror.net.okhttp.StringCallback;
 import com.my.mirror.utils.MyToast;
@@ -76,6 +76,7 @@ public class MainActivity extends BaseActivity implements INetAddress{
                 bean = gson.fromJson(response, ClassifiedBean.class);
 
                 for (int i = 0; i < bean.getData().size(); i++) {
+
                     ReuseFragment fragment = new ReuseFragment();
                     Bundle args = new Bundle();
                     args.putString("stTitle",bean.getData().get(i).getCategory_name());

@@ -21,7 +21,6 @@ import com.my.mirror.base.BaseActivity;
 import com.my.mirror.base.BaseApplication;
 import com.my.mirror.net.okhttp.INetAddress;
 import com.my.mirror.net.okhttp.StringCallback;
-import com.squareup.picasso.Picasso;
 import com.zhy.http.okhttp.OkHttpUtils;
 
 import java.util.ArrayList;

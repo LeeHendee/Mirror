@@ -28,7 +28,7 @@ public class PicturesActivity extends BaseActivity  {
     private ImageView coverIv,playIv;
 
     @Override
-    protected int getLayout() {
+    protected int getLayout()  {
         return R.layout.activity_pictures;
     }
 
