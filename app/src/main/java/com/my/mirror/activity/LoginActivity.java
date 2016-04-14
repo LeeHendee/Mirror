@@ -9,13 +9,21 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.my.mirror.MainActivity;
 import com.my.mirror.R;
 import com.my.mirror.base.BaseActivity;
+import com.my.mirror.bean.LoginFailBean;
 import com.my.mirror.net.okhttp.INetAddress;
 import com.my.mirror.net.okhttp.StringCallback;
 import com.zhy.http.okhttp.OkHttpUtils;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.HashMap;
+
 import cn.sharesdk.framework.Platform;
 import cn.sharesdk.framework.PlatformActionListener;
 import cn.sharesdk.framework.ShareSDK;
@@ -26,11 +34,12 @@ import okhttp3.Call;
 /**
  * Created by liangzaipan on 16/3/29.
  */
-public class LoginActivity extends BaseActivity implements View.OnClickListener {
-    private EditText phoneEt,passwordEt;
-    private Button loginBtn,createBtn;
-    private ImageView closeIv,xinLangIv,weiXinIv;
+public class LoginActivity extends BaseActivity implements View.OnClickListener, INetAddress {
+    private EditText phoneEt, passwordEt;
+    private Button loginBtn, createBtn;
+    private ImageView closeIv, xinLangIv, weiXinIv;
     private TextView forgetTv;
+
     @Override
     protected int getLayout() {
         return R.layout.activity_login;
@@ -84,24 +93,54 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()){
+        switch (v.getId()) {
             case R.id.login_btn:
-                OkHttpUtils.post().url("http://api101.test.mirroreye.cn/index.php/user/login")
+                OkHttpUtils.post().url(BEGIN_URL + LOGIN)
                         .addParams("phone_number", phoneEt.getText().toString())
-                        .addParams("password",passwordEt.getText().toString()).build().execute(new StringCallback() {
+                        .addParams("password", passwordEt.getText().toString()).build().execute(new StringCallback() {
                     @Override
                     public void onError(Call call, Exception e) {
 
                     }
 
                     @Override
-                    public void onResponse(String response) {
-                        Log.i("fdfd",response);
+                    public void onResponse(final String response) {
+                        Log.i("fdfd", response);
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                try {
+                                    JSONObject jsonObject = new JSONObject(response);
+                                    if (jsonObject.get("data").equals("") && !jsonObject.get("msg").equals("")) {
+                                        final LoginFailBean loginFailBean = new LoginFailBean(response);
+                                        loginFailBean.setMsg(jsonObject.getString("msg"));
+                                        runOnUiThread(new Runnable() {
+                                            @Override
+                                            public void run() {
+                                                Toast.makeText(LoginActivity.this, loginFailBean.getMsg(), Toast.LENGTH_SHORT).show();
+                                            }
+                                        });
+                                    } else if (!jsonObject.get("data").equals("")) {
+                                        runOnUiThread(new Runnable() {
+                                            @Override
+                                            public void run() {
+                                                Toast.makeText(LoginActivity.this, "登陆成功", Toast.LENGTH_SHORT).show();
+                                                Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                                                //intent.putExtra("result", 1);
+                                                startActivity(intent);
+                                            }
+                                        });
+                                    }
+                                } catch (JSONException e) {
+                                    e.printStackTrace();
+                                }
+                            }
+                        });
                     }
                 });
                 break;
             case R.id.login_mackCount_btn:
-                Intent intent = new Intent(this,RegisterActivity.class);
+                Intent intent = new Intent(this, RegisterActivity.class);
                 startActivity(intent);
                 break;
             case R.id.login_close:
@@ -158,7 +197,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
                 platformWx.showUser(null);
                 break;
             case R.id.login_forget:
-                Intent intent1 = new Intent(this,ForgetPasswordActivity.class);
+                Intent intent1 = new Intent(this, ForgetPasswordActivity.class);
                 startActivity(intent1);
                 break;
         }
