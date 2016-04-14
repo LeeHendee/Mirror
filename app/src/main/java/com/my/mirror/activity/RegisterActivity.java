@@ -46,7 +46,7 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
     protected void initData() {
         sendTv.setOnClickListener(this);
         btn.setOnClickListener(this);
-
+        closeIv.setOnClickListener(this);
     }
 
     @Override
