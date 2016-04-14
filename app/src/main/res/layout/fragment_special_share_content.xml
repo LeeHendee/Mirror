@@ -14,22 +14,22 @@
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:layout_alignParentRight="true"
-            android:layout_marginBottom="40dp"
-            android:layout_marginRight="20dp" />
+            android:layout_marginBottom="@dimen/special_share_content_iv_marbotton"
+            android:layout_marginRight="@dimen/special_share_content_iv_marright" />
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_above="@id/share"
             android:layout_centerHorizontal="true"
-            android:layout_margin="25dp"
+            android:layout_margin="@dimen/special_share_content_linear_margin"
             android:background="@drawable/shape"
             android:orientation="vertical">
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="30dp"
+                android:layout_margin="@dimen/special_share_content_line_margin"
                 android:orientation="vertical">
 
                 <TextView
@@ -37,23 +37,23 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="@color/white"
-                    android:textSize="11sp" />
+                    android:textSize="@dimen/special_share_content_small_title_size" />
 
                 <TextView
                     android:id="@+id/big_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="22px"
+                    android:layout_marginTop="@dimen/special_share_content_big_title_margintop"
                     android:textColor="@color/white"
-                    android:textSize="17sp" />
+                    android:textSize="@dimen/special_share_content_big_title_size" />
 
                 <TextView
                     android:id="@+id/sub_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="22px"
+                    android:layout_marginTop="@dimen/special_share_content_sub_title_margintop"
                     android:textColor="@color/white"
-                    android:textSize="10sp" />
+                    android:textSize="@dimen/special_share_content_sub_title_size" />
 
             </LinearLayout>
 

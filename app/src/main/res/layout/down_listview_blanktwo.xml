@@ -4,6 +4,6 @@
     android:layout_height="match_parent">
     <View
         android:layout_width="match_parent"
-        android:layout_height="70dp"
+        android:layout_height="@dimen/down_listview_blanktwo_height"
         android:background="#00000000"/>
 </LinearLayout>

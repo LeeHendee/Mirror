@@ -10,10 +10,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.my.mirror.MainActivity;
 import com.my.mirror.R;
 import com.my.mirror.base.BaseActivity;
-import com.my.mirror.bean.LoginFailBean;
 import com.my.mirror.bean.RegisterFailBean;
 import com.my.mirror.net.okhttp.INetAddress;
 import com.my.mirror.net.okhttp.StringCallback;

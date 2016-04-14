@@ -57,7 +57,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
+            android:layout_margin="@dimen/order_detail_margin"
             android:hint="@string/addpersoninfo"
             android:textSize="@dimen/lzp_text_fifteen" />
 
@@ -200,7 +200,7 @@
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
                 android:layout_marginRight="@dimen/lzp_fifteen"
-                android:text="3850" />
+                android:text="@string/order_detail_second_text" />
 
         </RelativeLayout>
     </LinearLayout>
