@@ -11,7 +11,7 @@ import com.google.gson.Gson;
 import com.my.mirror.R;
 import com.my.mirror.base.BaseActivity;
 import com.my.mirror.gson.WelcomeBean;
-import com.my.mirror.login.LoginActivity;
+
 import com.my.mirror.net.okhttp.StringCallback;
 import com.zhy.http.okhttp.OkHttpUtils;
 

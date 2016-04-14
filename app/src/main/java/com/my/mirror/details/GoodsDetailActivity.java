@@ -3,9 +3,11 @@ package com.my.mirror.details;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Handler;
+import android.os.Looper;
 import android.os.Message;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.google.gson.Gson;
@@ -53,7 +55,6 @@ public class GoodsDetailActivity extends BaseActivity implements INetAddress, Vi
     protected void initView() {
         listView = (LinkageListView) findViewById(R.id.detail_listview);
         background = (SimpleDraweeView) findViewById(R.id.goodsdetail_background);
-
         backBtn = findId(R.id.btn_back_detail);
         picturesBtn = findId(R.id.btn_pictures);
         buyBtn = findId(R.id.btn_buy);
@@ -62,11 +63,23 @@ public class GoodsDetailActivity extends BaseActivity implements INetAddress, Vi
         picturesBtn.setOnClickListener(this);
         buyBtn.setOnClickListener(this);
 
+        //按钮菜单滑动监听:
+//        listView.getBottomListView().setOnScrollChangeListener(new View.OnScrollChangeListener() {
+//            @Override
+//            public void onScrollChange(View v, int scrollX, int scrollY, int oldScrollX, int oldScrollY) {
+//               if (listView.getTopListView()==v){
+//
+//               }
+//            }
+//        });
+
+
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
+        System.gc();
     }
 
     private void addData() {
@@ -89,7 +102,6 @@ public class GoodsDetailActivity extends BaseActivity implements INetAddress, Vi
         FormEncodingBuilder builder = new FormEncodingBuilder();
         builder.add(DEVICE_TYPE, DEVICE);
         builder.add(VERSION,VERSION_VALUE);
-
         String url = BEGIN_URL+PRODUCT_LIST;
         Request request = new Request.Builder()
                 .url(url)
@@ -128,4 +140,8 @@ public class GoodsDetailActivity extends BaseActivity implements INetAddress, Vi
                 break;
         }
     }
+
+
+
+
 }

@@ -1,9 +1,9 @@
 package com.my.mirror.homepage;
 
+
 import android.support.v4.app.FragmentManager;
 import android.view.View;
 import android.widget.LinearLayout;
-
 import com.my.mirror.R;
 import com.my.mirror.base.BaseFragment;
 
@@ -30,6 +30,8 @@ public class CarFragment extends BaseFragment {
             }
         });
     }
+
+
 
     @Override
     protected void initView() {

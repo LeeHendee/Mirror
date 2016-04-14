@@ -2,6 +2,7 @@ package com.my.mirror.details;
 
 import android.content.Intent;
 import android.net.Uri;
+import android.os.Debug;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -48,10 +49,10 @@ public class PicturesActivity extends BaseActivity  {
         jPlayer = (JCVideoPlayer) videoHeadView.findViewById(R.id.jcv_id);
         Log.d("tag","--->>"+picturesData.size());
         for (int i = 0; i < 5; i++) {
-
             if (Integer.parseInt(picturesData.get(i).getType()) == 8) {
                 jPlayer.setUp(picturesData.get(i).getData(), "");
             }
+
             if (Integer.valueOf(picturesData.get(i).getType()) == 9) {
                 Picasso.with(this).load(Uri.parse(picturesData.get(i).getData())).into(coverIv);
                 jPlayer.ivThumb.setVisibility(View.VISIBLE);

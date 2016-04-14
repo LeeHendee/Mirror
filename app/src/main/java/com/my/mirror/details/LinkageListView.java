@@ -3,7 +3,6 @@ package com.my.mirror.details;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
@@ -73,11 +72,9 @@ public class LinkageListView extends FrameLayout {
             }
         });
 
-
         mBottomListView.setOnScrollListener(new AbsListView.OnScrollListener() {
             @Override
             public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
-                Log.d("tag","---->>>"+"firstVisibleItem"+firstVisibleItem+"visibleItemCount"+visibleItemCount+"totalItemCount"+totalItemCount);
                 View child = view.getChildAt(0);
                 if (child != null) {
                     mTopListView.setSelectionFromTop(firstVisibleItem, (int) (child.getTop() * linkageSpeed));
