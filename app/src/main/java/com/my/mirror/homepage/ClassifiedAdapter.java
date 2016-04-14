@@ -11,9 +11,6 @@ import com.my.mirror.R;
 import com.my.mirror.greendao.ClassiFied;
 import com.my.mirror.greendao.ClassiFiedDao;
 import com.my.mirror.greendao.DaoSingleton;
-import com.my.mirror.gson.ClassifiedBean;
-
-import java.util.List;
 
 /**
  * Created by dllo on 16/4/1.
@@ -76,7 +73,6 @@ public class ClassifiedAdapter extends BaseAdapter {
     private void net(){
         classiFiedDao = DaoSingleton.getInstance().getClassiFiedDao();
         classiFied = classiFiedDao.queryBuilder().list().get(0);
-
     }
 
     public class MyViewHolder{

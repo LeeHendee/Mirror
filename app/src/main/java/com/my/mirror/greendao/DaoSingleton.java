@@ -21,6 +21,7 @@ public class DaoSingleton {
     private DaoMaster.DevOpenHelper helper;
     private ClassiFiedDao classiFiedDao;
     private ReUseDao reUseDao;
+    private SpecialShareDao specialShareDao;
 
 
     private DaoSingleton() {
@@ -80,6 +81,12 @@ public class DaoSingleton {
         return reUseDao;
     }
 
+    public SpecialShareDao getSpecialShareDao() {
+        if (specialShareDao == null) {
+            specialShareDao = getDaoSession().getSpecialShareDao();
+        }
+        return specialShareDao;
+    }
 
 
 }

@@ -13,6 +13,7 @@ public interface INetAddress {
     String DEVICE_REUSE = "2";
     String GOOD_TYPE = "good_type";
     String STORY_ID = "story_id";
+    String CATEGORY_ID = "category_id";
 
 
     //商品详情

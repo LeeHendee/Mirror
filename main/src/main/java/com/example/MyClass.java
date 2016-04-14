@@ -10,6 +10,7 @@ public class MyClass {
         Entity classiFied = schema.addEntity("ClassiFied");
         classiFied.addIdProperty().primaryKey().autoincrement();
         classiFied.addStringProperty("title");
+        classiFied.addStringProperty("categoryId");
 
         Entity reUse = schema.addEntity("ReUse");
         reUse.addIdProperty().primaryKey().autoincrement();
@@ -19,6 +20,11 @@ public class MyClass {
         reUse.addStringProperty("price");
         reUse.addStringProperty("area");
         reUse.addStringProperty("brand");
+
+        Entity specialShare = schema.addEntity("SpecialShare");
+        specialShare.addIdProperty().primaryKey().autoincrement();
+        specialShare.addStringProperty("title");
+        specialShare.addStringProperty("img");
 
         try {
             new DaoGenerator().generateAll(schema, "./app/src/main/java/");

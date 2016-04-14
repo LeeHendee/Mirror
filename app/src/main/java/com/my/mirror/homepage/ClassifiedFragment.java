@@ -1,10 +1,6 @@
 package com.my.mirror.homepage;
 
-import android.animation.ObjectAnimator;
 import android.content.Intent;
-import android.os.Bundle;
-import android.support.v4.app.FragmentManager;
-import android.util.Log;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
@@ -14,20 +10,11 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.google.gson.Gson;
 import com.my.mirror.MainActivity;
 import com.my.mirror.R;
 import com.my.mirror.base.BaseApplication;
 import com.my.mirror.base.BaseFragment;
-import com.my.mirror.greendao.ClassiFied;
-import com.my.mirror.greendao.ClassiFiedDao;
-import com.my.mirror.greendao.DaoSingleton;
-import com.my.mirror.gson.ClassifiedBean;
 import com.my.mirror.net.okhttp.INetAddress;
-import com.my.mirror.net.okhttp.StringCallback;
-import com.zhy.http.okhttp.OkHttpUtils;
-
-import okhttp3.Call;
 
 /**
  * Created by dllo on 16/3/31.
@@ -41,10 +28,6 @@ public class ClassifiedFragment extends BaseFragment implements View.OnClickList
     private ListView listView;
     private ClassifiedAdapter adapter;
     private ReuseFragment reuseFragment;
-
-
-
-
 
     @Override
     protected void initData() {
@@ -80,11 +63,10 @@ public class ClassifiedFragment extends BaseFragment implements View.OnClickList
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Bundle args = new Bundle();
-                args.putInt("i",position);
-                reuseFragment.setArguments(args);
-                FragmentManager fm = getActivity().getSupportFragmentManager();
-                fm.beginTransaction().replace(R.id.main_frame, reuseFragment).commit();
+                Intent intent = new Intent(getActivity(), MainActivity.class);
+                intent.putExtra("position", position);
+                getActivity().finish();
+                startActivity(intent);
             }
         });
     }
@@ -118,18 +100,22 @@ public class ClassifiedFragment extends BaseFragment implements View.OnClickList
             case R.id.resure_special_line:
                 Intent intentSpecial = new Intent(getActivity(), MainActivity.class);
                 intentSpecial.putExtra("position", 3);
+                getActivity().finish();
                 startActivity(intentSpecial);
+
                 break;
 
             case R.id.resure_car_line:
                 Intent intentCar = new Intent(getActivity(), MainActivity.class);
                 intentCar.putExtra("position", 4);
+                getActivity().finish();
                 startActivity(intentCar);
                 break;
 
             case R.id.resure_back_line:
                 Intent intentBack = new Intent(getActivity(), MainActivity.class);
                 intentBack.putExtra("position", 0);
+                getActivity().finish();
                 startActivity(intentBack);
                 break;
 

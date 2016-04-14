@@ -2,7 +2,6 @@ package com.my.mirror.homepage;
 
 import android.content.Context;
 import android.content.Intent;
-import android.net.Uri;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -21,31 +20,30 @@ import com.my.mirror.greendao.SpecialShareDao;
 import com.my.mirror.net.ImageLoaderHelper;
 
 /**
- * Created by dllo on 16/4/6.
+ * Created by dllo on 16/4/14.
  */
-public class SpecialShareAdapter extends RecyclerView.Adapter<SpecialShareAdapter.SpecialViewHolder> {
+public class SpecialShareNoNetAdapter extends RecyclerView.Adapter<SpecialShareNoNetAdapter.SpecialViewHolder> {
 
     private Context context;
+    private SpecialShareDao specialShareDao;
     private ImageLoaderHelper helper;
-    private SpecialShareBean bean;
 
-    public SpecialShareAdapter(SpecialShareBean bean,Context context) {
-        this.bean = bean;
+    public SpecialShareNoNetAdapter(Context context) {
         this.context = context;
     }
 
     @Override
     public SpecialViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_reuse_project, null);
-
         return new SpecialViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(SpecialViewHolder holder, int position) {
         helper = ImageLoaderHelper.getImageLoaderHelper();
-        helper.loadImage(bean.getData().getList().get(position).getStory_img(), holder.simpleDraweeView);
-        holder.type.setText(bean.getData().getList().get(position).getStory_title());
+        helper.loadImage(specialShareDao.queryBuilder().list().get(position).getImg(), holder.simpleDraweeView);
+        // holder.simpleDraweeView.setImageURI(Uri.parse(bean.getData().getList().get(position).getStory_img()));
+        holder.type.setText(specialShareDao.queryBuilder().list().get(position).getTitle());
         holder.pos = position;
         //添加动画
         Animation animation = AnimationUtils.loadAnimation(BaseApplication.getContext(), R.anim.loading);
@@ -54,7 +52,8 @@ public class SpecialShareAdapter extends RecyclerView.Adapter<SpecialShareAdapte
 
     @Override
     public int getItemCount() {
-        return bean.getData().getList().size();
+        specialShareDao = DaoSingleton.getInstance().getSpecialShareDao();
+        return specialShareDao.queryBuilder().list().size();
     }
 
     class SpecialViewHolder extends RecyclerView.ViewHolder {
@@ -78,8 +77,8 @@ public class SpecialShareAdapter extends RecyclerView.Adapter<SpecialShareAdapte
                     context.startActivity(intent);
                 }
             });
+        }
 
         }
 
     }
-}

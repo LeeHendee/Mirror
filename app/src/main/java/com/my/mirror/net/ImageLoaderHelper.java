@@ -20,9 +20,9 @@ import java.io.File;
 public class ImageLoaderHelper {
     public static ImageLoaderHelper imageLoaderHelper;
     private ImageLoader imageLoader;
-    private DisplayImageOptions options;
-    private ImageLoaderConfiguration configuration;
-
+    private DisplayImageOptions options; //设置图片对象
+    private ImageLoaderConfiguration configuration;//设置图片缓存属性
+    //获得磁盘本地储存路径
     private File cacheDir = BaseApplication.getContext().getFilesDir();
 
     private ImageLoaderHelper(){
@@ -32,9 +32,9 @@ public class ImageLoaderHelper {
     private void init() {
         //设置网络加载图片
         options = new DisplayImageOptions.Builder()
-                .showImageOnLoading(R.mipmap.ic_launcher)//加载期间显示的图片
-                .showImageForEmptyUri(R.mipmap.ic_launcher)//网址为空的时候显示的图片
-                .showImageOnFail(R.mipmap.ic_launcher)//加载失败的时候显示的图片
+                .showImageOnLoading(null)//加载期间显示的图片
+                .showImageForEmptyUri(null)//网址为空的时候显示的图片
+                .showImageOnFail(null)//加载失败的时候显示的图片
                 .cacheInMemory(true)//是否内存缓存
                 .cacheOnDisk(true)//是否内存缓存
                 .bitmapConfig(Bitmap.Config.RGB_565)//设置图片的解码格式

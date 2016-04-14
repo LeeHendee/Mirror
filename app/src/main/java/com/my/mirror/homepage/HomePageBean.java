@@ -1,4 +1,4 @@
-package com.my.mirror.gson;
+package com.my.mirror.homepage;
 
 import java.util.List;
 
