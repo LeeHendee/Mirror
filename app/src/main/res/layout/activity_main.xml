@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity"
-    android:background="@mipmap/bg">
+    android:background="@mipmap/bg"
+    android:id="@+id/main_line">
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <com.my.mirror.homepage.MainViewPager
+        <com.my.mirror.adapter.MainViewPager
             android:id="@+id/viewpager"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
@@ -46,7 +46,6 @@
                 />
         </RelativeLayout>
     </FrameLayout>
-
 
 </LinearLayout>
 

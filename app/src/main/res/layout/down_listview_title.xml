@@ -6,22 +6,22 @@
     android:orientation="vertical">
 <View
     android:layout_width="match_parent"
-    android:layout_height="0dp"
+    android:layout_height="@dimen/dimens_zero"
     android:layout_weight="1"/>
     <TextView
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginLeft="@dimen/down_listview_title_marginleft"
+        android:layout_marginTop="@dimen/down_listview_title_margintop"
         android:textColor="#000"
         android:textStyle="bold"
-        android:textSize="17sp"
+        android:textSize="@dimen/down_listview_title_text_size"
         android:id="@+id/downthress_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
     <ImageView
         android:layout_width="match_parent"
-        android:layout_height="5dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
+        android:layout_height="@dimen/down_listview_title_image_height"
+        android:layout_marginLeft="@dimen/down_listview_title_image_margin"
+        android:layout_marginRight="@dimen/down_listview_title_image_margin"
         android:background="@mipmap/black_tiao"/>
 
 </LinearLayout>

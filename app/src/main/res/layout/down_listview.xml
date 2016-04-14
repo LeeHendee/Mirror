@@ -6,12 +6,12 @@
 
     <View
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="@dimen/dimens_zero"
         android:layout_weight="1" />
 
     <LinearLayout
 
-        android:layout_width="315dp"
+        android:layout_width="@dimen/down_listview_line_width"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:background="@android:color/black"
@@ -20,22 +20,22 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginLeft="15dp"
-            android:layout_marginRight="15dp"
+            android:layout_marginLeft="@dimen/down_listview_line_marginleft"
+            android:layout_marginRight="@dimen/down_listview_line_marginleft"
             android:orientation="vertical">
 
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:layout_marginTop="14dp"
+                android:layout_marginTop="@dimen/down_listview_line_marginleft"
                 android:background="@mipmap/titleline" />
 
             <LinearLayout
-                android:layout_width="285dp"
+                android:layout_width="@dimen/down_listview_liner_width"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:layout_marginTop="15dp"
+                android:layout_marginTop="@dimen/down_listview_line_marginleft"
                 android:orientation="horizontal">
 
                 <LinearLayout
@@ -47,13 +47,13 @@
                         android:id="@+id/down_location"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textSize="15sp" />
+                        android:textSize="@dimen/down_listview_text_size" />
 
                     <TextView
                         android:id="@+id/down_en_location"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textSize="15sp"
+                        android:textSize="@dimen/down_listview_text_size"
                         android:textStyle="bold" />
                 </LinearLayout>
 
@@ -61,28 +61,26 @@
                     android:id="@+id/down_country"
                     android:layout_width="match_parent"
                     android:gravity="center"
-                    android:layout_height="40dp"
+                    android:layout_height="@dimen/down_listview_text_country_height"
                     android:layout_gravity="center_horizontal"
-                    android:text="简约而不简单"
                     android:textColor="@android:color/white"
-                    android:textSize="30sp" />
+                    android:textSize="@dimen/down_listview_text_country_size" />
             </LinearLayout>
 
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
+                android:layout_marginTop="@dimen/down_listview_line_marginleft"
                 android:background="@mipmap/titleline" />
 
             <TextView
                 android:id="@+id/down_context"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="22dp"
-                android:layout_marginTop="15sp"
-                android:text="这是看见大手大脚啊上课的教室里的空间发生了的咖啡机萨里的咖啡机啊实力的咖啡机啊实力的咖啡机撒到路口附近阿萨德了看法"
+                android:layout_marginBottom="@dimen/down_listview_text_context_marginbottom"
+                android:layout_marginTop="@dimen/down_listview_text_context_margintop"
                 android:textColor="@android:color/white"
-                android:textSize="13sp" />
+                android:textSize="@dimen/downj_listview_text_context_size" />
         </LinearLayout>
 
     </LinearLayout>

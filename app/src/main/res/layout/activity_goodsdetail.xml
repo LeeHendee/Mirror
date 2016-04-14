@@ -11,7 +11,7 @@
         android:layout_height="match_parent"
         fresco:placeholderImage="@mipmap/ic_launcher" />
 
-    <com.my.mirror.details.LinkageListView
+    <com.my.mirror.adapter.LinkageListView
         android:id="@+id/detail_listview"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>

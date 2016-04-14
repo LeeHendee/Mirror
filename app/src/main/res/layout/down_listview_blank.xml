@@ -5,6 +5,6 @@
     android:orientation="vertical">
 <View
     android:layout_width="match_parent"
-    android:layout_height="680dp"
+    android:layout_height="@dimen/down_listview_blank_view_height"
     android:background="#00000000"/>
 </LinearLayout>

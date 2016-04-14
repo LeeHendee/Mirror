@@ -1,17 +1,27 @@
 package com.my.mirror.activity;
 
+import android.content.Intent;
 import android.os.CountDownTimer;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import com.my.mirror.R;
 import com.my.mirror.base.BaseActivity;
+import com.my.mirror.bean.RegisterFailBean;
+import com.my.mirror.net.okhttp.INetAddress;
 import com.my.mirror.net.okhttp.StringCallback;
 import com.my.mirror.utils.MyToast;
 import com.zhy.http.okhttp.OkHttpUtils;
 import com.zhy.http.okhttp.callback.Callback;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import okhttp3.Call;
 import okhttp3.Response;
 
@@ -19,10 +29,11 @@ import okhttp3.Response;
 /**
  * Created by liangzaipan on 16/3/29.
  */
-public class RegisterActivity extends BaseActivity implements View.OnClickListener {
+public class RegisterActivity extends BaseActivity implements View.OnClickListener, INetAddress {
     private TextView sendTv;
     private EditText phoneEt, numEv, passwordEv;
     private Button btn;
+    private ImageView closeIv;
 
     @Override
     protected int getLayout() {
@@ -33,7 +44,7 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
     protected void initData() {
         sendTv.setOnClickListener(this);
         btn.setOnClickListener(this);
-
+        closeIv.setOnClickListener(this);
     }
 
     @Override
@@ -43,6 +54,7 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
         numEv = findId(R.id.register_num_edit);
         passwordEv = findId(R.id.register_password_edit);
         btn = findId(R.id.register_makeCount_btn);
+        closeIv = findId(R.id.register_close);
 
     }
 
@@ -51,7 +63,7 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
         switch (v.getId()) {
             case R.id.register_send_tv:
                 if (phoneEt.getText() != null) {
-                    OkHttpUtils.post().url("http://api101.test.mirroreye.cn/index.php/user/send_code")
+                    OkHttpUtils.post().url(BEGIN_URL + SEND_CODE)
                             .addParams("phone number", phoneEt.getText().toString())
                             .build().execute(new Callback() {
                         @Override
@@ -76,28 +88,60 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
                 }
                 break;
             case R.id.register_makeCount_btn:
-                if (phoneEt.length() != 0) {
+                if (phoneEt.length() == 0) {
                     MyToast.mToast("请输入手机号");
-                } else if (numEv.length() != 0) {
+                } else if (numEv.length() == 0) {
                     MyToast.mToast("请输入正确的验证码");
-                } else if (passwordEv.length() != 0) {
+                } else if (passwordEv.length() == 0) {
                     MyToast.mToast("请输入密码");
                 } else {
-                    OkHttpUtils.post().url("http://api101.test.mirroreye.cn/index.php/user/reg")
+                    OkHttpUtils.post().url(BEGIN_URL + REG)
                             .addParams("phone_number", phoneEt.getText().toString()).addParams("number", numEv.getText().toString())
                             .addParams("password", passwordEv.getText().toString()).build().execute(new StringCallback() {
-
                         @Override
                         public void onError(Call call, Exception e) {
 
                         }
 
                         @Override
-                        public void onResponse(String response) {
+                        public void onResponse(final String response) {
                             Log.i("HHHHH", response);
+                            runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    try {
+                                        JSONObject jsonObject = new JSONObject(response);
+                                        if (jsonObject.get("data").equals("") && !jsonObject.get("msg").equals("")) {
+                                            final RegisterFailBean registerFailBean = new RegisterFailBean(response);
+                                            registerFailBean.setMsg(jsonObject.getString("msg"));
+                                            runOnUiThread(new Runnable() {
+                                                @Override
+                                                public void run() {
+                                                    Toast.makeText(RegisterActivity.this, registerFailBean.getMsg(), Toast.LENGTH_SHORT).show();
+                                                }
+                                            });
+                                        } else if (!jsonObject.get("data").equals("")) {
+                                            runOnUiThread(new Runnable() {
+                                                @Override
+                                                public void run() {
+                                                    MyToast.mToast("登陆成功");
+                                                    Intent intent = new Intent(RegisterActivity.this, MainActivity.class);
+                                                    intent.putExtra("result", 1);
+                                                    startActivity(intent);
+                                                }
+                                            });
+                                        }
+                                    } catch (JSONException e) {
+                                        e.printStackTrace();
+                                    }
+                                }
+                            });
                         }
                     });
                 }
+                break;
+            case R.id.register_close:
+                finish();
                 break;
         }
     }
