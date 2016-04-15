@@ -22,31 +22,13 @@
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme">
-<<<<<<< HEAD
-        <activity android:name=".activity.WelcomeActivity">
-=======
-
         <activity android:name=".activity.WelcomeActivity">
 
-
-
->>>>>>> 65c4f407122870b63b4163966f9b1c10db139a58
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-<<<<<<< HEAD
-        <activity android:name=".activity.RegisterActivity" />
-        <activity android:name=".activity.ForgetPasswordActivity" />
-        <activity android:name=".details.PicturesActivity" />
-        <activity android:name=".details.SinglePictureActivity" />
-        <activity android:name=".activity.LoginActivity"/>
-        <activity android:name=".homepage.SpecialShareContentActivity"/>
-        <activity android:name=".details.GoodsDetailActivity"/>
-        <activity android:name=".MainActivity" />
-
-=======
 
         <activity android:name=".activity.LoginActivity" />
         <activity android:name=".activity.ForgetPasswordActivity" />
@@ -56,7 +38,6 @@
         <activity android:name=".activity.SpecialShareContentActivity"/>
         <activity android:name=".activity.MainActivity"/>
         <activity android:name=".activity.GoodsDetailActivity"/>
->>>>>>> 65c4f407122870b63b4163966f9b1c10db139a58
 
         <activity
             android:name="com.mob.tools.MobUIShell"

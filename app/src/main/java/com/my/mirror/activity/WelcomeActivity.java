@@ -3,22 +3,12 @@ package com.my.mirror.activity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.CountDownTimer;
-<<<<<<< HEAD
-import android.util.Log;
-=======
 
->>>>>>> 65c4f407122870b63b4163966f9b1c10db139a58
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.google.gson.Gson;
-import com.my.mirror.MainActivity;
 import com.my.mirror.R;
 import com.my.mirror.base.BaseActivity;
-<<<<<<< HEAD
-import com.my.mirror.gson.WelcomeBean;
-=======
 import com.my.mirror.bean.WelcomeBean;
-
->>>>>>> 65c4f407122870b63b4163966f9b1c10db139a58
 import com.my.mirror.net.okhttp.StringCallback;
 import com.zhy.http.okhttp.OkHttpUtils;
 
@@ -28,6 +18,7 @@ import okhttp3.Call;
  * Created by liangzaipan on 16/4/1.
  */
 public class WelcomeActivity extends BaseActivity {
+    //测试
     private SimpleDraweeView simpleDraweeView;
     private WelcomeBean bean;
     @Override

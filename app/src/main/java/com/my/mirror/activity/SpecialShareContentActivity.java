@@ -5,33 +5,20 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
-<<<<<<< HEAD:app/src/main/java/com/my/mirror/homepage/SpecialShareContentActivity.java
-=======
-
->>>>>>> 65c4f407122870b63b4163966f9b1c10db139a58:app/src/main/java/com/my/mirror/activity/SpecialShareContentActivity.java
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-<<<<<<< HEAD:app/src/main/java/com/my/mirror/homepage/SpecialShareContentActivity.java
-=======
-
-
->>>>>>> 65c4f407122870b63b4163966f9b1c10db139a58:app/src/main/java/com/my/mirror/activity/SpecialShareContentActivity.java
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.google.gson.Gson;
 import com.my.mirror.R;
 import com.my.mirror.adapter.MainViewPager;
 import com.my.mirror.adapter.MainViewPagerAdapter;
 import com.my.mirror.base.BaseActivity;
-<<<<<<< HEAD:app/src/main/java/com/my/mirror/homepage/SpecialShareContentActivity.java
-=======
-
 import com.my.mirror.bean.SpecialShareContentBean;
 import com.my.mirror.fragment.SpecialShareContentFragment;
->>>>>>> 65c4f407122870b63b4163966f9b1c10db139a58:app/src/main/java/com/my/mirror/activity/SpecialShareContentActivity.java
 import com.my.mirror.net.okhttp.INetAddress;
 import com.my.mirror.net.okhttp.StringCallback;
 import com.zhy.http.okhttp.OkHttpUtils;
@@ -82,13 +69,10 @@ public class SpecialShareContentActivity extends BaseActivity implements INetAdd
                     args.putString("subTitle",bean.getData().getStory_data().getText_array().get(i).getSubTitle());
                     fragment.setArguments(args);
                     fragmentList.add(fragment);
-<<<<<<< HEAD:app/src/main/java/com/my/mirror/homepage/SpecialShareContentActivity.java
                     backgroundIv.setImageURI(Uri.parse(bean.getData().getStory_data().getImg_array().get(0)));
-=======
 
                     backgroundIv.setImageURI(Uri.parse(bean.getData().getStory_data().getImg_array().get(0)));
 
->>>>>>> 65c4f407122870b63b4163966f9b1c10db139a58:app/src/main/java/com/my/mirror/activity/SpecialShareContentActivity.java
                 }
                 viewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
                     @Override
@@ -98,11 +82,7 @@ public class SpecialShareContentActivity extends BaseActivity implements INetAdd
 
                     @Override
                     public void onPageSelected(int position) {
-<<<<<<< HEAD:app/src/main/java/com/my/mirror/homepage/SpecialShareContentActivity.java
                         backgroundIv.setImageURI(Uri.parse(bean.getData().getStory_data().getImg_array().get(position)));
-=======
->>>>>>> 65c4f407122870b63b4163966f9b1c10db139a58:app/src/main/java/com/my/mirror/activity/SpecialShareContentActivity.java
-
                         backgroundIv.setImageURI(Uri.parse(bean.getData().getStory_data().getImg_array().get(position)));
                     }
 
