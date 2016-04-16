@@ -59,6 +59,7 @@
     <string name="zc_item_ceshi_money">1500</string>
     <string name="reuse_title_head">浏览</string>
     <string name="order_detail_second_text">3850</string>
+    <string name="nonet_toast">请检查网络连接</string>
 
 
 </resources>

@@ -11,6 +11,7 @@ import com.my.mirror.base.BaseFragment;
 
 /**
  * Created by dllo on 16/4/7.
+ * 专题分享二级页面的复用fragment
  */
 public class SpecialShareContentFragment extends BaseFragment {
     private TextView title,smallTitle,subTitle;
@@ -19,6 +20,7 @@ public class SpecialShareContentFragment extends BaseFragment {
 
     @Override
     protected void initData() {
+        //接收传过来的数据 然后设置上
         getTitle = getArguments().getString("title");
         getSmallTitle = getArguments().getString("smallTitle");
         getSubtitle = getArguments().getString("subTitle");

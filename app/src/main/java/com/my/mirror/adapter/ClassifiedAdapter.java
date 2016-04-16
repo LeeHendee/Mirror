@@ -8,6 +8,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.my.mirror.R;
+import com.my.mirror.base.BaseApplication;
 import com.my.mirror.greendao.ClassiFied;
 import com.my.mirror.greendao.ClassiFiedDao;
 import com.my.mirror.greendao.DaoSingleton;
@@ -59,10 +60,10 @@ public class ClassifiedAdapter extends BaseAdapter {
             holder.name.setText("浏览"+classiFiedDao.queryBuilder().list().get(position).getTitle());
         if (i == position){
             holder.name.setAlpha(1);
-            holder.line.setVisibility(View.VISIBLE);
+            holder.line.setAlpha(1.00f);
         }  else {
             holder.name.setAlpha(0.25f);
-            holder.line.setVisibility(View.GONE);
+            holder.line.setAlpha(0.00f);
         }
 
 
@@ -71,7 +72,7 @@ public class ClassifiedAdapter extends BaseAdapter {
     }
 
     private void net(){
-        classiFiedDao = DaoSingleton.getInstance().getClassiFiedDao();
+        classiFiedDao = DaoSingleton.getInstance(BaseApplication.getContext()).getClassiFiedDao();
         classiFied = classiFiedDao.queryBuilder().list().get(0);
     }
 

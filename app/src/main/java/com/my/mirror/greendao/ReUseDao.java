@@ -30,6 +30,7 @@ public class ReUseDao extends AbstractDao<ReUse, Long> {
         public final static Property Price = new Property(4, String.class, "price", false, "PRICE");
         public final static Property Area = new Property(5, String.class, "area", false, "AREA");
         public final static Property Brand = new Property(6, String.class, "brand", false, "BRAND");
+        public final static Property TypeId = new Property(7, String.class, "typeId", false, "TYPE_ID");
     };
 
 
@@ -51,7 +52,8 @@ public class ReUseDao extends AbstractDao<ReUse, Long> {
                 "\"NAME\" TEXT," + // 3: name
                 "\"PRICE\" TEXT," + // 4: price
                 "\"AREA\" TEXT," + // 5: area
-                "\"BRAND\" TEXT);"); // 6: brand
+                "\"BRAND\" TEXT," + // 6: brand
+                "\"TYPE_ID\" TEXT);"); // 7: typeId
     }
 
     /** Drops the underlying database table. */
@@ -99,6 +101,11 @@ public class ReUseDao extends AbstractDao<ReUse, Long> {
         if (brand != null) {
             stmt.bindString(7, brand);
         }
+ 
+        String typeId = entity.getTypeId();
+        if (typeId != null) {
+            stmt.bindString(8, typeId);
+        }
     }
 
     /** @inheritdoc */
@@ -117,7 +124,8 @@ public class ReUseDao extends AbstractDao<ReUse, Long> {
             cursor.isNull(offset + 3) ? null : cursor.getString(offset + 3), // name
             cursor.isNull(offset + 4) ? null : cursor.getString(offset + 4), // price
             cursor.isNull(offset + 5) ? null : cursor.getString(offset + 5), // area
-            cursor.isNull(offset + 6) ? null : cursor.getString(offset + 6) // brand
+            cursor.isNull(offset + 6) ? null : cursor.getString(offset + 6), // brand
+            cursor.isNull(offset + 7) ? null : cursor.getString(offset + 7) // typeId
         );
         return entity;
     }
@@ -132,6 +140,7 @@ public class ReUseDao extends AbstractDao<ReUse, Long> {
         entity.setPrice(cursor.isNull(offset + 4) ? null : cursor.getString(offset + 4));
         entity.setArea(cursor.isNull(offset + 5) ? null : cursor.getString(offset + 5));
         entity.setBrand(cursor.isNull(offset + 6) ? null : cursor.getString(offset + 6));
+        entity.setTypeId(cursor.isNull(offset + 7) ? null : cursor.getString(offset + 7));
      }
     
     /** @inheritdoc */

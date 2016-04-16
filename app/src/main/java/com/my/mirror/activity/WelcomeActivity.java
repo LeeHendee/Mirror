@@ -3,6 +3,7 @@ package com.my.mirror.activity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.CountDownTimer;
+import android.util.Log;
 
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.google.gson.Gson;
@@ -31,16 +32,15 @@ public class WelcomeActivity extends BaseActivity {
         OkHttpUtils.post().url("http://api101.test.mirroreye.cn/index.php/index/started_img").build().execute(new StringCallback() {
             @Override
             public void onError(Call call, Exception e) {
-
+                Intent intent = new Intent(WelcomeActivity.this,MainActivity.class);
+                startActivity(intent);
+                Log.i("WelcomeActivity","网络不好啊");
+                finish();
             }
-
             @Override
             public void onResponse(String response) {
-
-
                 Gson gson = new Gson();
                 bean = gson.fromJson(response,WelcomeBean.class);
-
                 simpleDraweeView.setImageURI(Uri.parse(bean.getImg()));
                 timer.start();
             }

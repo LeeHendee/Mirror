@@ -52,7 +52,7 @@ public class SpecialShareNoNetAdapter extends RecyclerView.Adapter<SpecialShareN
 
     @Override
     public int getItemCount() {
-        specialShareDao = DaoSingleton.getInstance().getSpecialShareDao();
+        specialShareDao = DaoSingleton.getInstance(BaseApplication.getContext()).getSpecialShareDao();
         return specialShareDao.queryBuilder().list().size();
     }
 

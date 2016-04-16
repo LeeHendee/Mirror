@@ -21,6 +21,7 @@ public class MyClass {
         reUse.addStringProperty("price");
         reUse.addStringProperty("area");
         reUse.addStringProperty("brand");
+        reUse.addStringProperty("typeId");
 
         Entity specialShare = schema.addEntity("SpecialShare");
         specialShare.addIdProperty().primaryKey().autoincrement();

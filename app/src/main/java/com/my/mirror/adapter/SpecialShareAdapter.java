@@ -20,6 +20,7 @@ import com.my.mirror.net.ImageLoaderHelper;
 
 /**
  * Created by dllo on 16/4/6.
+ *专题分享适配器
  */
 public class SpecialShareAdapter extends RecyclerView.Adapter<SpecialShareAdapter.SpecialViewHolder> {
 
@@ -34,8 +35,7 @@ public class SpecialShareAdapter extends RecyclerView.Adapter<SpecialShareAdapte
 
     @Override
     public SpecialViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_reuse_project, null);
-
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_reuse_project, parent,false);
         return new SpecialViewHolder(view);
     }
 

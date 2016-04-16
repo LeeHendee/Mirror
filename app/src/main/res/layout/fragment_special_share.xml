@@ -59,7 +59,7 @@
 
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/special_recycler_view"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_marginBottom="@dimen/title_rv_marginbottom"
                 android:layout_marginTop="@dimen/title_rv_margintop" />

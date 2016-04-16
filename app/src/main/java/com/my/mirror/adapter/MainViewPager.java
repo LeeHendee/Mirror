@@ -8,6 +8,7 @@ import android.view.View;
 
 /**
  * Created by dllo on 16/3/30.
+ * 可以上下滑动的自定义viewpager
  */
 public class MainViewPager extends ViewPager{
     private float startX,startY;

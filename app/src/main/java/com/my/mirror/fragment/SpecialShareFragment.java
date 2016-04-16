@@ -11,6 +11,7 @@ import android.widget.LinearLayout;
 import com.google.gson.Gson;
 import com.my.mirror.R;
 import com.my.mirror.adapter.SpecialShareAdapter;
+import com.my.mirror.base.BaseApplication;
 import com.my.mirror.base.BaseFragment;
 import com.my.mirror.bean.SpecialShareBean;
 import com.my.mirror.greendao.DaoSingleton;
@@ -69,13 +70,11 @@ public class SpecialShareFragment extends BaseFragment implements INetAddress{
                 Gson gson = new Gson();
                 bean = gson.fromJson(response, SpecialShareBean.class);
                 for (int i = 0; i < bean.getData().getList().size(); i++) {
-                    SpecialShareDao specialShareDao = DaoSingleton.getInstance().getSpecialShareDao();
+                    SpecialShareDao specialShareDao = DaoSingleton.getInstance(BaseApplication.getContext()).getSpecialShareDao();
                     SpecialShare specialShare = new SpecialShare();
                     specialShare.setImg(bean.getData().getList().get(i).getStory_img());
                     specialShare.setTitle(bean.getData().getList().get(i).getStory_title());
-                    //(ReUseDao.Properties.Title.eq(reUse.getTitle())).list();
-                    beans = specialShareDao.queryBuilder().where(SpecialShareDao.Properties.Title.eq(specialShare.getTitle())).list();
-                    beans = specialShareDao.queryBuilder().where(SpecialShareDao.Properties.Img.eq(specialShare.getImg())).list();
+                    beans = DaoSingleton.getInstance(BaseApplication.getContext()).querySpecialShareList(bean.getData().getList().get(i).getStory_img());
                     if (beans.size() == 0) {
                         specialShareDao.insert(specialShare);
                     }

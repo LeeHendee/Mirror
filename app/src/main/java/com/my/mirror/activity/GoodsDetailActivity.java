@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Handler;
 import android.os.Message;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
@@ -46,9 +47,9 @@ public class GoodsDetailActivity extends BaseActivity implements INetAddress, Vi
         post();
         addData();
         allGoodsListData = new AllGoodsListData();
-//        Intent intent = getIntent();
-//        position = intent.getIntExtra("position", 0);
-//        Toast.makeText(this, "position:" + position, Toast.LENGTH_SHORT).show();
+        Intent intent = getIntent();
+        position = intent.getIntExtra("position", 0);
+        Log.i("*******",position+"");
 
     }
 

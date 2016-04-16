@@ -23,7 +23,7 @@
             android:layout_above="@id/share"
             android:layout_centerHorizontal="true"
             android:layout_margin="@dimen/special_share_content_linear_margin"
-            android:background="@drawable/shape"
+            android:background="@mipmap/show_background"
             android:orientation="vertical">
 
             <LinearLayout

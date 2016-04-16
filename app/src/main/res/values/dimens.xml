@@ -22,7 +22,6 @@
     <dimen name="fourteen_lee">14px</dimen>
 
 
-
     <dimen name="lzp_fifteen">15dp</dimen>
     <dimen name="lzp_twenty">20dp</dimen>
     <dimen name="lzp_ten">10dp</dimen>
@@ -53,13 +52,12 @@
     <dimen name="zc_title_under_marginleft">10dp</dimen>
     <dimen name="zc_title_underline_margintop">7dp</dimen>
     <dimen name="zc_untitle_margintop">9dp</dimen>
-    <dimen name="title_rv_margintop">30dp</dimen>
+    <dimen name="title_rv_margintop">47dp</dimen>
     <dimen name="title_rv_marginbottom">85dp</dimen>
     <dimen name="resure_title_line_marginleft">15dp</dimen>
     <dimen name="resure_title_line_margintop">10dp</dimen>
     <dimen name="resure_untitle_tv_size">12sp</dimen>
-    <dimen name="item_reuse_project_iv_width">270dp</dimen>
-    <dimen name="item_reuse_project_iv_height">320dp</dimen>
+    <dimen name="item_reuse_project_pic_height">350dp</dimen>
     <dimen name="item_reuse_project_line_left">16dp</dimen>
     <dimen name="item_reuse_project_line_right">16dp</dimen>
     <dimen name="item_reuse_project_line_top">17dp</dimen>
@@ -93,7 +91,7 @@
 
     <dimen name="item_reuse_all_out_height">270dp</dimen>
     <dimen name="item_reuse_all_out_left">11dp</dimen>
-    <dimen name="item_reuse_all_background_image">270dp</dimen>
+    <dimen name="item_reuse_all_background_image">300dp</dimen>
     <dimen name="item_bottom_out_height">115dp</dimen>
     <dimen name="item_bottom_out_left">12dp</dimen>
     <dimen name="item_bottom_out_right">12dp</dimen>
@@ -139,5 +137,6 @@
     <dimen name="down_listview_title_image_height">5dp</dimen>
     <dimen name="down_listview_title_image_margin">20dp</dimen>
     <dimen name="up_listview_view_height">565dp</dimen>
+    <dimen name="item_reuse_project_pic_width">260dp</dimen>
 
 </resources>

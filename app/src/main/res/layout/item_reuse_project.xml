@@ -26,8 +26,9 @@
                     android:layout_gravity="center"/>
                 <ImageView
                     android:id="@+id/item_project_pic"
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/item_reuse_project_iv_height" />
+                    android:scaleType="fitXY"
+                    android:layout_width="@dimen/item_reuse_project_pic_width"
+                    android:layout_height="@dimen/item_reuse_project_pic_height"/>
             </FrameLayout>
 
             <ImageView

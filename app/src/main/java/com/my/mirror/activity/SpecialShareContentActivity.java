@@ -47,10 +47,12 @@ public class SpecialShareContentActivity extends BaseActivity implements INetAdd
     @Override
     protected void initData() {
 
-        viewPager = (MainViewPager) findViewById(R.id.viewpager);
+
         fragmentList = new ArrayList<>();
 
-        OkHttpUtils.post().url(BEGIN_URL+INFO).addParams(DEVICE_TYPE,DEVICE_REUSE).addParams(STORY_ID,DEVICE_REUSE)
+        OkHttpUtils.post().url(BEGIN_URL+INFO)
+                .addParams(DEVICE_TYPE,DEVICE_REUSE)
+                .addParams(STORY_ID,DEVICE_REUSE)
                 .build().execute(new StringCallback() {
             @Override
             public void onError(Call call, Exception e) {
@@ -64,6 +66,7 @@ public class SpecialShareContentActivity extends BaseActivity implements INetAdd
                 for (int i = 0; i < bean.getData().getStory_data().getImg_array().size(); i++) {
                     SpecialShareContentFragment fragment = new SpecialShareContentFragment();
                     Bundle args = new Bundle();
+                    //通过setArguments方法，将解析出来的数据放到每一个fragment中
                     args.putString("title",bean.getData().getStory_data().getText_array().get(i).getTitle());
                     args.putString("smallTitle",bean.getData().getStory_data().getText_array().get(i).getSmallTitle());
                     args.putString("subTitle",bean.getData().getStory_data().getText_array().get(i).getSubTitle());
@@ -71,9 +74,10 @@ public class SpecialShareContentActivity extends BaseActivity implements INetAdd
                     fragmentList.add(fragment);
                     backgroundIv.setImageURI(Uri.parse(bean.getData().getStory_data().getImg_array().get(0)));
 
-                    backgroundIv.setImageURI(Uri.parse(bean.getData().getStory_data().getImg_array().get(0)));
-
                 }
+
+
+                //监听viewPager上下滑动  切换页面  然后更换背景
                 viewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
                     @Override
                     public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
@@ -82,7 +86,6 @@ public class SpecialShareContentActivity extends BaseActivity implements INetAdd
 
                     @Override
                     public void onPageSelected(int position) {
-                        backgroundIv.setImageURI(Uri.parse(bean.getData().getStory_data().getImg_array().get(position)));
                         backgroundIv.setImageURI(Uri.parse(bean.getData().getStory_data().getImg_array().get(position)));
                     }
 
@@ -112,12 +115,14 @@ public class SpecialShareContentActivity extends BaseActivity implements INetAdd
             }
         });
 
+        //背景加载动画
         Animation animation = AnimationUtils.loadAnimation(this, R.anim.loading);
         loading.startAnimation(animation);
     }
 
     @Override
     protected void initView() {
+        viewPager = findId(R.id.viewpager);
         backgroundIv = findId(R.id.background_iv);
         back = findId(R.id.share_content_back);
         loading = findId(R.id.share_content_loading);

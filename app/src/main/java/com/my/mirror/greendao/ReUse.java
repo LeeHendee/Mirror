@@ -13,6 +13,7 @@ public class ReUse {
     private String price;
     private String area;
     private String brand;
+    private String typeId;
 
     public ReUse() {
     }
@@ -21,7 +22,7 @@ public class ReUse {
         this.id = id;
     }
 
-    public ReUse(Long id, String title, String img, String name, String price, String area, String brand) {
+    public ReUse(Long id, String title, String img, String name, String price, String area, String brand, String typeId) {
         this.id = id;
         this.title = title;
         this.img = img;
@@ -29,6 +30,7 @@ public class ReUse {
         this.price = price;
         this.area = area;
         this.brand = brand;
+        this.typeId = typeId;
     }
 
     public Long getId() {
@@ -85,6 +87,14 @@ public class ReUse {
 
     public void setBrand(String brand) {
         this.brand = brand;
+    }
+
+    public String getTypeId() {
+        return typeId;
+    }
+
+    public void setTypeId(String typeId) {
+        this.typeId = typeId;
     }
 
 }

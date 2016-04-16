@@ -1,16 +1,21 @@
 package com.my.mirror.fragment;
 
+import android.content.Context;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.google.gson.Gson;
 import com.my.mirror.R;
+import com.my.mirror.base.BaseApplication;
 import com.my.mirror.base.BaseFragment;
 import com.my.mirror.bean.HomePageBean;
 import com.my.mirror.greendao.ClassiFied;
@@ -24,6 +29,8 @@ import com.my.mirror.net.okhttp.INetAddress;
 import com.my.mirror.net.okhttp.StringCallback;
 import com.zhy.http.okhttp.OkHttpUtils;
 
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -48,12 +55,20 @@ public class ReuseFragment extends BaseFragment implements INetAddress {
     @Override
     protected void initData() {
 
+//        ConnectivityManager connectivityManager = (ConnectivityManager) getContext().getSystemService(Context.CONNECTIVITY_SERVICE);
+//        NetworkInfo mobNetInfo = connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_MOBILE);
+//        if (mobNetInfo.isConnected()){
+//            Log.i("看看有没有网","这里是有网");
+//        } else {
+//            Log.i("看看有没有网","没有网");
+//        }
+
+
         //接收菜单栏的fragment替换时传过来的值
         i = getArguments().getInt("fragmentInt");
         beans = new ArrayList<>();
 
-
-        classiFiedDao = DaoSingleton.getInstance().getClassiFiedDao();
+        classiFiedDao = DaoSingleton.getInstance(BaseApplication.getContext()).getClassiFiedDao();
         classiFied = classiFiedDao.queryBuilder().list().get(i);
         title.setText(getString(R.string.reuse_title_head) + classiFied.getTitle());
         line.setOnClickListener(new View.OnClickListener() {
@@ -65,7 +80,6 @@ public class ReuseFragment extends BaseFragment implements INetAddress {
                 classifiedFragment.setArguments(args);
                 FragmentManager fm = getActivity().getSupportFragmentManager();
                 fm.beginTransaction().add(R.id.main_frame, classifiedFragment).addToBackStack(null).commit();
-
             }
         });
 
@@ -78,6 +92,8 @@ public class ReuseFragment extends BaseFragment implements INetAddress {
             @Override
             public void onError(Call call, Exception e) {
                 noNetAdapter = new ReuseNoNetAdapter(getActivity());
+                Log.i("posiont", String.valueOf(i));
+                noNetAdapter.setPostion(i);
                 recyclerView.setAdapter(noNetAdapter);
                 GridLayoutManager gm = new GridLayoutManager(getActivity(), 1);
                 gm.setOrientation(LinearLayoutManager.HORIZONTAL);
@@ -89,7 +105,7 @@ public class ReuseFragment extends BaseFragment implements INetAddress {
                 Gson gson = new Gson();
                 bean = gson.fromJson(response, HomePageBean.class);
                 for (int i = 0; i < bean.getData().getList().size(); i++) {
-                    ReUseDao reUseDao = DaoSingleton.getInstance().getReUseDao();
+                    ReUseDao reUseDao = DaoSingleton.getInstance(BaseApplication.getContext()).getReUseDao();
                     ReUse reUse = new ReUse();
                     reUse.setTitle(bean.getData().getList().get(i).getGoods_name());
                     reUse.setImg(bean.getData().getList().get(i).getGoods_img());
@@ -97,18 +113,13 @@ public class ReuseFragment extends BaseFragment implements INetAddress {
                     reUse.setName(bean.getData().getList().get(i).getGoods_name());
                     reUse.setBrand(bean.getData().getList().get(i).getBrand());
                     reUse.setPrice(bean.getData().getList().get(i).getGoods_price());
-                    beans = reUseDao.queryBuilder().where(ReUseDao.Properties.Title.eq(reUse.getTitle())).list();
-                    beans = reUseDao.queryBuilder().where(ReUseDao.Properties.Img.eq(reUse.getImg())).list();
-                    beans = reUseDao.queryBuilder().where(ReUseDao.Properties.Area.eq(reUse.getArea())).list();
-                    beans = reUseDao.queryBuilder().where(ReUseDao.Properties.Name.eq(reUse.getName())).list();
-                    beans = reUseDao.queryBuilder().where(ReUseDao.Properties.Brand.eq(reUse.getBrand())).list();
-                    beans = reUseDao.queryBuilder().where(ReUseDao.Properties.Price.eq(reUse.getPrice())).list();
-
+                    reUse.setTypeId(String.valueOf(ReuseFragment.this.i));
+                    beans = DaoSingleton.getInstance(BaseApplication.getContext()).queryReUseList(bean.getData().getList().get(i).getGoods_name());
                     if (beans.size() == 0) {
                         reUseDao.insert(reUse);
                     }
 
-                    adapter = new ReuseRecyclerAdapter(bean,getActivity());
+                    adapter = new ReuseRecyclerAdapter(bean, getActivity(), i);
                     recyclerView.setAdapter(adapter);
                     GridLayoutManager gm = new GridLayoutManager(getActivity(), 1);
                     gm.setOrientation(LinearLayoutManager.HORIZONTAL);
@@ -126,7 +137,6 @@ public class ReuseFragment extends BaseFragment implements INetAddress {
         recyclerView = findId(R.id.resure_recycler_view);
         title = findId(R.id.reuse_title);
     }
-
     @Override
     protected int getLayout() {
         return R.layout.fragment_reuse;

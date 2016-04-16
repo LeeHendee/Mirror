@@ -16,6 +16,7 @@ import java.io.File;
 
 /**
  * Created by dllo on 16/4/11.
+ * 三级缓存类
  */
 public class ImageLoaderHelper {
     public static ImageLoaderHelper imageLoaderHelper;
@@ -52,7 +53,10 @@ public class ImageLoaderHelper {
 
     }
 
-    //暴露初始化的方法
+    /**
+     * 暴露的初始化方法
+     * @return
+     */
     public static ImageLoaderHelper getImageLoaderHelper(){
         if (imageLoaderHelper == null){
             synchronized (ImageLoaderHelper.class){
@@ -64,6 +68,11 @@ public class ImageLoaderHelper {
         return imageLoaderHelper;
     }
 
+    /**
+     * 暴漏的方法，传入网址和组件 即可
+     * @param url
+     * @param imageView
+     */
     public void loadImage(String url,ImageView imageView){
         url = url.trim();
         imageLoader.displayImage(url,imageView,options);

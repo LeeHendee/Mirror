@@ -22,7 +22,7 @@
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme">
-        <activity android:name=".activity.WelcomeActivity">
+        <activity android:name=".activity.MainActivity">
 
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
@@ -36,7 +36,6 @@
         <activity android:name=".activity.SinglePictureActivity" />
         <activity android:name=".activity.RegisterActivity"/>
         <activity android:name=".activity.SpecialShareContentActivity"/>
-        <activity android:name=".activity.MainActivity"/>
         <activity android:name=".activity.GoodsDetailActivity"/>
 
         <activity

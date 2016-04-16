@@ -11,7 +11,7 @@ import com.my.mirror.base.BaseFragment;
  * Created by dllo on 16/3/30.
  * 购物车的fragment
  */
-public class CarFragment extends BaseFragment {
+public class ShopingCarFragment extends BaseFragment {
     private LinearLayout titleLine;
     private ClassifiedFragment classifiedFragment;
 
