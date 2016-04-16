@@ -37,7 +37,6 @@ public class GoodsDetailActivity extends BaseActivity implements INetAddress, Vi
 
     @Override
     protected int getLayout() {
-
         return R.layout.activity_goodsdetail;
     }
 
@@ -136,7 +135,11 @@ public class GoodsDetailActivity extends BaseActivity implements INetAddress, Vi
                 startActivity(picturesActivity);
                 break;
             case R.id.btn_buy:
-                Intent buyActivity = new Intent();
+                Intent buyActivity = new Intent(this,OrderDetailActivity.class);
+                buyActivity.putExtra("orderDetail_picture",allGoodsListData.getData().getList().get(position).getGoods_pic());
+                buyActivity.putExtra("orderDetail_name",allGoodsListData.getData().getList().get(position).getBrand());
+                buyActivity.putExtra("orderDetail_describe",allGoodsListData.getData().getList().get(position).getGoods_name());
+                buyActivity.putExtra("orderDetail_price",allGoodsListData.getData().getList().get(position).getGoods_price());
                 startActivity(buyActivity);
                 break;
         }

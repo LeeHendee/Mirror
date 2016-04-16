@@ -139,5 +139,6 @@
     <dimen name="down_listview_title_image_height">5dp</dimen>
     <dimen name="down_listview_title_image_margin">20dp</dimen>
     <dimen name="up_listview_view_height">565dp</dimen>
+    <dimen name="seventy">70dp</dimen>
 
 </resources>
