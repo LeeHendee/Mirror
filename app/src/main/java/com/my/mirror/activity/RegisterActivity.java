@@ -125,8 +125,7 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
                                                 @Override
                                                 public void run() {
                                                     MyToast.mToast("登陆成功");
-                                                    Intent intent = new Intent(RegisterActivity.this, MainActivity.class);
-                                                    intent.putExtra("result", 1);
+                                                    Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
                                                     startActivity(intent);
                                                 }
                                             });

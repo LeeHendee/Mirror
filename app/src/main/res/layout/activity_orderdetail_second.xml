@@ -64,7 +64,7 @@
         <View
             android:layout_width="wrap_content"
             android:layout_height="@dimen/lzp_half"
-            android:layout_marginTop="@dimen/lzp_sixty"
+            android:layout_marginTop="@dimen/lzp_fifty"
             android:background="@color/colorBlack" />
 
         <RelativeLayout

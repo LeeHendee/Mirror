@@ -60,6 +60,7 @@
     <string name="reuse_title_head">浏览</string>
     <string name="order_detail_second_text">3850</string>
     <string name="nonet_toast">请检查网络连接</string>
+    <string name="myalladdress">我的所有地址</string>
 
 
 </resources>

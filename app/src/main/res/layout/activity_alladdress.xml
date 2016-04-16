@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorGray"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/lzp_fifteen"
+        android:layout_marginRight="@dimen/lzp_fifteen"
+        android:layout_marginTop="@dimen/lzp_fifteen"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="@dimen/lzp_zero"
+            android:layout_height="match_parent"
+            android:layout_weight="10">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/myalladdress"
+                android:textSize="@dimen/lzp_text_twenty"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="@dimen/lzp_zero"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <ImageView
+                android:id="@+id/register_close"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/close" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/lzp_ten"
+        android:src="@mipmap/makecount_line" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/lzp_fifteen"
+        android:layout_marginTop="@dimen/lzp_fifteen"
+        android:layout_marginRight="@dimen/lzp_fifteen"
+        android:text="添加收货地址"
+        android:background="@color/colorWhite"/>
+    <ListView
+        android:id="@+id/allAddress_listView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+</LinearLayout>

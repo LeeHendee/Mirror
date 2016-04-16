@@ -29,7 +29,6 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-
         <activity android:name=".activity.LoginActivity" />
         <activity android:name=".activity.ForgetPasswordActivity" />
         <activity android:name=".activity.PicturesActivity" />
@@ -37,6 +36,9 @@
         <activity android:name=".activity.RegisterActivity"/>
         <activity android:name=".activity.SpecialShareContentActivity"/>
         <activity android:name=".activity.GoodsDetailActivity"/>
+        <activity android:name=".activity.OrderDetailActivity"/>
+        <activity android:name=".activity.AddAddressActivity"/>
+        <activity android:name=".activity.AllAddressActivity"/>
 
         <activity
             android:name="com.mob.tools.MobUIShell"
