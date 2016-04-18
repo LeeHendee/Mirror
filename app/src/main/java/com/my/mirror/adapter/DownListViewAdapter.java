@@ -28,7 +28,6 @@ public class DownListViewAdapter extends BaseAdapter {
 
     @Override
     public int getCount() {
-
         return allGoodsListData.getData().getList().get(myPosition).getDesign_des().size() + 3;
     }
 

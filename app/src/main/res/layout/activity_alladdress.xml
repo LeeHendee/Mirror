@@ -45,17 +45,19 @@
         android:layout_marginTop="@dimen/lzp_ten"
         android:src="@mipmap/makecount_line" />
 
-    <Button
+    <TextView
+        android:id="@+id/allAddress_addaddress"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="80dp"
         android:layout_marginLeft="@dimen/lzp_fifteen"
         android:layout_marginTop="@dimen/lzp_fifteen"
         android:layout_marginRight="@dimen/lzp_fifteen"
-        android:text="添加收货地址"
-        android:background="@color/colorWhite"/>
+        android:gravity="center"
+        android:text="添加地址"
+        android:textSize="@dimen/lzp_text_twenty"
+        android:background="@mipmap/writeaddress"/>
     <ListView
         android:id="@+id/allAddress_listView"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
-
 </LinearLayout>

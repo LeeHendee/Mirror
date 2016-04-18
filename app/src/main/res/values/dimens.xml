@@ -140,5 +140,6 @@
     <dimen name="item_reuse_project_pic_width">260dp</dimen>
     <dimen name="seventy">70dp</dimen>
     <dimen name="item_reuse_small_line_marginbottom">10dp</dimen>
+    <dimen name="lzp_two_zero_zero">200dp</dimen>
 
 </resources>

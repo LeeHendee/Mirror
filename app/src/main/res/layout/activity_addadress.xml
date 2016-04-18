@@ -54,7 +54,7 @@
         android:textSize="@dimen/lzp_text_fifteen" />
 
     <EditText
-        android:id="@+id/register_phoneNum_edit"
+        android:id="@+id/addaddress_name_edit"
         android:layout_width="match_parent"
         android:layout_height="@dimen/lzp_fourty"
         android:layout_marginLeft="@dimen/lzp_fifteen"
@@ -72,6 +72,7 @@
         android:textSize="@dimen/lzp_text_fifteen" />
 
     <EditText
+        android:id="@+id/addaddress_phoneNum_edit"
         android:layout_width="match_parent"
         android:layout_height="@dimen/lzp_fourty"
         android:layout_marginLeft="@dimen/lzp_fifteen"
@@ -89,7 +90,7 @@
         android:textSize="@dimen/lzp_text_fifteen" />
 
     <EditText
-        android:id="@+id/register_password_edit"
+        android:id="@+id/addaddress_address_edit"
         android:layout_width="match_parent"
         android:layout_height="@dimen/lzp_one_zero_zero"
         android:layout_marginLeft="@dimen/lzp_fifteen"
@@ -98,7 +99,7 @@
         android:background="@mipmap/edit" />
 
     <Button
-        android:id="@+id/register_makeCount_btn"
+        android:id="@+id/addaddress_btn"
         android:layout_width="match_parent"
         android:layout_height="@dimen/lzp_fourty"
         android:layout_marginLeft="@dimen/lzp_fifteen"
