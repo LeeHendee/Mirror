@@ -61,6 +61,8 @@
     <string name="order_detail_second_text">3850</string>
     <string name="nonet_toast">请检查网络连接</string>
     <string name="myalladdress">我的所有地址</string>
+    <string name="getperson">收件人:</string>
+    <string name="getaddress">收件地址:</string>
 
 
 </resources>
