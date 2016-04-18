@@ -121,7 +121,7 @@ public class MainViewPager extends ViewPager{
                 float moveX = event.getX();
                 float moveY = event.getY();
                 if(Math.abs(moveY - startY) - Math.abs(moveX - startX) > 0){
-                    return true;
+                      return true;
                 }
                 break;
         }

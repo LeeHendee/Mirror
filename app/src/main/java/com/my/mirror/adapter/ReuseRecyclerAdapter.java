@@ -58,7 +58,8 @@ public class ReuseRecyclerAdapter extends RecyclerView.Adapter<ReuseRecyclerAdap
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(context, GoodsDetailActivity.class);
-                intent.putExtra("position", position);
+                intent.putExtra("position", i);
+                intent.putExtra("homePageBean",bean);
                 context.startActivity(intent);
             }
         });

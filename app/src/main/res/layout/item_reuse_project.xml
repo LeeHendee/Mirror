@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.zhy.autolayout.AutoLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="@dimen/item_reuse_all_background_image"
     android:id="@+id/linearlaout"
     android:orientation="vertical">
     <android.support.v7.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="@dimen/item_reuse_all_background_image"
         android:layout_marginLeft="@dimen/item_project_card_margin">
 
-        <LinearLayout
+        <com.zhy.autolayout.AutoLinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="@dimen/item_reuse_all_background_image"
             android:orientation="vertical">
 
-            <FrameLayout
+            <com.zhy.autolayout.AutoFrameLayout
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
+                android:layout_height="@dimen/item_reuse_all_background_image">
 
                 <ImageView
                     android:id="@+id/item_project_loading"
@@ -24,12 +24,26 @@
                     android:layout_height="wrap_content"
                     android:src="@mipmap/loading"
                     android:layout_gravity="center"/>
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+
                 <ImageView
                     android:id="@+id/item_project_pic"
                     android:scaleType="fitXY"
                     android:layout_width="@dimen/item_reuse_project_pic_width"
-                    android:layout_height="@dimen/item_reuse_project_pic_height"/>
-            </FrameLayout>
+                    android:layout_height="match_parent"/>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentBottom="true"
+                        android:orientation="vertical"
+                        android:background="@color/white"
+                        >
+
+
 
             <ImageView
                 android:layout_width="match_parent"
@@ -52,9 +66,13 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="@color/black"
-                    android:textSize="@dimen/item_reuse_project_tv_size" />
+                    android:textSize="@dimen/item_reuse_project_tv_size"
+                    android:layout_marginBottom="@dimen/item_reuse_small_line_marginbottom"/>
 
             </LinearLayout>
-        </LinearLayout>
+                    </LinearLayout>
+                </RelativeLayout>
+            </com.zhy.autolayout.AutoFrameLayout>
+        </com.zhy.autolayout.AutoLinearLayout>
     </android.support.v7.widget.CardView>
-</LinearLayout>
+</com.zhy.autolayout.AutoLinearLayout>

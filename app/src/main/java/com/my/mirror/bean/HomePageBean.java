@@ -1,11 +1,12 @@
 package com.my.mirror.bean;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
  * Created by dllo on 16/4/1.
  */
-public class HomePageBean {
+public class HomePageBean implements Serializable{
 
     /**
      * result : 1
@@ -46,7 +47,7 @@ public class HomePageBean {
         return data;
     }
 
-    public static class DataEntity {
+    public static class DataEntity implements Serializable{
         /**
          * first_time : 1455524521
          * last_time : 1452078872
@@ -93,7 +94,7 @@ public class HomePageBean {
             return list;
         }
 
-        public static class PaginationEntity {
+        public static class PaginationEntity implements Serializable{
             private String first_time;
             private String last_time;
             private String has_more;
@@ -123,7 +124,7 @@ public class HomePageBean {
             }
         }
 
-        public static class ListEntity {
+        public static class ListEntity implements Serializable{
             private String goods_id;
             private String goods_pic;
             private String goods_img;
@@ -293,7 +294,7 @@ public class HomePageBean {
                 return design_des;
             }
 
-            public static class GoodsDataEntity {
+            public static class GoodsDataEntity implements Serializable{
                 private String introContent;
                 private String cellHeight;
                 private String name;
@@ -350,7 +351,7 @@ public class HomePageBean {
                 }
             }
 
-            public static class DesignDesEntity {
+            public static class DesignDesEntity implements Serializable{
                 private String img;
                 private String cellHeight;
                 private String type;

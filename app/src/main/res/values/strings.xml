@@ -35,32 +35,25 @@
 
 
     <string name="main_login">登录</string>
-    <string name="zc_all">浏览所有分类</string>
-    <string name="zc_classified_all">全部分类</string>
-    <string name="zc_matt">浏览平光眼镜</string>
-    <string name="zc_sun">浏览太阳眼镜</string>
-    <string name="zc_special">专题分享</string>
-    <string name="zc_car">我的购物车</string>
-    <string name="zc_back">返回首页</string>
-    <string name="zc_exit">退出</string>
-    <string name="zc_untitle">显示排序为 最新推荐</string>
-
+    <string name="classified__special">专题分享</string>
+    <string name="classified_shopingcar">我的购物车</string>
+    <string name="classified_back">返回首页</string>
+    <string name="classified_exit">退出</string>
+    <string name="reuse_untitle">显示排序为 最新推荐</string>
     <string name="item_reuse_project_tv">mirror传达</string>
-
     <string name="name_detail">FINLAYCO</string>
     <string name="brand_detail">水蓝色晶透板材太阳镜</string>
     <string name="smooth_browse_details">滑动浏览详情</string>
     <string name="loading_default">加载失败</string>
     <string name="detail_brand">飞行员太阳镜</string>
 
-    <string name="zc_item_ceshi_name">JIMMY FAIRLY</string>
-    <string name="zc_item_ceshi_country">法国巴黎</string>
-    <string name="zc_item_ceshi_type">男女同款</string>
-    <string name="zc_item_ceshi_money">1500</string>
+
     <string name="reuse_title_head">浏览</string>
     <string name="order_detail_second_text">3850</string>
     <string name="nonet_toast">请检查网络连接</string>
     <string name="myalladdress">我的所有地址</string>
+    <string name="shopingCar">购物车</string>
+    <string name="comment">分享</string>
 
 
 </resources>

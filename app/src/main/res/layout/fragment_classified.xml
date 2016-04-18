@@ -34,7 +34,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:alpha="0.25"
-                android:text="@string/zc_special"
+                android:text="@string/classified__special"
                 android:textColor="@color/white"
                 android:textSize="@dimen/zc_twenty_eight" />
 
@@ -60,7 +60,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:alpha="0.25"
-                android:text="@string/zc_car"
+                android:text="@string/classified_shopingcar"
                 android:textColor="@color/white"
                 android:textSize="@dimen/zc_twenty_eight" />
 
@@ -86,7 +86,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:alpha="0.25"
-                android:text="@string/zc_back"
+                android:text="@string/classified_back"
                 android:textColor="@color/white"
                 android:textSize="@dimen/zc_twenty_eight" />
         </LinearLayout>
@@ -104,7 +104,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:alpha="0.25"
-                android:text="@string/zc_exit"
+                android:text="@string/classified_exit"
                 android:textColor="@color/white"
                 android:textSize="@dimen/zc_twenty_eight" />
         </LinearLayout>

@@ -29,7 +29,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/zc_car"
+                        android:text="@string/classified_shopingcar"
                         android:textColor="@color/white"
                         android:textSize="@dimen/zc_title_size" />
 
@@ -51,7 +51,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/zc_untitle_margintop"
-                    android:text="@string/zc_untitle"
+                    android:text="@string/reuse_untitle"
                     android:textColor="@color/white"
                     android:textSize="@dimen/resure_untitle_tv_size" />
             </LinearLayout>

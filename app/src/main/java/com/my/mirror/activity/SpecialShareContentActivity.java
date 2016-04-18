@@ -17,6 +17,7 @@ import com.my.mirror.R;
 import com.my.mirror.adapter.MainViewPager;
 import com.my.mirror.adapter.MainViewPagerAdapter;
 import com.my.mirror.base.BaseActivity;
+import com.my.mirror.base.BaseApplication;
 import com.my.mirror.bean.SpecialShareContentBean;
 import com.my.mirror.fragment.SpecialShareContentFragment;
 import com.my.mirror.net.okhttp.INetAddress;
@@ -24,6 +25,9 @@ import com.my.mirror.net.okhttp.StringCallback;
 import com.zhy.http.okhttp.OkHttpUtils;
 import java.util.ArrayList;
 import java.util.List;
+
+import cn.sharesdk.framework.ShareSDK;
+import cn.sharesdk.onekeyshare.OnekeyShare;
 import okhttp3.Call;
 
 /**
@@ -33,7 +37,7 @@ public class SpecialShareContentActivity extends BaseActivity implements INetAdd
     private MainViewPager viewPager;
     private MainViewPagerAdapter adapter;
     private List<Fragment> fragmentList;
-    private ImageView back,loading;
+    private ImageView back,loading,share;
     private SimpleDraweeView backgroundIv;
     private LinearLayout linearLayout;
     private SpecialShareContentBean bean;
@@ -115,6 +119,24 @@ public class SpecialShareContentActivity extends BaseActivity implements INetAdd
             }
         });
 
+        //分享
+        share.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ShareSDK.initSDK(SpecialShareContentActivity.this);
+                OnekeyShare oks = new OnekeyShare();
+                oks.disableSSOWhenAuthorize();
+                oks.setTitle("share");
+                oks.setTitleUrl("http://sharesdk.cn");
+                oks.setText("文本");
+                oks.setUrl("http://sharesdk.cn");
+                oks.setComment(getString(R.string.comment));
+                oks.setSite(getString(R.string.app_name));
+                oks.setSiteUrl("http://sharesdk.cn");
+                oks.show(SpecialShareContentActivity.this);
+            }
+        });
+
         //背景加载动画
         Animation animation = AnimationUtils.loadAnimation(this, R.anim.loading);
         loading.startAnimation(animation);
@@ -126,6 +148,7 @@ public class SpecialShareContentActivity extends BaseActivity implements INetAdd
         backgroundIv = findId(R.id.background_iv);
         back = findId(R.id.share_content_back);
         loading = findId(R.id.share_content_loading);
+        share = findId(R.id.share_content_share);
         View view = LayoutInflater.from(this).inflate(R.layout.fragment_special_share_content,null);
         linearLayout = (LinearLayout) view.findViewById(R.id.viewpager_linear_layout);
 

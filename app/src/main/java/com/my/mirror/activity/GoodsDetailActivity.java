@@ -16,6 +16,7 @@ import com.my.mirror.base.BaseActivity;
 import com.my.mirror.bean.AllGoodsListData;
 import com.my.mirror.adapter.LinkageListView;
 import com.my.mirror.adapter.UpListViewAdapter;
+import com.my.mirror.bean.HomePageBean;
 import com.my.mirror.net.okhttp.INetAddress;
 import com.squareup.okhttp.Callback;
 import com.squareup.okhttp.FormEncodingBuilder;
@@ -35,6 +36,7 @@ public class GoodsDetailActivity extends BaseActivity implements INetAddress, Vi
     private SimpleDraweeView background;
     private Button backBtn, picturesBtn, buyBtn;
     private List<AllGoodsListData.DataEntity.ListEntity.WearVideoEntity> picturesData;
+    private HomePageBean bean;
 
     @Override
     protected int getLayout() {
@@ -47,8 +49,9 @@ public class GoodsDetailActivity extends BaseActivity implements INetAddress, Vi
         addData();
         allGoodsListData = new AllGoodsListData();
         Intent intent = getIntent();
-        position = intent.getIntExtra("position", 0);
-        Log.i("*******",position+"");
+        position = intent.getIntExtra("position", 1);
+        Log.i("position", position + "");
+        bean = (HomePageBean) intent.getSerializableExtra("homePageBean");
 
     }
 

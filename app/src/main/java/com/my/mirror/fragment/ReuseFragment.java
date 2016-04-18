@@ -15,6 +15,7 @@ import android.widget.TextView;
 
 import com.google.gson.Gson;
 import com.my.mirror.R;
+import com.my.mirror.activity.MainActivity;
 import com.my.mirror.base.BaseApplication;
 import com.my.mirror.base.BaseFragment;
 import com.my.mirror.bean.HomePageBean;
@@ -51,6 +52,7 @@ public class ReuseFragment extends BaseFragment implements INetAddress {
     private ClassiFied classiFied;
     private List<ReUse> beans;
     private ReuseNoNetAdapter noNetAdapter;
+    private MainActivity mainActivity;
 
     @Override
     protected void initData() {
@@ -68,9 +70,11 @@ public class ReuseFragment extends BaseFragment implements INetAddress {
         i = getArguments().getInt("fragmentInt");
         beans = new ArrayList<>();
 
+        //从数据库中获得菜单栏，然后设置到菜单栏上
         classiFiedDao = DaoSingleton.getInstance(BaseApplication.getContext()).getClassiFiedDao();
         classiFied = classiFiedDao.queryBuilder().list().get(i);
         title.setText(getString(R.string.reuse_title_head) + classiFied.getTitle());
+        //设置的行监听，传入一个对应的位置i  然后跳到对应的页面
         line.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -80,19 +84,23 @@ public class ReuseFragment extends BaseFragment implements INetAddress {
                 classifiedFragment.setArguments(args);
                 FragmentManager fm = getActivity().getSupportFragmentManager();
                 fm.beginTransaction().add(R.id.main_frame, classifiedFragment).addToBackStack(null).commit();
+                  //mainActivity.showClassiFied();
             }
         });
 
+
         OkHttpUtils.post().url(BEGIN_URL+GOODS_LIST)
+                //添加参数
                 .addParams(DEVICE_TYPE, DEVICE_REUSE)
                 .addParams(GOOD_TYPE,DEVICE_REUSE)
                 .addParams(VERSION,VERSION_VALUE)
+                //category_id  是每页的数据都需要这个id来区分
                 .addParams(CATEGORY_ID,classiFiedDao.queryBuilder().list().get(i).getCategoryId())
                 .build().execute(new StringCallback() {
             @Override
             public void onError(Call call, Exception e) {
+                //解析失败的时候  走这个方法
                 noNetAdapter = new ReuseNoNetAdapter(getActivity());
-                Log.i("posiont", String.valueOf(i));
                 noNetAdapter.setPostion(i);
                 recyclerView.setAdapter(noNetAdapter);
                 GridLayoutManager gm = new GridLayoutManager(getActivity(), 1);
@@ -104,17 +112,18 @@ public class ReuseFragment extends BaseFragment implements INetAddress {
             public void onResponse(String response) {
                 Gson gson = new Gson();
                 bean = gson.fromJson(response, HomePageBean.class);
-                for (int i = 0; i < bean.getData().getList().size(); i++) {
+                for (int j = 0; j < bean.getData().getList().size(); j++) {
                     ReUseDao reUseDao = DaoSingleton.getInstance(BaseApplication.getContext()).getReUseDao();
                     ReUse reUse = new ReUse();
-                    reUse.setTitle(bean.getData().getList().get(i).getGoods_name());
-                    reUse.setImg(bean.getData().getList().get(i).getGoods_img());
-                    reUse.setArea(bean.getData().getList().get(i).getProduct_area());
-                    reUse.setName(bean.getData().getList().get(i).getGoods_name());
-                    reUse.setBrand(bean.getData().getList().get(i).getBrand());
-                    reUse.setPrice(bean.getData().getList().get(i).getGoods_price());
+                    //解析成功后，将数据存入到数据库中。
+                    reUse.setTitle(bean.getData().getList().get(j).getGoods_name());
+                    reUse.setImg(bean.getData().getList().get(j).getGoods_img());
+                    reUse.setArea(bean.getData().getList().get(j).getProduct_area());
+                    reUse.setName(bean.getData().getList().get(j).getGoods_name());
+                    reUse.setBrand(bean.getData().getList().get(j).getBrand());
+                    reUse.setPrice(bean.getData().getList().get(j).getGoods_price());
                     reUse.setTypeId(String.valueOf(ReuseFragment.this.i));
-                    beans = DaoSingleton.getInstance(BaseApplication.getContext()).queryReUseList(bean.getData().getList().get(i).getGoods_name());
+                    beans = DaoSingleton.getInstance(BaseApplication.getContext()).queryReUseList(bean.getData().getList().get(j).getGoods_name());
                     if (beans.size() == 0) {
                         reUseDao.insert(reUse);
                     }
@@ -136,6 +145,7 @@ public class ReuseFragment extends BaseFragment implements INetAddress {
         line = findId(R.id.resure_title_line);
         recyclerView = findId(R.id.resure_recycler_view);
         title = findId(R.id.reuse_title);
+        mainActivity = (MainActivity) getContext();
     }
     @Override
     protected int getLayout() {

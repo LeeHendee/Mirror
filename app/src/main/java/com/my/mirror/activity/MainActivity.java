@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -47,6 +48,7 @@ public class MainActivity extends BaseActivity implements INetAddress {
     private List<ClassiFied> beans;
     private LinearLayout mainLine;
     private int result;
+    private FrameLayout frameLayout;
 
     private SharedPreferences sp;
     private SharedPreferences.Editor editor;
@@ -66,13 +68,12 @@ public class MainActivity extends BaseActivity implements INetAddress {
     protected void initData() {
 
 
+        //初始化数据库
         sp = getSharedPreferences("login", MODE_PRIVATE);
         editor = sp.edit();
 
-
-        Log.i("loginInt", sp.getInt("loginInt", 0) + "----" + result);
         if (sp.getInt("loginInt", 0) == 1) {
-            login.setText("购物车");
+            login.setText(R.string.shopingCar);
             login.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -80,7 +81,7 @@ public class MainActivity extends BaseActivity implements INetAddress {
                 }
             });
         } else {
-            login.setText("登陆");
+            login.setText(R.string.main_login);
             //登陆 点击跳转
             login.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -100,13 +101,12 @@ public class MainActivity extends BaseActivity implements INetAddress {
         //接收菜单栏，点击时传过来的position 好让ViewPager知道跳到哪页
         Intent intent = getIntent();
         position = intent.getIntExtra("position", 0);
-
-
         //请求
         OkHttpUtils.post().url(BEGIN_URL + CATEGORY_LIST).addParams(DEVICE_TYPE, DEVICE)
                 .build().execute(new StringCallback() {
             @Override
             public void onError(Call call, Exception e) {
+                //解析失败了 走没有网的方法
                 initAdapter();
             }
 
@@ -157,10 +157,13 @@ public class MainActivity extends BaseActivity implements INetAddress {
 
     }
 
+    /**
+     * 没有网络的时候  ，走这个方法，
+     */
     private void initAdapter() {
-        //这个是没有网络的时候 使用的方法
         classiFiedDao = DaoSingleton.getInstance(BaseApplication.getContext()).getClassiFiedDao();
         for (int i = 0; i < classiFiedDao.queryBuilder().list().size(); i++) {
+            //通过setArguments  通知适配器添加的第几个fragment
             ReuseFragment fragment = new ReuseFragment();
             Bundle args = new Bundle();
             args.putInt("fragmentInt", i);
@@ -179,22 +182,26 @@ public class MainActivity extends BaseActivity implements INetAddress {
         viewPager = findId(R.id.viewpager);
         login = findId(R.id.main_login);
         mainLine = findId(R.id.main_line);
+        frameLayout = findId(R.id.main_frame);
     }
 
     @Override
     protected void onResume() {
         super.onResume();
 
+        //接收登陆后 返回来的result  1为成功，0是失败
         Intent resultIntent = getIntent();
         result = resultIntent.getIntExtra("result", 0);
 
+        //当登陆成功后，将result存入到轻量级数据库中，下次再开启直接就是已登陆状态
         if (result == 1) {
             if (sp.getBoolean("what", true)) {
                 editor.putBoolean("what", false);
                 editor.putInt("loginInt", result);
                 editor.commit();
             }
-            login.setText("购物车");
+            login.setText(R.string.shopingCar);
+            //已登录状态，点击可跳到购物车页面
             login.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -202,5 +209,20 @@ public class MainActivity extends BaseActivity implements INetAddress {
                 }
             });
         }
+    }
+
+    public void showClassiFied(){
+        frameLayout.setVisibility(View.VISIBLE);
+        Animation animation = AnimationUtils.loadAnimation(this, R.anim.anim_classified);
+        frameLayout.startAnimation(animation);
+    }
+
+    public void disappearClassified(){
+        frameLayout.setVisibility(View.GONE);
+    }
+
+    public void jumpToReUseFragment(int position){
+        disappearClassified();
+        viewPager.setCurrentItem(position);
     }
 }
