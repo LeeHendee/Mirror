@@ -75,6 +75,7 @@ public class PicturesActivity extends BaseActivity  {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent(PicturesActivity.this, SinglePictureActivity.class);
+
                 if (Integer.valueOf(picturesData.get(position).getType()) == 5) {
                     String singleUrl = picturesData.get(position).getData();
                     intent.putExtra("bitmap_url", singleUrl);

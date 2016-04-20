@@ -35,7 +35,7 @@ public class SpecialShareAdapter extends RecyclerView.Adapter<SpecialShareAdapte
 
     @Override
     public SpecialViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_reuse_project, parent,false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_special_share, parent,false);
         return new SpecialViewHolder(view);
     }
 
@@ -45,9 +45,6 @@ public class SpecialShareAdapter extends RecyclerView.Adapter<SpecialShareAdapte
         helper.loadImage(bean.getData().getList().get(position).getStory_img(), holder.simpleDraweeView);
         holder.type.setText(bean.getData().getList().get(position).getStory_title());
         holder.pos = position;
-        //添加动画
-        Animation animation = AnimationUtils.loadAnimation(BaseApplication.getContext(), R.anim.loading);
-        holder.loading.startAnimation(animation);
     }
 
     @Override
@@ -58,7 +55,6 @@ public class SpecialShareAdapter extends RecyclerView.Adapter<SpecialShareAdapte
     class SpecialViewHolder extends RecyclerView.ViewHolder {
         private ImageView simpleDraweeView;
         private TextView type;
-        private ImageView loading;
         private LinearLayout linearLayout;
         private int pos;
 
@@ -67,7 +63,6 @@ public class SpecialShareAdapter extends RecyclerView.Adapter<SpecialShareAdapte
             linearLayout = (LinearLayout) itemView.findViewById(R.id.linearlaout);
             simpleDraweeView = (ImageView) itemView.findViewById(R.id.item_project_pic);
             type = (TextView) itemView.findViewById(R.id.item_project_type);
-            loading = (ImageView) itemView.findViewById(R.id.item_project_loading);
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override

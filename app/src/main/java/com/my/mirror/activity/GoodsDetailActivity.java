@@ -50,9 +50,7 @@ public class GoodsDetailActivity extends BaseActivity implements INetAddress, Vi
         allGoodsListData = new AllGoodsListData();
         Intent intent = getIntent();
         position = intent.getIntExtra("position", 1);
-        Log.i("position", position + "");
         bean = (HomePageBean) intent.getSerializableExtra("homePageBean");
-
     }
 
     @Override

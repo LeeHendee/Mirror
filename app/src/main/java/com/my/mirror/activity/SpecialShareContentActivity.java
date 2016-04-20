@@ -37,7 +37,7 @@ public class SpecialShareContentActivity extends BaseActivity implements INetAdd
     private MainViewPager viewPager;
     private MainViewPagerAdapter adapter;
     private List<Fragment> fragmentList;
-    private ImageView back,loading,share;
+    private ImageView back,share;
     private SimpleDraweeView backgroundIv;
     private LinearLayout linearLayout;
     private SpecialShareContentBean bean;
@@ -137,9 +137,6 @@ public class SpecialShareContentActivity extends BaseActivity implements INetAdd
             }
         });
 
-        //背景加载动画
-        Animation animation = AnimationUtils.loadAnimation(this, R.anim.loading);
-        loading.startAnimation(animation);
     }
 
     @Override
@@ -147,7 +144,6 @@ public class SpecialShareContentActivity extends BaseActivity implements INetAdd
         viewPager = findId(R.id.viewpager);
         backgroundIv = findId(R.id.background_iv);
         back = findId(R.id.share_content_back);
-        loading = findId(R.id.share_content_loading);
         share = findId(R.id.share_content_share);
         View view = LayoutInflater.from(this).inflate(R.layout.fragment_special_share_content,null);
         linearLayout = (LinearLayout) view.findViewById(R.id.viewpager_linear_layout);
