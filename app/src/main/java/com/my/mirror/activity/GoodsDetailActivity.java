@@ -6,7 +6,10 @@ import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
+import android.widget.ImageView;
 
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.google.gson.Gson;
@@ -23,6 +26,7 @@ import com.squareup.okhttp.FormEncodingBuilder;
 import com.squareup.okhttp.OkHttpClient;
 import com.squareup.okhttp.Request;
 import com.squareup.okhttp.Response;
+
 import java.io.IOException;
 import java.io.Serializable;
 import java.util.List;
@@ -32,11 +36,12 @@ public class GoodsDetailActivity extends BaseActivity implements INetAddress, Vi
     private LinkageListView listView;
     private AllGoodsListData allGoodsListData;
     private Handler handler;
-    private int position;
+    private int position, pos;
     private SimpleDraweeView background;
     private Button backBtn, picturesBtn, buyBtn;
     private List<AllGoodsListData.DataEntity.ListEntity.WearVideoEntity> picturesData;
     private HomePageBean bean;
+    private ImageView loading;
 
     @Override
     protected int getLayout() {
@@ -50,7 +55,18 @@ public class GoodsDetailActivity extends BaseActivity implements INetAddress, Vi
         allGoodsListData = new AllGoodsListData();
         Intent intent = getIntent();
         position = intent.getIntExtra("position", 1);
-        Log.i("position", position + "");
+        Log.i("position", pos + "");
+        switch (position) {
+            case 0:
+                position = 1;
+                break;
+            case 1:
+                position = 2;
+                break;
+            case 2:
+                position = 0;
+                break;
+        }
         bean = (HomePageBean) intent.getSerializableExtra("homePageBean");
 
     }
@@ -62,10 +78,13 @@ public class GoodsDetailActivity extends BaseActivity implements INetAddress, Vi
         backBtn = findId(R.id.btn_back_detail);
         picturesBtn = findId(R.id.btn_pictures);
         buyBtn = findId(R.id.btn_buy);
+        loading = findId(R.id.goodsdetail_loading);
         //弹出的button监听;
         backBtn.setOnClickListener(this);
         picturesBtn.setOnClickListener(this);
         buyBtn.setOnClickListener(this);
+        Animation animation = AnimationUtils.loadAnimation(this,R.anim.loading);
+        loading.startAnimation(animation);
 
         //按钮菜单滑动监听:
 //        listView.getBottomListView().setOnScrollChangeListener(new View.OnScrollChangeListener() {
@@ -105,8 +124,8 @@ public class GoodsDetailActivity extends BaseActivity implements INetAddress, Vi
         OkHttpClient okHttpClient = new OkHttpClient();
         FormEncodingBuilder builder = new FormEncodingBuilder();
         builder.add(DEVICE_TYPE, DEVICE);
-        builder.add(VERSION,VERSION_VALUE);
-        String url = BEGIN_URL+PRODUCT_LIST;
+        builder.add(VERSION, VERSION_VALUE);
+        String url = BEGIN_URL + PRODUCT_LIST;
         Request request = new Request.Builder()
                 .url(url)
                 .post(builder.build())
@@ -139,17 +158,15 @@ public class GoodsDetailActivity extends BaseActivity implements INetAddress, Vi
                 startActivity(picturesActivity);
                 break;
             case R.id.btn_buy:
-                Intent buyActivity = new Intent(this,OrderDetailActivity.class);
-                buyActivity.putExtra("orderDetail_picture",allGoodsListData.getData().getList().get(position).getGoods_pic());
-                buyActivity.putExtra("orderDetail_name",allGoodsListData.getData().getList().get(position).getBrand());
-                buyActivity.putExtra("orderDetail_describe",allGoodsListData.getData().getList().get(position).getGoods_name());
-                buyActivity.putExtra("orderDetail_price",allGoodsListData.getData().getList().get(position).getGoods_price());
+                Intent buyActivity = new Intent(this, OrderDetailActivity.class);
+                buyActivity.putExtra("orderDetail_picture", allGoodsListData.getData().getList().get(position).getGoods_pic());
+                buyActivity.putExtra("orderDetail_name", allGoodsListData.getData().getList().get(position).getBrand());
+                buyActivity.putExtra("orderDetail_describe", allGoodsListData.getData().getList().get(position).getGoods_name());
+                buyActivity.putExtra("orderDetail_price", allGoodsListData.getData().getList().get(position).getGoods_price());
                 startActivity(buyActivity);
                 break;
         }
     }
-
-
 
 
 }

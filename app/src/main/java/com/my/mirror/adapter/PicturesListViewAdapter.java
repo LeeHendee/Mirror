@@ -61,7 +61,6 @@ public class PicturesListViewAdapter extends BaseAdapter {
         if (Integer.valueOf(picturesData.get(position).getType())==5){
             Picasso.with(mContext).load(Uri.parse(picturesData.get(position).getData())).into(holder.pictureIv);
         }
-
         return convertView;
     }
 

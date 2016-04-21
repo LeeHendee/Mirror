@@ -10,6 +10,8 @@ import android.widget.AbsListView;
 import android.widget.BaseAdapter;
 import android.widget.FrameLayout;
 import android.widget.ListView;
+import android.widget.Toast;
+
 import com.my.mirror.R;
 
 
@@ -78,7 +80,9 @@ public class LinkageListView extends FrameLayout {
                 View child = view.getChildAt(0);
                 if (child != null) {
                     mTopListView.setSelectionFromTop(firstVisibleItem, (int) (child.getTop() * linkageSpeed));
-
+                    if (firstVisibleItem == 3) {
+                        Toast.makeText(mContext, "ccc", 5000).show();
+                    }
                 }
             }
 

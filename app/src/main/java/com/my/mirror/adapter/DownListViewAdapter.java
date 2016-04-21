@@ -1,6 +1,7 @@
 package com.my.mirror.adapter;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,6 +24,8 @@ public class DownListViewAdapter extends BaseAdapter {
         this.context = context;
         this.myPosition = position;
         inflater = LayoutInflater.from(context);
+        Log.d("UpListViewAdapter", "position:" + position);
+
 
     }
 
@@ -45,7 +48,7 @@ public class DownListViewAdapter extends BaseAdapter {
     public int getItemViewType(int position) {
         if (position == 2) {
             return TYPE_3;
-        } else if (position > 2 && position < allGoodsListData.getData().getList().get(myPosition).getDesign_des().size() + 2) {
+        } else if (position > 2 && position < allGoodsListData.getData().getList().get(myPosition).getGoods_data().size() + 3) {
             return TYPE_2;
         } else {
             return TYPE_1;
