@@ -211,18 +211,4 @@ public class MainActivity extends BaseActivity implements INetAddress {
         }
     }
 
-    public void showClassiFied(){
-        frameLayout.setVisibility(View.VISIBLE);
-        Animation animation = AnimationUtils.loadAnimation(this, R.anim.anim_classified);
-        frameLayout.startAnimation(animation);
-    }
-
-    public void disappearClassified(){
-        frameLayout.setVisibility(View.GONE);
-    }
-
-    public void jumpToReUseFragment(int position){
-        disappearClassified();
-        viewPager.setCurrentItem(position);
-    }
 }
