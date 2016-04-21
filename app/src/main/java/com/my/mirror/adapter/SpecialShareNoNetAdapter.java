@@ -45,9 +45,6 @@ public class SpecialShareNoNetAdapter extends RecyclerView.Adapter<SpecialShareN
         // holder.simpleDraweeView.setImageURI(Uri.parse(bean.getData().getList().get(position).getStory_img()));
         holder.type.setText(specialShareDao.queryBuilder().list().get(position).getTitle());
         holder.pos = position;
-        //添加动画
-        Animation animation = AnimationUtils.loadAnimation(BaseApplication.getContext(), R.anim.loading);
-        holder.loading.startAnimation(animation);
     }
 
     @Override
@@ -59,7 +56,6 @@ public class SpecialShareNoNetAdapter extends RecyclerView.Adapter<SpecialShareN
     class SpecialViewHolder extends RecyclerView.ViewHolder {
         private ImageView simpleDraweeView;
         private TextView type;
-        private ImageView loading;
         private LinearLayout linearLayout;
         private int pos;
 
@@ -68,8 +64,6 @@ public class SpecialShareNoNetAdapter extends RecyclerView.Adapter<SpecialShareN
             linearLayout = (LinearLayout) itemView.findViewById(R.id.linearlaout);
             simpleDraweeView = (ImageView) itemView.findViewById(R.id.item_project_pic);
             type = (TextView) itemView.findViewById(R.id.item_project_type);
-            loading = (ImageView) itemView.findViewById(R.id.item_project_loading);
-
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

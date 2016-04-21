@@ -52,7 +52,7 @@ public class PicturesActivity extends BaseActivity  {
             if (Integer.parseInt(picturesData.get(i).getType()) == 8) {
                 jPlayer.setUp(picturesData.get(i).getData(), "");
             }
-
+ 
             if (Integer.valueOf(picturesData.get(i).getType()) == 9) {
                 Picasso.with(this).load(Uri.parse(picturesData.get(i).getData())).into(coverIv);
                 jPlayer.ivThumb.setVisibility(View.VISIBLE);
@@ -74,6 +74,7 @@ public class PicturesActivity extends BaseActivity  {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent(PicturesActivity.this, SinglePictureActivity.class);
+
                 if (Integer.valueOf(picturesData.get(position).getType()) == 5) {
                     String singleUrl = picturesData.get(position).getData();
                     intent.putExtra("bitmap_url", singleUrl);

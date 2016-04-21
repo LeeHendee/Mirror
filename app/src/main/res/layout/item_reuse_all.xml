@@ -15,12 +15,12 @@
             android:layout_width="match_parent"
             android:layout_height="@dimen/item_reuse_all_background_image">
 
-            <ImageView
-                android:id="@+id/item_reuse_loading"
+            <ProgressBar
+                style="?android:attr/progressBarStyleLarge"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:src="@mipmap/loading"/>
+                android:id="@+id/progressBar"
+                android:layout_gravity="center"/>
             <ImageView
                 android:id="@+id/item_all_pic"
                 android:layout_width="match_parent"

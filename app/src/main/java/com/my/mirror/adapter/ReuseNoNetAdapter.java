@@ -63,8 +63,6 @@ public class ReuseNoNetAdapter extends RecyclerView.Adapter<ReuseNoNetAdapter.Vi
         holder.type.setText(reUseDao.queryBuilder().where(ReUseDao.Properties.TypeId.eq(String.valueOf(postions))).list().get(position).getBrand());
         holder.price.setText(reUseDao.queryBuilder().where(ReUseDao.Properties.TypeId.eq(String.valueOf(postions))).list().get(position).getPrice());
 
-        Animation animation = AnimationUtils.loadAnimation(BaseApplication.getContext(), R.anim.loading);
-        holder.loading.startAnimation(animation);
 
     }
 
@@ -76,7 +74,7 @@ public class ReuseNoNetAdapter extends RecyclerView.Adapter<ReuseNoNetAdapter.Vi
 
     class ViewHolder extends RecyclerView.ViewHolder{
         private TextView name,price,area,type;
-        private ImageView loading,pic;
+        private ImageView pic;
 
         public ViewHolder(View itemView) {
             super(itemView);
@@ -92,7 +90,6 @@ public class ReuseNoNetAdapter extends RecyclerView.Adapter<ReuseNoNetAdapter.Vi
             price = (TextView) itemView.findViewById(R.id.item_all_price);
             area = (TextView) itemView.findViewById(R.id.item_all_country);
             type = (TextView) itemView.findViewById(R.id.item_all_type);
-            loading = (ImageView) itemView.findViewById(R.id.item_reuse_loading);
         }
     }
 

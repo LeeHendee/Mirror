@@ -74,7 +74,6 @@ public class GoodsDetailActivity extends BaseActivity implements INetAddress, Vi
                 break;
         }
         bean = (HomePageBean) intent.getSerializableExtra("homePageBean");
-
     }
 
     @Override

@@ -22,7 +22,7 @@
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme">
-        <activity android:name=".activity.MainActivity">
+        <activity android:name=".activity.WelcomeActivity">
 
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
@@ -39,6 +39,7 @@
         <activity android:name=".activity.OrderDetailActivity"/>
         <activity android:name=".activity.AddAddressActivity"/>
         <activity android:name=".activity.AllAddressActivity"/>
+        <activity android:name=".activity.MainActivity"/>
 
         <activity
             android:name="com.mob.tools.MobUIShell"
@@ -73,11 +74,11 @@
         <meta-data
             android:name="design_width"
 
-            android:value="750"></meta-data>
+            android:value="768"></meta-data>
 
         <meta-data
             android:name="design_height"
-            android:value="1319"></meta-data>
+            android:value="1280"></meta-data>
     </application>
 
 

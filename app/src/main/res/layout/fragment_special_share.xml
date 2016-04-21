@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.zhy.autolayout.AutoLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@mipmap/bg">
-    <FrameLayout
+    <com.zhy.autolayout.AutoFrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <LinearLayout
+        <com.zhy.autolayout.AutoLinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
@@ -63,8 +63,8 @@
                 android:layout_height="@dimen/item_reuse_all_background_image"
                 android:layout_marginBottom="@dimen/title_rv_marginbottom"
                 android:layout_marginTop="@dimen/title_rv_margintop" />
-        </LinearLayout>
+        </com.zhy.autolayout.AutoLinearLayout>
 
-    </FrameLayout>
+    </com.zhy.autolayout.AutoFrameLayout>
 
-</LinearLayout>
+</com.zhy.autolayout.AutoLinearLayout>

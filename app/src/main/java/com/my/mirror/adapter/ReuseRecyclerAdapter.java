@@ -63,8 +63,7 @@ public class ReuseRecyclerAdapter extends RecyclerView.Adapter<ReuseRecyclerAdap
                 context.startActivity(intent);
             }
         });
-        Animation animation = AnimationUtils.loadAnimation(BaseApplication.getContext(), R.anim.loading);
-        holder.loading.startAnimation(animation);
+
     }
 
     @Override
@@ -76,7 +75,6 @@ public class ReuseRecyclerAdapter extends RecyclerView.Adapter<ReuseRecyclerAdap
     class MyViewHolder extends RecyclerView.ViewHolder {
         private ImageView pic;
         private TextView name, price, area, type;
-        private ImageView loading;
         private LinearLayout line;
 
         public MyViewHolder(View itemView) {
@@ -87,7 +85,6 @@ public class ReuseRecyclerAdapter extends RecyclerView.Adapter<ReuseRecyclerAdap
             price = (TextView) itemView.findViewById(R.id.item_all_price);
             area = (TextView) itemView.findViewById(R.id.item_all_country);
             type = (TextView) itemView.findViewById(R.id.item_all_type);
-            loading = (ImageView) itemView.findViewById(R.id.item_reuse_loading);
             line = (LinearLayout) itemView.findViewById(R.id.item_all_line);
 
         }
