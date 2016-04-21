@@ -56,7 +56,6 @@ public class PicturesActivity extends BaseActivity  {
             if (Integer.valueOf(picturesData.get(i).getType()) == 9) {
                 Picasso.with(this).load(Uri.parse(picturesData.get(i).getData())).into(coverIv);
                 jPlayer.ivThumb.setVisibility(View.VISIBLE);
-
             }
             coverIv.setOnClickListener(new View.OnClickListener() {
                 @Override

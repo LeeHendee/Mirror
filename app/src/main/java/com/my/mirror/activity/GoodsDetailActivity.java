@@ -10,15 +10,17 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.google.gson.Gson;
 import com.my.mirror.R;
 import com.my.mirror.adapter.DownListViewAdapter;
-import com.my.mirror.base.BaseActivity;
-import com.my.mirror.bean.AllGoodsListData;
 import com.my.mirror.adapter.LinkageListView;
 import com.my.mirror.adapter.UpListViewAdapter;
+import com.my.mirror.base.BaseActivity;
+import com.my.mirror.base.BaseApplication;
+import com.my.mirror.bean.AllGoodsListData;
 import com.my.mirror.bean.HomePageBean;
 import com.my.mirror.net.okhttp.INetAddress;
 import com.squareup.okhttp.Callback;
@@ -31,6 +33,8 @@ import java.io.IOException;
 import java.io.Serializable;
 import java.util.List;
 
+import de.greenrobot.event.EventBus;
+
 
 public class GoodsDetailActivity extends BaseActivity implements INetAddress, View.OnClickListener {
     private LinkageListView listView;
@@ -42,6 +46,8 @@ public class GoodsDetailActivity extends BaseActivity implements INetAddress, Vi
     private List<AllGoodsListData.DataEntity.ListEntity.WearVideoEntity> picturesData;
     private HomePageBean bean;
     private ImageView loading;
+    private LinearLayout line;
+    private boolean flagRight = false, flagLeft = false, flag = false;
 
     @Override
     protected int getLayout() {
@@ -73,17 +79,20 @@ public class GoodsDetailActivity extends BaseActivity implements INetAddress, Vi
 
     @Override
     protected void initView() {
+        EventBus.getDefault().register(this);
+
         listView = (LinkageListView) findViewById(R.id.detail_listview);
         background = (SimpleDraweeView) findViewById(R.id.goodsdetail_background);
         backBtn = findId(R.id.btn_back_detail);
         picturesBtn = findId(R.id.btn_pictures);
         buyBtn = findId(R.id.btn_buy);
         loading = findId(R.id.goodsdetail_loading);
+        line = findId(R.id.goodsdetail_line);
         //弹出的button监听;
         backBtn.setOnClickListener(this);
         picturesBtn.setOnClickListener(this);
         buyBtn.setOnClickListener(this);
-        Animation animation = AnimationUtils.loadAnimation(this,R.anim.loading);
+        Animation animation = AnimationUtils.loadAnimation(this, R.anim.loading);
         loading.startAnimation(animation);
 
         //按钮菜单滑动监听:
@@ -99,13 +108,32 @@ public class GoodsDetailActivity extends BaseActivity implements INetAddress, Vi
 
     }
 
+    public void onEventMainThread(Integer x) {
+//        Log.d("EEEEEEEE", "onEventMainThread() returned: " + x);
+//        Log.d("EEEEEEEE", "onEventMainThread() returned: " + flagLeft);
+        //TODO 二级页面动画没完成
+        if (x == 2 && flagRight == false) {
+            setToLeftAima();
+            line.setVisibility(View.INVISIBLE);
+            flagRight = true;
+        } else if (x == 1 && flagLeft == false&&flag==false) {
+            setToRightAima();
+            line.setVisibility(View.VISIBLE);
+            flagLeft = true;
+        } else if (x > 2) {
+            flagLeft = false;
+            flagRight = false;
+            flag=true;
+        }
+    }
+
     @Override
     protected void onDestroy() {
         super.onDestroy();
+        EventBus.getDefault().unregister(this);
         System.gc();
     }
-
-    private void addData() {
+     private void addData() {
         handler = new Handler(new Handler.Callback() {
             @Override
             public boolean handleMessage(Message msg) {
@@ -163,9 +191,21 @@ public class GoodsDetailActivity extends BaseActivity implements INetAddress, Vi
                 buyActivity.putExtra("orderDetail_name", allGoodsListData.getData().getList().get(position).getBrand());
                 buyActivity.putExtra("orderDetail_describe", allGoodsListData.getData().getList().get(position).getGoods_name());
                 buyActivity.putExtra("orderDetail_price", allGoodsListData.getData().getList().get(position).getGoods_price());
+                buyActivity.putExtra("orderDetail_id", allGoodsListData.getData().getList().get(position).getGoods_id());
                 startActivity(buyActivity);
                 break;
         }
+    }
+
+    public void setToRightAima() {
+        line.setVisibility(View.VISIBLE);
+        Animation animation = AnimationUtils.loadAnimation(BaseApplication.getContext(), R.anim.anim_goods_line_toright);
+        line.startAnimation(animation);
+    }
+
+    public void setToLeftAima() {
+        Animation animation = AnimationUtils.loadAnimation(BaseApplication.getContext(), R.anim.anim_goods_line_toleft);
+        line.startAnimation(animation);
     }
 
 

@@ -30,9 +30,11 @@
         android:visibility="visible">
 
         <com.zhy.autolayout.AutoLinearLayout
+            android:id="@+id/goodsdetail_line"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:visibility="invisible">
 
             <Button
                 android:id="@+id/btn_back_detail"

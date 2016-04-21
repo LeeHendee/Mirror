@@ -13,6 +13,9 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.my.mirror.R;
+import com.my.mirror.activity.GoodsDetailActivity;
+
+import de.greenrobot.event.EventBus;
 
 
 public class LinkageListView extends FrameLayout {
@@ -24,7 +27,7 @@ public class LinkageListView extends FrameLayout {
     private Context mContext;
 
     private BaseAdapter mBotAdapter, mTopAdapter;
-
+    private int i;
 
     public LinkageListView(Context context) {
         this(context, null);
@@ -80,9 +83,9 @@ public class LinkageListView extends FrameLayout {
                 View child = view.getChildAt(0);
                 if (child != null) {
                     mTopListView.setSelectionFromTop(firstVisibleItem, (int) (child.getTop() * linkageSpeed));
-                    if (firstVisibleItem == 3) {
-                        Toast.makeText(mContext, "ccc", 5000).show();
-                    }
+
+                           EventBus.getDefault().post(new Integer(firstVisibleItem));
+
                 }
             }
 
