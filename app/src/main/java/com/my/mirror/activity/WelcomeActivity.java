@@ -10,6 +10,7 @@ import com.google.gson.Gson;
 import com.my.mirror.R;
 import com.my.mirror.base.BaseActivity;
 import com.my.mirror.bean.WelcomeBean;
+import com.my.mirror.net.okhttp.INetAddress;
 import com.my.mirror.net.okhttp.StringCallback;
 import com.zhy.http.okhttp.OkHttpUtils;
 
@@ -18,7 +19,7 @@ import okhttp3.Call;
 /**
  * Created by liangzaipan on 16/4/1.
  */
-public class WelcomeActivity extends BaseActivity {
+public class WelcomeActivity extends BaseActivity implements INetAddress{
     //测试
     private SimpleDraweeView simpleDraweeView;
     private WelcomeBean bean;
@@ -29,12 +30,11 @@ public class WelcomeActivity extends BaseActivity {
 
     @Override
     protected void initData() {
-        OkHttpUtils.post().url("http://api101.test.mirroreye.cn/index.php/index/started_img").build().execute(new StringCallback() {
+        OkHttpUtils.post().url(BEGIN_URL + STARTED_IMG).build().execute(new StringCallback() {
             @Override
             public void onError(Call call, Exception e) {
                 Intent intent = new Intent(WelcomeActivity.this,MainActivity.class);
                 startActivity(intent);
-                Log.i("WelcomeActivity","网络不好啊");
                 finish();
             }
             @Override

@@ -8,9 +8,6 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/lzp_fifteen"
-        android:layout_marginRight="@dimen/lzp_fifteen"
-        android:layout_marginTop="@dimen/lzp_ten"
         android:background="@mipmap/writeaddress"
         android:orientation="vertical">
 
@@ -26,14 +23,17 @@
                 android:layout_marginLeft="@dimen/lzp_fifteen"
                 android:layout_marginTop="@dimen/lzp_twenty"
                 android:text="@string/getperson"
-                android:textStyle="bold"
-                android:textSize="@dimen/lzp_text_thirteen" />
+                android:textColor="@color/black"
+                android:textSize="@dimen/lzp_text_thirteen"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/item_alladdress_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/lzp_twenty"
+                android:text="1111111"
+                android:textColor="@color/black"
                 android:textStyle="bold" />
         </LinearLayout>
 
@@ -45,27 +45,42 @@
             android:layout_marginTop="@dimen/lzp_ten"
             android:orientation="horizontal">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/lzp_ten"
-                android:layout_marginTop="@dimen/lzp_ten"
-                android:text="@string/getaddress"
-                android:textSize="@dimen/lzp_text_thirteen" />
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="2">
 
-            <TextView
-                android:id="@+id/item_alladdress_location"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/lzp_ten" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/lzp_ten"
+                    android:layout_marginTop="@dimen/lzp_ten"
+                    android:text="@string/getaddress"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/lzp_text_thirteen" />
 
-            <ImageView
-                android:id="@+id/item_alladdress_btn"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/lzp_ten"
-                android:layout_marginLeft="@dimen/lzp_two_zero_zero"
-                android:src="@mipmap/changeaddress_icon" />
+                <TextView
+                    android:id="@+id/item_alladdress_location"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/lzp_ten"
+                    android:text="222"
+                    android:textColor="@color/black" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1">
+                <ImageView
+                    android:id="@+id/item_alladdress_btn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:layout_marginLeft="@dimen/lzp_fourty"
+                    android:layout_marginTop="@dimen/lzp_ten"
+                    android:src="@mipmap/changeaddress_icon" />
+            </LinearLayout>
         </LinearLayout>
 
         <LinearLayout
@@ -80,11 +95,12 @@
                 android:id="@+id/item_alladdress_tel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/lzp_twenty"
                 android:layout_marginLeft="@dimen/lzp_ten"
                 android:layout_marginTop="@dimen/lzp_ten"
-                android:layout_marginBottom="@dimen/lzp_twenty"
-                android:textStyle="bold"
-                android:textSize="@dimen/lzp_text_thirteen" />
+                android:textColor="@color/black"
+                android:textSize="@dimen/lzp_text_thirteen"
+                android:textStyle="bold" />
         </LinearLayout>
     </LinearLayout>
 

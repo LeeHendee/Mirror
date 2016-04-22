@@ -14,7 +14,19 @@ public interface INetAddress {
     String GOOD_TYPE = "good_type";
     String STORY_ID = "story_id";
     String CATEGORY_ID = "category_id";
+    String TOKEN = "token";
+    String USERNAME = "username";
+    String CELLPHONE = "cellphone";
+    String ADDR_INFO = "addr_info";
+    String ADDR_ID = "addr_id";
+    String PHONE_NUMBER = "phone_number";
+    String PASSWORD = "password";
+    String PHONENUMBER = "phone number";
+    String NUMBER = "number";
 
+
+    //
+    String STARTED_IMG = "index.php/index/started_img";
 
     //商品详情
     String PRODUCT_LIST = "index.php/products/goods_list";
@@ -40,6 +52,18 @@ public interface INetAddress {
 
     //登录
     String LOGIN = "index.php/user/login";
+
+    //添加地址
+    String ADD_DRESS = "index.php/user/add_address";
+
+    //删除地址
+    String EDIT_ADDRESS = "index.php/user/edit_address";
+
+    String ADDRESS_LIST = "index.php/user/address_list";
+
+    String DEL_ADDRESS = "index.php/user/del_address";
+
+    String MR_ADDRESS = "index.php/user/mr_address";
 
 }
 
