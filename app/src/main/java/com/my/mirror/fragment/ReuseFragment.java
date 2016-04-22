@@ -153,7 +153,6 @@ public class ReuseFragment extends BaseFragment implements INetAddress {
     }
 
 
-
     @Override
     public void onDestroy() {
         super.onDestroy();

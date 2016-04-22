@@ -2,8 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="@mipmap/bg">
+    android:orientation="vertical">
 
     <ProgressBar
         style="?android:attr/progressBarStyleLarge"
@@ -11,9 +10,9 @@
         android:layout_height="wrap_content"
         android:id="@+id/progressBar"
         android:layout_centerInParent="true"/>
-    <ImageView
+    <com.facebook.drawee.view.SimpleDraweeView
         android:id="@+id/welcome_iv"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent" />
 
 </RelativeLayout>

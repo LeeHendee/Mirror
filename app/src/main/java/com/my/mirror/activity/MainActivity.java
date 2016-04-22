@@ -21,6 +21,7 @@ import com.my.mirror.adapter.MainViewPagerAdapter;
 import com.my.mirror.base.BaseActivity;
 import com.my.mirror.base.BaseApplication;
 import com.my.mirror.bean.ClassifiedBean;
+import com.my.mirror.fragment.ClassifiedFragment;
 import com.my.mirror.fragment.ReuseFragment;
 import com.my.mirror.fragment.ShopingCarFragment;
 import com.my.mirror.fragment.SpecialShareFragment;
@@ -36,7 +37,7 @@ import java.util.List;
 
 import okhttp3.Call;
 
-public class MainActivity extends BaseActivity implements INetAddress {
+public class MainActivity extends BaseActivity implements INetAddress ,ClassifiedFragment.MenuClick{
     private ImageView mirrorIcon;//mirror图标
     private List<Fragment> fragmentList;
     private MainViewPager viewPager;
@@ -211,4 +212,8 @@ public class MainActivity extends BaseActivity implements INetAddress {
         }
     }
 
+    @Override
+    public void click(int position) {
+        viewPager.setCurrentItem(position);
+    }
 }

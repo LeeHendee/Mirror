@@ -2,6 +2,7 @@ package com.my.mirror.net;
 
 
 import android.graphics.Bitmap;
+import android.util.Log;
 import android.widget.ImageView;
 
 import com.my.mirror.R;
@@ -37,7 +38,7 @@ public class ImageLoaderHelper {
                 .showImageForEmptyUri(null)//网址为空的时候显示的图片
                 .showImageOnFail(null)//加载失败的时候显示的图片
                 .cacheInMemory(true)//是否内存缓存
-                .cacheOnDisk(true)//是否内存缓存
+                .cacheOnDisk(true)//是否硬盘缓存
                 .bitmapConfig(Bitmap.Config.RGB_565)//设置图片的解码格式
                 .build();
 
