@@ -11,6 +11,7 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.TextView;
@@ -36,16 +37,18 @@ import okhttp3.Call;
  * Created by liangzaipan on 16/4/15.
  */
 public class OrderDetailActivity extends BaseActivity implements View.OnClickListener, INetAddress {
-    private TextView addressTV, addAddressTv, titleTv, describeTv, priceTv;
-    private SimpleDraweeView simpleDraweeView;
-    private Button btn;
-    private String iv, name, describe, price, goodsId;
+
     private PopupWindow popupWindow;
-    private Button aliPayBtn;
+    private Button aliPayBtn,btn;
     private AlipayBean bean;
-    private String token, order_no, addr_id, goodsName;
-    private PayBean payBean;
+    private String token, order_no, addr_id, goodsName,iv, describe, goodsId,
+                    title, content, price, pic, name, address, tel;
     private String payInfo;
+    private TextView addAddressTv, titleTv, describeTv, priceTv, nameTv, addressTv, telTv;
+    private SimpleDraweeView simpleDraweeView;
+    private int code;
+    private ImageView back;
+
 
 
     //支付宝调用
@@ -88,6 +91,7 @@ public class OrderDetailActivity extends BaseActivity implements View.OnClickLis
         }
     };
 
+
     @Override
     protected int getLayout() {
         return R.layout.activity_orderdetail_fisrt;
@@ -96,30 +100,24 @@ public class OrderDetailActivity extends BaseActivity implements View.OnClickLis
     @Override
     protected void initData() {
         Intent intent = getIntent();
-        iv = intent.getStringExtra("orderDetail_picture");
-        name = intent.getStringExtra("orderDetail_name");
-        describe = intent.getStringExtra("orderDetail_describe");
-        price = intent.getStringExtra("orderDetail_price");
-        goodsId = intent.getStringExtra("orderDetail_id");
+        iv = intent.getStringExtra("pic");
+        name = intent.getStringExtra("title");
+        describe = intent.getStringExtra("content");
+        price = intent.getStringExtra("price");
+        goodsId = intent.getStringExtra("goodsId");
         simpleDraweeView.setImageURI(Uri.parse(iv));
         titleTv.setText(name);
         describeTv.setText(describe);
         priceTv.setText(price);
 
         OkHttpUtils.post().url(BEGIN_URL + SUB)
-                .addParams("token", "add853db56c099080449091b5bd88d0e")
+                .addParams(TOKEN, "add853db56c099080449091b5bd88d0e")
                 .addParams(DEVICE_TYPE, DEVICE_REUSE)
                 .addParams(GOODS_ID, goodsId)
                 .addParams(GOODS_PRICE, price)
                 .addParams(GOODS_NUM, DEVICE).build().execute(new StringCallback() {
             @Override
             public void onError(Call call, Exception e) {
-
-
-
-               // {"result":"1","msg":"","data":{"order_id":"14612855370OE","
-               // address":{"addr_id":"1044",
-               // {"goods_name":"SEE CONCEPT","goods_num":"","des":"玳瑁復古花紋閱讀鏡","price":"450","pic":"http://7xprhi.com2.z0.glb.qiniucdn.com/Seeo0102549e4bee5442391fa715e7d33f6864c3.jpg","book_copy":"文案（订购商品）文案（订购商品）文案（订购商品）文案（订购商品）"},"if_ordain":"1"}}
 
             }
 
@@ -132,7 +130,7 @@ public class OrderDetailActivity extends BaseActivity implements View.OnClickLis
                 goodsName = bean.getData().getGoods().getGoods_name();
 
                 OkHttpUtils.post().url(BEGIN_URL + ALI_PAY)
-                        .addParams("token", "add853db56c099080449091b5bd88d0e")
+                        .addParams(TOKEN, "add853db56c099080449091b5bd88d0e")
                         .addParams(ORDER_NO, order_no)
                         .addParams(ADDR_ID, addr_id)
                         .addParams(GOODSNAME, goodsName).build().execute(new StringCallback() {
@@ -143,9 +141,7 @@ public class OrderDetailActivity extends BaseActivity implements View.OnClickLis
 
                     @Override
                     public void onResponse(String response) {
-//                Gson gson = new Gson();
-//                payBean = gson.fromJson(response, PayBean.class);
-//                payInfo = payBean.getData().getStr();
+
                         try {
                             JSONObject obj = new JSONObject(response);
                             payInfo = obj.getJSONObject("data").getString("str");
@@ -159,12 +155,39 @@ public class OrderDetailActivity extends BaseActivity implements View.OnClickLis
         });
 
 
+        code = intent.getIntExtra("code", 2);
+        if (code == 0) {
+            pic = intent.getStringExtra("pic");
+            title = intent.getStringExtra("title");
+            content = intent.getStringExtra("content");
+            price = intent.getStringExtra("price");
+
+            simpleDraweeView.setImageURI(Uri.parse(pic));
+            titleTv.setText(title);
+            describeTv.setText(content);
+            priceTv.setText(price);
+        } else if (code == 1) {
+            name = intent.getStringExtra("name");
+            address = intent.getStringExtra("address");
+            tel = intent.getStringExtra("tel");
+            pic = intent.getStringExtra("myPic");
+            title = intent.getStringExtra("myTitle");
+            content = intent.getStringExtra("myContent");
+            price = intent.getStringExtra("myPrice");
+            nameTv.setText(getString(R.string.order_detail_name) + name);
+            addressTv.setText(getString(R.string.order_detail_address) + address);
+            telTv.setText(getString(R.string.order_detail_number) + tel);
+            simpleDraweeView.setImageURI(Uri.parse(pic));
+            titleTv.setText(title);
+            describeTv.setText(content);
+            priceTv.setText(price);
+        }
     }
+
 
     @Override
     protected void initView() {
         addAddressTv = findId(R.id.orderdetail_addaddress);
-        addressTV = findId(R.id.orderdetail_address);
         titleTv = findId(R.id.orderdetail_title);
         describeTv = findId(R.id.orderdetail_describe);
         priceTv = findId(R.id.orderdetail_price);
@@ -172,6 +195,11 @@ public class OrderDetailActivity extends BaseActivity implements View.OnClickLis
         btn = findId(R.id.orderdetail_btn);
         addAddressTv.setOnClickListener(this);
         btn.setOnClickListener(this);
+        nameTv = findId(R.id.orderdetail_name);
+        addressTv = findId(R.id.orderdetail_address);
+        telTv = findId(R.id.orderdetail_tel);
+        back = findId(R.id.register_close);
+        back.setOnClickListener(this);
     }
 
     @Override
@@ -179,11 +207,18 @@ public class OrderDetailActivity extends BaseActivity implements View.OnClickLis
         switch (v.getId()) {
             case R.id.orderdetail_addaddress:
                 Intent intent1 = new Intent(this, AllAddressActivity.class);
+                intent1.putExtra("pic", pic);
+                intent1.putExtra("title", title);
+                intent1.putExtra("content", content);
+                intent1.putExtra("price", price);
                 startActivity(intent1);
                 break;
             case R.id.orderdetail_btn:
                 //支付宝。
                 appearPay(v);
+                break;
+            case R.id.register_close:
+                finish();
                 break;
         }
     }

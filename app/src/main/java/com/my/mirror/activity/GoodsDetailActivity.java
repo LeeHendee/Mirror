@@ -1,6 +1,7 @@
 package com.my.mirror.activity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Handler;
 import android.os.Message;
@@ -16,12 +17,17 @@ import com.facebook.drawee.view.SimpleDraweeView;
 import com.google.gson.Gson;
 import com.my.mirror.R;
 import com.my.mirror.adapter.DownListViewAdapter;
+import com.my.mirror.base.BaseActivity;
+import com.my.mirror.base.BaseApplication;
+import com.my.mirror.bean.AllGoodsListData;
 import com.my.mirror.adapter.LinkageListView;
 import com.my.mirror.adapter.UpListViewAdapter;
 import com.my.mirror.base.BaseActivity;
 import com.my.mirror.base.BaseApplication;
 import com.my.mirror.bean.AllGoodsListData;
 import com.my.mirror.bean.HomePageBean;
+import com.my.mirror.greendao.DaoSingleton;
+import com.my.mirror.greendao.LoginTokenDao;
 import com.my.mirror.net.okhttp.INetAddress;
 import com.squareup.okhttp.Callback;
 import com.squareup.okhttp.FormEncodingBuilder;
@@ -48,6 +54,11 @@ public class GoodsDetailActivity extends BaseActivity implements INetAddress, Vi
     private ImageView loading;
     private LinearLayout line;
     private boolean flagRight = false, flagLeft = false, flag = false;
+    private LoginTokenDao loginTokenDao;
+    private String token;
+
+    private SharedPreferences sp;
+    private SharedPreferences.Editor editor;
 
     @Override
     protected int getLayout() {
@@ -56,6 +67,18 @@ public class GoodsDetailActivity extends BaseActivity implements INetAddress, Vi
 
     @Override
     protected void initData() {
+
+
+        //从轻量级数据库中获得登录成功返回的VELUE 然后判断是否可以购买
+        sp = getSharedPreferences("login", MODE_PRIVATE);
+        editor = sp.edit();
+        if (sp.getInt("loginInt", 0) == 1) {
+            loginTokenDao = DaoSingleton.getInstance(BaseApplication.getContext()).getLoginTokenDao();
+            token = loginTokenDao.queryBuilder().list().get(0).getToken();
+        } else  {
+            token = null;
+        }
+
         post();
         addData();
         allGoodsListData = new AllGoodsListData();
@@ -188,13 +211,19 @@ public class GoodsDetailActivity extends BaseActivity implements INetAddress, Vi
                 startActivity(picturesActivity);
                 break;
             case R.id.btn_buy:
-                Intent buyActivity = new Intent(this, OrderDetailActivity.class);
-                buyActivity.putExtra("orderDetail_picture", allGoodsListData.getData().getList().get(position).getGoods_pic());
-                buyActivity.putExtra("orderDetail_name", allGoodsListData.getData().getList().get(position).getBrand());
-                buyActivity.putExtra("orderDetail_describe", allGoodsListData.getData().getList().get(position).getGoods_name());
-                buyActivity.putExtra("orderDetail_price", allGoodsListData.getData().getList().get(position).getGoods_price());
-                buyActivity.putExtra("orderDetail_id", allGoodsListData.getData().getList().get(position).getGoods_id());
-                startActivity(buyActivity);
+                if (token != null) {
+                    Intent intent = new Intent(this, OrderDetailActivity.class);
+                    intent.putExtra("pic", allGoodsListData.getData().getList().get(position).getGoods_pic());
+                    intent.putExtra("title", allGoodsListData.getData().getList().get(position).getGoods_name());
+                    intent.putExtra("content", allGoodsListData.getData().getList().get(position).getBrand());
+                    intent.putExtra("price", allGoodsListData.getData().getList().get(position).getGoods_price());
+                    intent.putExtra("goodsId", allGoodsListData.getData().getList().get(position).getGoods_id());
+                    intent.putExtra("code", 0);
+                    startActivity(intent);
+                }else{
+                    Intent loginIntent = new Intent(this,LoginActivity.class);
+                    startActivity(loginIntent);
+                }
                 break;
         }
     }

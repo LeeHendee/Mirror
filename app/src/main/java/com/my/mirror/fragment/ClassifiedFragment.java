@@ -68,6 +68,7 @@ public class ClassifiedFragment extends BaseFragment implements View.OnClickList
                 intent.putExtra("position", position);
                 getActivity().finish();
                 startActivity(intent);
+                getActivity().overridePendingTransition(R.anim.anim_classified,R.anim.anim_main_activity);
             }
         });
     }
@@ -103,6 +104,7 @@ public class ClassifiedFragment extends BaseFragment implements View.OnClickList
                 intentSpecial.putExtra("position", 3);
                 getActivity().finish();
                 startActivity(intentSpecial);
+                getActivity().overridePendingTransition(R.anim.anim_classified, R.anim.anim_main_activity);
                 break;
 
             case R.id.resure_car_line:
@@ -110,6 +112,7 @@ public class ClassifiedFragment extends BaseFragment implements View.OnClickList
                 intentCar.putExtra("position", 4);
                 getActivity().finish();
                 startActivity(intentCar);
+                getActivity().overridePendingTransition(R.anim.anim_classified, R.anim.anim_main_activity);
                 break;
 
             case R.id.resure_back_line:
@@ -117,6 +120,7 @@ public class ClassifiedFragment extends BaseFragment implements View.OnClickList
                 intentBack.putExtra("position", 0);
                 getActivity().finish();
                 startActivity(intentBack);
+                getActivity().overridePendingTransition(R.anim.anim_classified, R.anim.anim_main_activity);
                 break;
 
             case R.id.resure_exit_line:

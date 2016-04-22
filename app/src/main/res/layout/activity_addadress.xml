@@ -32,7 +32,7 @@
             android:layout_weight="1">
 
             <ImageView
-                android:id="@+id/register_close"
+                android:id="@+id/addaddress_close"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@mipmap/close" />

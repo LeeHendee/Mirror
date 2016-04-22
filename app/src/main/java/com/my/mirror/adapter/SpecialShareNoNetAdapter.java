@@ -43,7 +43,6 @@ public class SpecialShareNoNetAdapter extends RecyclerView.Adapter<SpecialShareN
     public void onBindViewHolder(SpecialViewHolder holder, int position) {
         helper = ImageLoaderHelper.getImageLoaderHelper();
         helper.loadImage(specialShareDao.queryBuilder().list().get(position).getImg(), holder.simpleDraweeView);
-        // holder.simpleDraweeView.setImageURI(Uri.parse(bean.getData().getList().get(position).getStory_img()));
         holder.type.setText(specialShareDao.queryBuilder().list().get(position).getTitle());
         holder.pos = position;
     }

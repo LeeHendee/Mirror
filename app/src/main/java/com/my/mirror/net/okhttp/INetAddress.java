@@ -18,9 +18,20 @@ public interface INetAddress {
     String GOODS_PRICE = "price";
     String GOODS_NUM = "goods_num";
     String ORDER_NO ="order_no";
-    String ADDR_ID = "addr_id";
     String GOODSNAME = "goodsname";
+    String TOKEN = "token";
+    String USERNAME = "username";
+    String CELLPHONE = "cellphone";
+    String ADDR_INFO = "addr_info";
+    String ADDR_ID = "addr_id";
+    String PHONE_NUMBER = "phone_number";
+    String PASSWORD = "password";
+    String PHONENUMBER = "phone number";
+    String NUMBER = "number";
 
+
+    //
+    String STARTED_IMG = "index.php/index/started_img";
 
     //商品详情
     String PRODUCT_LIST = "index.php/products/goods_list";
@@ -50,6 +61,17 @@ public interface INetAddress {
     //支付宝
     String ALI_PAY = "index.php/pay/ali_pay_sub";
     String SUB = "index.php/order/sub";
+    //添加地址
+    String ADD_DRESS = "index.php/user/add_address";
+
+    //删除地址
+    String EDIT_ADDRESS = "index.php/user/edit_address";
+
+    String ADDRESS_LIST = "index.php/user/address_list";
+
+    String DEL_ADDRESS = "index.php/user/del_address";
+
+    String MR_ADDRESS = "index.php/user/mr_address";
 
 }
 

@@ -28,6 +28,14 @@ public class MyClass {
         specialShare.addStringProperty("title");
         specialShare.addStringProperty("img");
 
+        Entity loginToken = schema.addEntity("LoginToken");
+        loginToken.addIdProperty().primaryKey().autoincrement();
+        loginToken.addStringProperty("token");
+
+        Entity welcome = schema.addEntity("WelcomeIv");
+        welcome.addIdProperty().primaryKey().autoincrement();
+        welcome.addStringProperty("uri");
+
         try {
             new DaoGenerator().generateAll(schema, "./app/src/main/java/");
         } catch (Exception e) {

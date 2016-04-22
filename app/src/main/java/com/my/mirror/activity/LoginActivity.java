@@ -13,21 +13,30 @@ import android.widget.Toast;
 
 import com.my.mirror.R;
 import com.my.mirror.base.BaseActivity;
+import com.my.mirror.base.BaseApplication;
 import com.my.mirror.bean.LoginFailBean;
+import com.my.mirror.bean.LoginSuccessBean;
+import com.my.mirror.greendao.DaoSingleton;
+import com.my.mirror.greendao.LoginToken;
+import com.my.mirror.greendao.LoginTokenDao;
 import com.my.mirror.net.okhttp.INetAddress;
 import com.my.mirror.net.okhttp.StringCallback;
+import com.my.mirror.utils.MyToast;
 import com.zhy.http.okhttp.OkHttpUtils;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 import cn.sharesdk.framework.Platform;
 import cn.sharesdk.framework.PlatformActionListener;
 import cn.sharesdk.framework.ShareSDK;
 import cn.sharesdk.sina.weibo.SinaWeibo;
 import cn.sharesdk.wechat.friends.Wechat;
+import de.greenrobot.event.EventBus;
 import okhttp3.Call;
 
 /**
@@ -38,6 +47,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
     private Button loginBtn, createBtn;
     private ImageView closeIv, xinLangIv, weiXinIv;
     private TextView forgetTv;
+    private List<LoginToken> beans;
 
     @Override
     protected int getLayout() {
@@ -52,6 +62,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
         forgetTv.setOnClickListener(this);
         xinLangIv.setOnClickListener(this);
         weiXinIv.setOnClickListener(this);
+        beans = new ArrayList<>();
 
         passwordEt.addTextChangedListener(new TextWatcher() {
             @Override
@@ -95,8 +106,8 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
         switch (v.getId()) {
             case R.id.login_btn:
                 OkHttpUtils.post().url(BEGIN_URL + LOGIN)
-                        .addParams("phone_number", phoneEt.getText().toString())
-                        .addParams("password", passwordEt.getText().toString()).build().execute(new StringCallback() {
+                        .addParams(PHONE_NUMBER, phoneEt.getText().toString())
+                        .addParams(PASSWORD, passwordEt.getText().toString()).build().execute(new StringCallback() {
                     @Override
                     public void onError(Call call, Exception e) {
 
@@ -109,7 +120,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
                             @Override
                             public void run() {
                                 try {
-                                    JSONObject jsonObject = new JSONObject(response);
+                                    final JSONObject jsonObject = new JSONObject(response);
                                     if (jsonObject.get("data").equals("") && !jsonObject.get("msg").equals("")) {
                                         final LoginFailBean loginFailBean = new LoginFailBean(response);
                                         loginFailBean.setMsg(jsonObject.getString("msg"));
@@ -123,7 +134,21 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
                                         runOnUiThread(new Runnable() {
                                             @Override
                                             public void run() {
-                                                Toast.makeText(LoginActivity.this, "登陆成功", Toast.LENGTH_SHORT).show();
+                                                try {
+                                                    JSONObject jsonObject1 = jsonObject.getJSONObject("data");
+                                                    String token = jsonObject1.getString("token");
+                                                    LoginTokenDao loginTokenDao = DaoSingleton.getInstance(BaseApplication.getContext()).getLoginTokenDao();
+                                                    LoginToken loginToken = new LoginToken();
+                                                    loginToken.setToken(token);
+                                                    beans = DaoSingleton.getInstance(BaseApplication.getContext()).queryLoginTokenList(token);
+                                                    if (beans.size() == 0){
+                                                        loginTokenDao.insert(loginToken);
+                                                    }
+
+                                                } catch (JSONException e) {
+                                                    e.printStackTrace();
+                                                }
+                                                MyToast.mToast(getString(R.string.login_success));
                                                 Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                                                 intent.putExtra("result", 1);
                                                 startActivity(intent);

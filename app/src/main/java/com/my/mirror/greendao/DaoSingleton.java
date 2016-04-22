@@ -26,6 +26,8 @@ public class DaoSingleton {
     private ClassiFiedDao classiFiedDao;
     private ReUseDao reUseDao;
     private SpecialShareDao specialShareDao;
+    private LoginTokenDao loginTokenDao;
+    private WelcomeIvDao welcomeIvDao;
 
 
     /**
@@ -106,6 +108,18 @@ public class DaoSingleton {
             specialShareDao = getDaoSession().getSpecialShareDao();
         }
         return specialShareDao;
+    }
+    public LoginTokenDao getLoginTokenDao() {
+        if (loginTokenDao == null) {
+            loginTokenDao = getDaoSession().getLoginTokenDao();
+        }
+        return loginTokenDao;
+    }
+    public WelcomeIvDao getWelcomeIvDao() {
+        if (welcomeIvDao == null) {
+            welcomeIvDao = getDaoSession().getWelcomeIvDao();
+        }
+        return welcomeIvDao;
     }
 
     //***************
@@ -221,5 +235,53 @@ public class DaoSingleton {
         return getSpecialShareDao().loadAll();
     }
 
+    //***************************
+
+    /**
+     * 插入数据
+     * 插入集合
+     */
+    public void insertLoginTokenList(List<LoginToken> loginTokens) {
+        getLoginTokenDao().insertOrReplaceInTx(loginTokens);
+    }
+
+    /**
+     * 插入数据
+     * 插入单个对象
+     */
+    public void insertLoginTokenOnly(LoginToken loginToken) {
+        getLoginTokenDao().insertOrReplace(loginToken);
+    }
+
+    public void deleteLoginToken(LoginToken loginToken) {
+        getLoginTokenDao().delete(loginToken);
+        QueryBuilder queryBuilder = null;
+        queryBuilder.where(LoginTokenDao.Properties.Token.eq("全部"));
+    }
+
+    /**
+     * 按图片网址查询
+     * 其他一样
+     */
+    public List<LoginToken> queryLoginTokenList(String name) {
+        QueryBuilder<LoginToken> qb = getLoginTokenDao().queryBuilder();
+        qb.where(LoginTokenDao.Properties.Token.eq(name));
+        return qb.list();
+    }
+
+    public List<LoginToken> queryLoginTokenAll() {
+        return getLoginTokenDao().loadAll();
+    }
+
+    //************
+    /**
+     * 按名字查询
+     * 其他一样
+     */
+    public List<WelcomeIv> queryWelcomeIvList(String name) {
+        QueryBuilder<WelcomeIv> qb = getWelcomeIvDao().queryBuilder();
+        qb.where(WelcomeIvDao.Properties.Uri.eq(name));
+        return qb.list();
+    }
 
 }

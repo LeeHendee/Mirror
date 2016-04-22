@@ -62,42 +62,36 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.register_send_tv:
-                if (phoneEt.getText() != null) {
-                    OkHttpUtils.post().url(BEGIN_URL + SEND_CODE)
-                            .addParams("phone number", phoneEt.getText().toString())
-                            .build().execute(new Callback() {
-                        @Override
-                        public Object parseNetworkResponse(Response response) throws Exception {
-                            timer.start();
-                            return null;
-                        }
 
+                if (phoneEt.getText().toString() != null) {
+                    OkHttpUtils.post().url(BEGIN_URL + SEND_CODE)
+                            .addParams(PHONENUMBER,phoneEt.getText().toString())
+                            .build().execute(new StringCallback() {
                         @Override
                         public void onError(Call call, Exception e) {
-
                         }
 
                         @Override
-                        public void onResponse(Object response) {
-
+                        public void onResponse(String response) {
+                            timer.start();
                         }
-
                     });
                 } else {
-                    MyToast.mToast("请输入手机号");
+                    MyToast.mToast(getString(R.string.please_enet_phone_number));
                 }
                 break;
             case R.id.register_makeCount_btn:
                 if (phoneEt.length() == 0) {
-                    MyToast.mToast("请输入手机号");
+                    MyToast.mToast(getString(R.string.please_enet_phone_number));
                 } else if (numEv.length() == 0) {
-                    MyToast.mToast("请输入正确的验证码");
+                    MyToast.mToast(getString(R.string.please_enter_correct_verify_code));
                 } else if (passwordEv.length() == 0) {
-                    MyToast.mToast("请输入密码");
+                    MyToast.mToast(getString(R.string.please_enter_password));
                 } else {
                     OkHttpUtils.post().url(BEGIN_URL + REG)
-                            .addParams("phone_number", phoneEt.getText().toString()).addParams("number", numEv.getText().toString())
-                            .addParams("password", passwordEv.getText().toString()).build().execute(new StringCallback() {
+                            .addParams(PHONE_NUMBER, phoneEt.getText().toString())
+                            .addParams(NUMBER, numEv.getText().toString())
+                            .addParams(PASSWORD, passwordEv.getText().toString()).build().execute(new StringCallback() {
                         @Override
                         public void onError(Call call, Exception e) {
 
@@ -105,7 +99,6 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
 
                         @Override
                         public void onResponse(final String response) {
-                            Log.i("HHHHH", response);
                             runOnUiThread(new Runnable() {
                                 @Override
                                 public void run() {
@@ -124,7 +117,7 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
                                             runOnUiThread(new Runnable() {
                                                 @Override
                                                 public void run() {
-                                                    MyToast.mToast("登陆成功");
+                                                    MyToast.mToast(getString(R.string.login_success));
                                                     Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
                                                     startActivity(intent);
                                                 }
@@ -149,13 +142,13 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
     CountDownTimer timer = new CountDownTimer(60000, 1000) {
         @Override
         public void onTick(long millisUntilFinished) {
-            sendTv.setText((millisUntilFinished / 1000) + "秒后重新发送");
+            sendTv.setText((millisUntilFinished / 1000) + getString(R.string.resend_after));
         }
 
         @Override
         public void onFinish() {
             sendTv.setEnabled(true);
-            sendTv.setText("发送验证码");
+            sendTv.setText(R.string.send_verification_code);
         }
     };
 }

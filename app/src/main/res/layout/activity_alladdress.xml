@@ -32,7 +32,7 @@
             android:layout_weight="1">
 
             <ImageView
-                android:id="@+id/register_close"
+                android:id="@+id/alladdress_close"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@mipmap/close" />
@@ -56,8 +56,10 @@
         android:text="添加地址"
         android:textSize="@dimen/lzp_text_twenty"
         android:background="@mipmap/writeaddress"/>
-    <ListView
+    <com.baoyz.swipemenulistview.SwipeMenuListView
         android:id="@+id/allAddress_listView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        style="@style/AllAddressSwipemenuListviewStyle"
+        android:divider="@null"/>
 </LinearLayout>

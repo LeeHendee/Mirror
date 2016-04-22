@@ -47,7 +47,6 @@ public class PicturesActivity extends BaseActivity  {
 
         //JCVideo 视频播放;
         jPlayer = (JCVideoPlayer) videoHeadView.findViewById(R.id.jcv_id);
-        Log.d("tag","--->>"+picturesData.size());
         for (int i = 0; i < 5; i++) {
             if (Integer.parseInt(picturesData.get(i).getType()) == 8) {
                 jPlayer.setUp(picturesData.get(i).getData(), "");

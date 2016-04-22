@@ -55,17 +55,30 @@
         android:orientation="vertical">
 
         <TextView
+            android:id="@+id/orderdetail_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/lzp_ten"
+            android:layout_marginTop="@dimen/lzp_ten"
+            android:hint="@string/addpersoninfo"
+            android:textSize="@dimen/lzp_text_fifteen" />
+        <TextView
             android:id="@+id/orderdetail_address"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/lzp_ten"
-            android:hint="@string/addpersoninfo"
+            android:layout_marginLeft="@dimen/lzp_ten"
+            android:textSize="@dimen/lzp_text_fifteen" />
+        <TextView
+            android:id="@+id/orderdetail_tel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/lzp_ten"
             android:textSize="@dimen/lzp_text_fifteen" />
 
         <View
             android:layout_width="wrap_content"
             android:layout_height="@dimen/lzp_half"
-            android:layout_marginTop="@dimen/lzp_fifty"
+            android:layout_marginTop="@dimen/lzp_text_twenty"
             android:background="@color/colorBlack" />
 
         <RelativeLayout
