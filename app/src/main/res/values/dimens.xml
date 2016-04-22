@@ -84,7 +84,7 @@
     <dimen name="thirt_four_lee">34px</dimen>
     <dimen name="three_lee">3px</dimen>
     <dimen name="six_hundred_sixty_lee">660px</dimen>
-    <dimen name="three_hundred_thirty_eight_lee">338px</dimen>
+    <dimen name="three_hundred_thirty_eight_lee">368px</dimen>
     <dimen name="zero_lee">0px</dimen>
     <dimen name="six_hundred_eighty_lee">680px</dimen>
 
@@ -146,4 +146,15 @@
     <dimen name="item_special_share_frame_margintop">343dp</dimen>
     <dimen name="item_special_share_frame_height">130px</dimen>
 
+
+//Popupwindow
+    <dimen name="item_popupwindow_pay_width">300dp</dimen>
+    <dimen name="item_popupwindow_pay_height">194dp</dimen>
+    <dimen name="item_popupwindow_pay_elevation">10dp</dimen>
+    <dimen name="item_popupwindow_pay_cardCornerRadius">10dp</dimen>
+    <dimen name="item_popupwindow_pay_select_pay_type_tv">43dp</dimen>
+    <dimen name="item_popupwindow_pay_select_pay_type_tv_textSize">15sp</dimen>
+    <dimen name="item_popupwindow_pay_line">1dp</dimen>
+    <dimen name="item_popupwindow_pay_wechat_btn_height">40dp</dimen>
+    <dimen name="item_popupwindow_pay_wechat_icon_marginleft">52.5dp</dimen>
 </resources>

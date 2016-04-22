@@ -88,7 +88,6 @@ public class PicturesActivity extends BaseActivity  {
     @Override
     protected void initView() {
         mListView = findId(R.id.lv_pictures);
-
     }
 
     @Override

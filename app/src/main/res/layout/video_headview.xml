@@ -5,13 +5,18 @@
 
     <fm.jiecao.jcvideoplayer_lib.JCVideoPlayer
         android:id="@+id/jcv_id"
-        android:layout_width="@dimen/six_hundred_sixty_lee"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_width="match_parent"
         android:layout_height="@dimen/three_hundred_thirty_eight_lee"
         android:layout_centerHorizontal="true"
         />
 
     <ImageView
-        android:layout_width="@dimen/six_hundred_sixty_lee"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp"
+        android:scaleType="fitXY"
+        android:layout_width="match_parent"
         android:layout_height="@dimen/three_hundred_thirty_eight_lee"
         android:layout_centerHorizontal="true"
         android:id="@+id/iv_video_cover"

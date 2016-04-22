@@ -3,6 +3,7 @@ package com.my.mirror.adapter;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -34,7 +35,7 @@ public class SpecialShareNoNetAdapter extends RecyclerView.Adapter<SpecialShareN
 
     @Override
     public SpecialViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_reuse_project, null);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_special_share, null);
         return new SpecialViewHolder(view);
     }
 

@@ -5,6 +5,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.widget.LinearLayout;
 
@@ -62,7 +63,6 @@ public class SpecialShareFragment extends BaseFragment implements INetAddress{
                 GridLayoutManager gm = new GridLayoutManager(getActivity(), 1);
                 gm.setOrientation(LinearLayoutManager.HORIZONTAL);
                 recyclerView.setLayoutManager(gm);
-
             }
 
             @Override
@@ -87,11 +87,7 @@ public class SpecialShareFragment extends BaseFragment implements INetAddress{
 
             }
         });
-
-
-
-
-
+        
     }
 
     @Override

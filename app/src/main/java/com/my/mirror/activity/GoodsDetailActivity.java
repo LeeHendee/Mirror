@@ -108,21 +108,24 @@ public class GoodsDetailActivity extends BaseActivity implements INetAddress, Vi
     }
 
     public void onEventMainThread(Integer x) {
-//        Log.d("EEEEEEEE", "onEventMainThread() returned: " + x);
-//        Log.d("EEEEEEEE", "onEventMainThread() returned: " + flagLeft);
-        //TODO 二级页面动画没完成
-        if (x == 2 && flagRight == false) {
+        if (x == 1 && flagRight == true) {
+            //回去小baby
             setToLeftAima();
             line.setVisibility(View.INVISIBLE);
             flagRight = true;
-        } else if (x == 1 && flagLeft == false&&flag==false) {
+        } else if (x == 2 && flagLeft == false&&flag==false) {
+            //出来
             setToRightAima();
             line.setVisibility(View.VISIBLE);
             flagLeft = true;
         } else if (x > 2) {
             flagLeft = false;
-            flagRight = false;
+            flagRight = true;
             flag=true;
+        }else if (x==0){
+            flagLeft = false;
+            flagRight = false;
+            flag=false;
         }
     }
 

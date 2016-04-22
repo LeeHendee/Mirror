@@ -14,6 +14,12 @@ public interface INetAddress {
     String GOOD_TYPE = "good_type";
     String STORY_ID = "story_id";
     String CATEGORY_ID = "category_id";
+    String GOODS_ID = "goods_id";
+    String GOODS_PRICE = "price";
+    String GOODS_NUM = "goods_num";
+    String ORDER_NO ="order_no";
+    String ADDR_ID = "addr_id";
+    String GOODSNAME = "goodsname";
 
 
     //商品详情
@@ -40,6 +46,10 @@ public interface INetAddress {
 
     //登录
     String LOGIN = "index.php/user/login";
+
+    //支付宝
+    String ALI_PAY = "index.php/pay/ali_pay_sub";
+    String SUB = "index.php/order/sub";
 
 }
 
