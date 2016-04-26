@@ -1,6 +1,7 @@
 package com.my.mirror.activity;
 
 import android.content.Intent;
+import android.view.View;
 import android.widget.ImageView;
 
 import com.my.mirror.R;
@@ -28,5 +29,11 @@ public class SinglePictureActivity extends BaseActivity{
     @Override
     protected void initView() {
         showPicture = findId(R.id.iv_single_picture);
+        showPicture.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
     }
 }

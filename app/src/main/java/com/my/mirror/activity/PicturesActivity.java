@@ -2,7 +2,6 @@ package com.my.mirror.activity;
 
 import android.content.Intent;
 import android.net.Uri;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AdapterView;
@@ -11,7 +10,7 @@ import android.widget.ListView;
 
 import com.my.mirror.R;
 import com.my.mirror.base.BaseActivity;
-import com.my.mirror.bean.AllGoodsListData;
+import com.my.mirror.bean.AllGoodsListBean;
 import com.my.mirror.adapter.PicturesListViewAdapter;
 
 import java.util.List;
@@ -24,7 +23,7 @@ import it.sephiroth.android.library.picasso.Picasso;
 public class PicturesActivity extends BaseActivity  {
     private ListView mListView;
     private PicturesListViewAdapter mAdapter;
-    private List<AllGoodsListData.DataEntity.ListEntity.WearVideoEntity>  picturesData;
+    private List<AllGoodsListBean.DataEntity.ListEntity.WearVideoEntity>  picturesData;
     private JCVideoPlayer jPlayer;
     private ImageView coverIv,playIv;
 
@@ -36,7 +35,7 @@ public class PicturesActivity extends BaseActivity  {
     @Override
     protected void initData() {
         Intent intent = getIntent();
-        picturesData = (List<AllGoodsListData.DataEntity.ListEntity.WearVideoEntity>) intent.getSerializableExtra("video_picture");
+        picturesData = (List<AllGoodsListBean.DataEntity.ListEntity.WearVideoEntity>) intent.getSerializableExtra("video_picture");
         mAdapter = new PicturesListViewAdapter(this,picturesData);
         mListView.setAdapter(mAdapter);
 
@@ -74,10 +73,10 @@ public class PicturesActivity extends BaseActivity  {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent(PicturesActivity.this, SinglePictureActivity.class);
 
-                if (Integer.valueOf(picturesData.get(position).getType()) == 5) {
-                    String singleUrl = picturesData.get(position).getData();
+
+                    String singleUrl = picturesData.get(position-1).getData();
                     intent.putExtra("bitmap_url", singleUrl);
-                }
+
                 startActivity(intent);
             }
         });

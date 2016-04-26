@@ -2,6 +2,7 @@ package com.my.mirror.activity;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Handler;
 import android.os.Message;
@@ -22,8 +23,11 @@ import com.facebook.drawee.view.SimpleDraweeView;
 import com.google.gson.Gson;
 import com.my.mirror.R;
 import com.my.mirror.base.BaseActivity;
+import com.my.mirror.base.BaseApplication;
 import com.my.mirror.bean.AlipayBean;
 import com.my.mirror.bean.PayBean;
+import com.my.mirror.greendao.DaoSingleton;
+import com.my.mirror.greendao.LoginTokenDao;
 import com.my.mirror.net.okhttp.INetAddress;
 import com.my.mirror.net.okhttp.StringCallback;
 import com.zhy.http.okhttp.OkHttpUtils;
@@ -41,19 +45,18 @@ public class OrderDetailActivity extends BaseActivity implements View.OnClickLis
     private PopupWindow popupWindow;
     private Button aliPayBtn,btn;
     private AlipayBean bean;
-    private String token, order_no, addr_id, goodsName,iv, describe, goodsId,
+    private String token, order_no, addr_id, goodsName, goodsId,
                     title, content, price, pic, name, address, tel;
     private String payInfo;
     private TextView addAddressTv, titleTv, describeTv, priceTv, nameTv, addressTv, telTv;
     private SimpleDraweeView simpleDraweeView;
     private int code;
     private ImageView back;
-
-
+    private SharedPreferences sp;
+    private LoginTokenDao loginTokenDao;
 
     //支付宝调用
     private static final int SDK_PAY_FLAG = 1;
-
     @SuppressLint("HandlerLeak")
     private Handler mHandler = new Handler() {
         @SuppressWarnings("unused")
@@ -99,19 +102,51 @@ public class OrderDetailActivity extends BaseActivity implements View.OnClickLis
 
     @Override
     protected void initData() {
-        Intent intent = getIntent();
-        iv = intent.getStringExtra("pic");
-        name = intent.getStringExtra("title");
-        describe = intent.getStringExtra("content");
-        price = intent.getStringExtra("price");
-        goodsId = intent.getStringExtra("goodsId");
-        simpleDraweeView.setImageURI(Uri.parse(iv));
-        titleTv.setText(name);
-        describeTv.setText(describe);
-        priceTv.setText(price);
 
+        Intent intent = getIntent();
+        goodsId = intent.getStringExtra("goodsId");
+        //判断
+        code = intent.getIntExtra("code", 2);
+        if (code == 0) {
+            pic = intent.getStringExtra("pic");
+            title = intent.getStringExtra("title");
+            content = intent.getStringExtra("content");
+            price = intent.getStringExtra("price");
+
+
+            simpleDraweeView.setImageURI(Uri.parse(pic));
+            titleTv.setText(title);
+            describeTv.setText(content);
+            priceTv.setText(price);
+        } else if (code == 1) {
+            name = intent.getStringExtra("name");
+            address = intent.getStringExtra("address");
+            tel = intent.getStringExtra("tel");
+            pic = intent.getStringExtra("myPic");
+            title = intent.getStringExtra("myTitle");
+            content = intent.getStringExtra("myContent");
+            price = intent.getStringExtra("myPrice");
+
+
+            nameTv.setText(getString(R.string.order_detail_name) + name);
+            addressTv.setText(getString(R.string.order_detail_address) + address);
+            telTv.setText(getString(R.string.order_detail_number) + tel);
+            simpleDraweeView.setImageURI(Uri.parse(pic));
+            titleTv.setText(title);
+            describeTv.setText(content);
+            priceTv.setText(price);
+        }
+
+        //从数据库获得token
+        sp = getSharedPreferences("login",MODE_PRIVATE);
+        if (sp.getInt("loginInt",0) == 1){
+            loginTokenDao = DaoSingleton.getInstance(BaseApplication.getContext()).getLoginTokenDao();
+            token = loginTokenDao.queryBuilder().list().get(0).getToken();
+        }
+
+        //解析获得支付宝用的东西
         OkHttpUtils.post().url(BEGIN_URL + SUB)
-                .addParams(TOKEN, "add853db56c099080449091b5bd88d0e")
+                .addParams(TOKEN, token)
                 .addParams(DEVICE_TYPE, DEVICE_REUSE)
                 .addParams(GOODS_ID, goodsId)
                 .addParams(GOODS_PRICE, price)
@@ -128,9 +163,8 @@ public class OrderDetailActivity extends BaseActivity implements View.OnClickLis
                 order_no = bean.getData().getOrder_id();
                 addr_id = bean.getData().getAddress().getAddr_id();
                 goodsName = bean.getData().getGoods().getGoods_name();
-
                 OkHttpUtils.post().url(BEGIN_URL + ALI_PAY)
-                        .addParams(TOKEN, "add853db56c099080449091b5bd88d0e")
+                        .addParams(TOKEN, token)
                         .addParams(ORDER_NO, order_no)
                         .addParams(ADDR_ID, addr_id)
                         .addParams(GOODSNAME, goodsName).build().execute(new StringCallback() {
@@ -155,33 +189,7 @@ public class OrderDetailActivity extends BaseActivity implements View.OnClickLis
         });
 
 
-        code = intent.getIntExtra("code", 2);
-        if (code == 0) {
-            pic = intent.getStringExtra("pic");
-            title = intent.getStringExtra("title");
-            content = intent.getStringExtra("content");
-            price = intent.getStringExtra("price");
 
-            simpleDraweeView.setImageURI(Uri.parse(pic));
-            titleTv.setText(title);
-            describeTv.setText(content);
-            priceTv.setText(price);
-        } else if (code == 1) {
-            name = intent.getStringExtra("name");
-            address = intent.getStringExtra("address");
-            tel = intent.getStringExtra("tel");
-            pic = intent.getStringExtra("myPic");
-            title = intent.getStringExtra("myTitle");
-            content = intent.getStringExtra("myContent");
-            price = intent.getStringExtra("myPrice");
-            nameTv.setText(getString(R.string.order_detail_name) + name);
-            addressTv.setText(getString(R.string.order_detail_address) + address);
-            telTv.setText(getString(R.string.order_detail_number) + tel);
-            simpleDraweeView.setImageURI(Uri.parse(pic));
-            titleTv.setText(title);
-            describeTv.setText(content);
-            priceTv.setText(price);
-        }
     }
 
 
@@ -211,6 +219,7 @@ public class OrderDetailActivity extends BaseActivity implements View.OnClickLis
                 intent1.putExtra("title", title);
                 intent1.putExtra("content", content);
                 intent1.putExtra("price", price);
+                intent1.putExtra("goodsId",goodsId);
                 startActivity(intent1);
                 break;
             case R.id.orderdetail_btn:

@@ -14,7 +14,7 @@ import java.util.List;
 /**
  * Created by TRC on 16/3/31.
  */
-public class AllGoodsListData implements Serializable {
+public class AllGoodsListBean implements Serializable {
 
     /**
      * result : 1
@@ -31,17 +31,17 @@ public class AllGoodsListData implements Serializable {
 
     private DataEntity data;
 
-    public static AllGoodsListData objectFromData(String str) {
+    public static AllGoodsListBean objectFromData(String str) {
 
-        return new Gson().fromJson(str, AllGoodsListData.class);
+        return new Gson().fromJson(str, AllGoodsListBean.class);
     }
 
-    public static AllGoodsListData objectFromData(String str, String key) {
+    public static AllGoodsListBean objectFromData(String str, String key) {
 
         try {
             JSONObject jsonObject = new JSONObject(str);
 
-            return new Gson().fromJson(jsonObject.getString(str), AllGoodsListData.class);
+            return new Gson().fromJson(jsonObject.getString(str), AllGoodsListBean.class);
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -49,19 +49,19 @@ public class AllGoodsListData implements Serializable {
         return null;
     }
 
-    public static List<AllGoodsListData> arrayAllGoodsListDataFromData(String str) {
+    public static List<AllGoodsListBean> arrayAllGoodsListDataFromData(String str) {
 
-        Type listType = new TypeToken<ArrayList<AllGoodsListData>>() {
+        Type listType = new TypeToken<ArrayList<AllGoodsListBean>>() {
         }.getType();
 
         return new Gson().fromJson(str, listType);
     }
 
-    public static List<AllGoodsListData> arrayAllGoodsListDataFromData(String str, String key) {
+    public static List<AllGoodsListBean> arrayAllGoodsListDataFromData(String str, String key) {
 
         try {
             JSONObject jsonObject = new JSONObject(str);
-            Type listType = new TypeToken<ArrayList<AllGoodsListData>>() {
+            Type listType = new TypeToken<ArrayList<AllGoodsListBean>>() {
             }.getType();
 
             return new Gson().fromJson(jsonObject.getString(str), listType);

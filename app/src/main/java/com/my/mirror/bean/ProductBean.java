@@ -14,7 +14,7 @@ import java.util.List;
 /**
  * Created by dllo on 16/3/31.
  */
-public class ProductDetail implements Serializable {
+public class ProductBean implements Serializable {
 
     /**
      * result : 1
@@ -31,17 +31,17 @@ public class ProductDetail implements Serializable {
 
     private DataEntity data;
 
-    public static ProductDetail objectFromData(String str) {
+    public static ProductBean objectFromData(String str) {
 
-        return new Gson().fromJson(str, ProductDetail.class);
+        return new Gson().fromJson(str, ProductBean.class);
     }
 
-    public static ProductDetail objectFromData(String str, String key) {
+    public static ProductBean objectFromData(String str, String key) {
 
         try {
             JSONObject jsonObject = new JSONObject(str);
 
-            return new Gson().fromJson(jsonObject.getString(str), ProductDetail.class);
+            return new Gson().fromJson(jsonObject.getString(str), ProductBean.class);
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -49,19 +49,19 @@ public class ProductDetail implements Serializable {
         return null;
     }
 
-    public static List<ProductDetail> arrayProductDetailFromData(String str) {
+    public static List<ProductBean> arrayProductDetailFromData(String str) {
 
-        Type listType = new TypeToken<ArrayList<ProductDetail>>() {
+        Type listType = new TypeToken<ArrayList<ProductBean>>() {
         }.getType();
 
         return new Gson().fromJson(str, listType);
     }
 
-    public static List<ProductDetail> arrayProductDetailFromData(String str, String key) {
+    public static List<ProductBean> arrayProductDetailFromData(String str, String key) {
 
         try {
             JSONObject jsonObject = new JSONObject(str);
-            Type listType = new TypeToken<ArrayList<ProductDetail>>() {
+            Type listType = new TypeToken<ArrayList<ProductBean>>() {
             }.getType();
 
             return new Gson().fromJson(jsonObject.getString(str), listType);

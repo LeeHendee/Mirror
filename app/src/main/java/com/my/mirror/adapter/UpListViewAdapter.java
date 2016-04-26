@@ -1,7 +1,6 @@
 package com.my.mirror.adapter;
 
 import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,14 +8,14 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.my.mirror.R;
-import com.my.mirror.bean.AllGoodsListData;
+import com.my.mirror.bean.AllGoodsListBean;
 
 import it.sephiroth.android.library.picasso.Picasso;
 
 
 public class UpListViewAdapter extends BaseAdapter {
     private LayoutInflater inflater;
-    private AllGoodsListData allGoodsListData;
+    private AllGoodsListBean allGoodsListData;
     private Context context;
     private int myPosition;
     final int TYPE_0 = 0;
@@ -25,7 +24,7 @@ public class UpListViewAdapter extends BaseAdapter {
     final int TYPE_3 = 3;
 
 
-    public UpListViewAdapter(AllGoodsListData allGoodsListData, Context context, int position) {
+    public UpListViewAdapter(AllGoodsListBean allGoodsListData, Context context, int position) {
         this.allGoodsListData = allGoodsListData;
         this.context = context;
         this.myPosition = position;

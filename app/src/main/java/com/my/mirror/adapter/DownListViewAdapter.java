@@ -8,7 +8,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 import com.my.mirror.R;
-import com.my.mirror.bean.AllGoodsListData;
+import com.my.mirror.bean.AllGoodsListBean;
 
 public class DownListViewAdapter extends BaseAdapter {
     private LayoutInflater inflater;
@@ -17,9 +17,9 @@ public class DownListViewAdapter extends BaseAdapter {
     final int TYPE_1 = 1;//blank
     final int TYPE_2 = 2;//文字
     final int TYPE_3 = 3;//站位
-    private AllGoodsListData allGoodsListData;
+    private AllGoodsListBean allGoodsListData;
 
-    public DownListViewAdapter(AllGoodsListData allGoodsListData, Context context, int position) {
+    public DownListViewAdapter(AllGoodsListBean allGoodsListData, Context context, int position) {
         this.allGoodsListData = allGoodsListData;
         this.context = context;
         this.myPosition = position;

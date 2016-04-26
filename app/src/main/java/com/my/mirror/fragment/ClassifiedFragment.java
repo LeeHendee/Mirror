@@ -68,12 +68,9 @@ public class ClassifiedFragment extends BaseFragment implements View.OnClickList
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 menuClickListener.click(position);
-                getActivity().getSupportFragmentManager().beginTransaction().remove(ClassifiedFragment.this).commit();
-//                Intent intent = new Intent(getActivity(), MainActivity.class);
-//                intent.putExtra("position", position);
-//                getActivity().finish();
-//                startActivity(intent);
-//                getActivity().overridePendingTransition(R.anim.anim_classified,R.anim.anim_main_activity);
+                getActivity().getSupportFragmentManager()
+                        .beginTransaction().remove(ClassifiedFragment.this)
+                        .commit();
             }
         });
     }

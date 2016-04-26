@@ -9,7 +9,7 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 
 import com.my.mirror.R;
-import com.my.mirror.bean.AllGoodsListData;
+import com.my.mirror.bean.AllGoodsListBean;
 
 import java.util.List;
 
@@ -20,9 +20,9 @@ import it.sephiroth.android.library.picasso.Picasso;
  */
 public class PicturesListViewAdapter extends BaseAdapter {
     private Context mContext;
-    private List<AllGoodsListData.DataEntity.ListEntity.WearVideoEntity> picturesData;
+    private List<AllGoodsListBean.DataEntity.ListEntity.WearVideoEntity> picturesData;
 
-    public PicturesListViewAdapter(Context mContext, List<AllGoodsListData.DataEntity.ListEntity.WearVideoEntity> picturesData) {
+    public PicturesListViewAdapter(Context mContext, List<AllGoodsListBean.DataEntity.ListEntity.WearVideoEntity> picturesData) {
         this.mContext = mContext;
         this.picturesData = picturesData;
     }

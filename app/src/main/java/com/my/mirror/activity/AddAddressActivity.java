@@ -28,7 +28,7 @@ public class AddAddressActivity extends BaseActivity implements INetAddress{
     private ImageView closeIv;
     private LoginTokenDao loginTokenDao;
     private String token;
-    private String id, title, content, price, pic, name, address, tel;
+    private String id, title, content, price, pic, name, address, tel,goodsId;
 
     @Override
     protected int getLayout() {
@@ -43,6 +43,7 @@ public class AddAddressActivity extends BaseActivity implements INetAddress{
         title = intent.getStringExtra("title");
         content = intent.getStringExtra("content");
         price = intent.getStringExtra("price");
+        goodsId = intent.getStringExtra("goodsId");
 
         name = intent.getStringExtra("name");
         tel = intent.getStringExtra("tel");
@@ -79,6 +80,7 @@ public class AddAddressActivity extends BaseActivity implements INetAddress{
                                 intent.putExtra("title", title);
                                 intent.putExtra("content", content);
                                 intent.putExtra("price", price);
+                                intent.putExtra("goodsId",goodsId);
                                 startActivity(intent);
                             }
                         });
@@ -106,6 +108,7 @@ public class AddAddressActivity extends BaseActivity implements INetAddress{
                                 intent.putExtra("title", title);
                                 intent.putExtra("content", content);
                                 intent.putExtra("price", price);
+                                intent.putExtra("goodsId",goodsId);
                                 startActivity(intent);
                             }
                         });

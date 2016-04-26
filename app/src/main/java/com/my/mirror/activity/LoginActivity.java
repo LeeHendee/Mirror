@@ -115,7 +115,6 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
 
                     @Override
                     public void onResponse(final String response) {
-                        Log.i("fdfd", response);
                         runOnUiThread(new Runnable() {
                             @Override
                             public void run() {

@@ -19,12 +19,9 @@ import com.my.mirror.R;
 import com.my.mirror.adapter.DownListViewAdapter;
 import com.my.mirror.base.BaseActivity;
 import com.my.mirror.base.BaseApplication;
-import com.my.mirror.bean.AllGoodsListData;
+import com.my.mirror.bean.AllGoodsListBean;
 import com.my.mirror.adapter.LinkageListView;
 import com.my.mirror.adapter.UpListViewAdapter;
-import com.my.mirror.base.BaseActivity;
-import com.my.mirror.base.BaseApplication;
-import com.my.mirror.bean.AllGoodsListData;
 import com.my.mirror.bean.HomePageBean;
 import com.my.mirror.greendao.DaoSingleton;
 import com.my.mirror.greendao.LoginTokenDao;
@@ -44,12 +41,12 @@ import de.greenrobot.event.EventBus;
 
 public class GoodsDetailActivity extends BaseActivity implements INetAddress, View.OnClickListener {
     private LinkageListView listView;
-    private AllGoodsListData allGoodsListData;
+    private AllGoodsListBean allGoodsListData;
     private Handler handler;
-    private int position, pos;
+    private int position;
     private SimpleDraweeView background;
     private Button backBtn, picturesBtn, buyBtn;
-    private List<AllGoodsListData.DataEntity.ListEntity.WearVideoEntity> picturesData;
+    private List<AllGoodsListBean.DataEntity.ListEntity.WearVideoEntity> picturesData;
     private HomePageBean bean;
     private ImageView loading;
     private LinearLayout line;
@@ -81,10 +78,9 @@ public class GoodsDetailActivity extends BaseActivity implements INetAddress, Vi
 
         post();
         addData();
-        allGoodsListData = new AllGoodsListData();
+        allGoodsListData = new AllGoodsListBean();
         Intent intent = getIntent();
         position = intent.getIntExtra("position", 1);
-        Log.i("position", pos + "");
         switch (position) {
             case 0:
                 position = 1;
@@ -117,22 +113,11 @@ public class GoodsDetailActivity extends BaseActivity implements INetAddress, Vi
         Animation animation = AnimationUtils.loadAnimation(this, R.anim.loading);
         loading.startAnimation(animation);
 
-        //按钮菜单滑动监听:
-//        listView.getBottomListView().setOnScrollChangeListener(new View.OnScrollChangeListener() {
-//            @Override
-//            public void onScrollChange(View v, int scrollX, int scrollY, int oldScrollX, int oldScrollY) {
-//               if (listView.getTopListView()==v){
-//
-//               }
-//            }
-//        });
-
-
     }
 
     public void onEventMainThread(Integer x) {
         if (x == 1 && flagRight == true) {
-            //回去小baby
+            //回去
             setToLeftAima();
             line.setVisibility(View.INVISIBLE);
             flagRight = true;
@@ -141,7 +126,11 @@ public class GoodsDetailActivity extends BaseActivity implements INetAddress, Vi
             setToRightAima();
             line.setVisibility(View.VISIBLE);
             flagLeft = true;
-        } else if (x > 2) {
+        } else if (x == 3 && flagLeft == false&&flag==false){
+            //出来
+            setToRightAima();
+            line.setVisibility(View.VISIBLE);
+        } else if (x > 3) {
             flagLeft = false;
             flagRight = true;
             flag=true;
@@ -163,7 +152,7 @@ public class GoodsDetailActivity extends BaseActivity implements INetAddress, Vi
             @Override
             public boolean handleMessage(Message msg) {
                 Gson gson = new Gson();
-                allGoodsListData = gson.fromJson(msg.obj.toString(), AllGoodsListData.class);
+                allGoodsListData = gson.fromJson(msg.obj.toString(), AllGoodsListBean.class);
                 picturesData = allGoodsListData.getData().getList().get(position).getWear_video();
                 listView.setAdapter(new UpListViewAdapter(allGoodsListData, getApplication(), position), new DownListViewAdapter(allGoodsListData, getApplication(), position));
                 listView.setLinkageSpeed(1.2f);

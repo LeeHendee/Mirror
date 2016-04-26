@@ -39,7 +39,7 @@ public class AllAddressActivity extends BaseActivity implements View.OnClickList
     private AddressBean bean;
     private ImageView closeIv;
     private LoginTokenDao loginTokenDao;
-    private String token,pic,title,content,price;
+    private String token,pic,title,content,price,goodsId;
 
     @Override
     protected int getLayout() {
@@ -53,6 +53,7 @@ public class AllAddressActivity extends BaseActivity implements View.OnClickList
         title = intent.getStringExtra("title");
         content = intent.getStringExtra("content");
         price = intent.getStringExtra("price");
+        goodsId = intent.getStringExtra("goodsId");
 
         loginTokenDao = DaoSingleton.getInstance(BaseApplication.getContext()).getLoginTokenDao();
         token = loginTokenDao.queryBuilder().list().get(0).getToken();
@@ -144,6 +145,7 @@ public class AllAddressActivity extends BaseActivity implements View.OnClickList
                         intent1.putExtra("myPrice",price);
                         intent1.putExtra("myContent",content);
                         intent1.putExtra("myPic",pic);
+                        intent1.putExtra("goodsId",goodsId);
                         intent1.putExtra("code",1);
                         startActivity(intent1);
                     }
@@ -161,6 +163,7 @@ public class AllAddressActivity extends BaseActivity implements View.OnClickList
                 intent.putExtra("title", title);
                 intent.putExtra("content", content);
                 intent.putExtra("price", price);
+                intent.putExtra("goodsId",goodsId);
                 startActivity(intent);
                 break;
             case R.id.alladdress_close:
